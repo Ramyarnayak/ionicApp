@@ -1,0 +1,83 @@
+@import "src/app/styles/common";
+
+.StartYourClimbTile {
+
+    width: 80%;
+    height: 100%;
+
+    @include mobile {
+        width: auto;
+        margin-bottom: 93px;
+        height: inherit;
+    }
+
+    @include tablet-only {
+        width: 80%;
+    }
+
+    &-heading {
+        @include relative-prop(font-size, 32, 32, 32);
+        @include relative-prop(line-height, 38.8, 38.8, 38.8);
+        @include relative-prop(margin-bottom, 40, 40, 40);
+
+        font-family: $font-family-bold;
+        letter-spacing: -2%;
+        color: $white;
+    }
+
+    &-subheading {
+        @include relative-prop(font-size, 20, 20, 20);
+        @include relative-prop(line-height, 26, 26, 26);
+        @include relative-prop(margin-bottom, 30, 30, 30);
+
+        letter-spacing: -2%;
+        color: $white;
+    }
+
+    &-description {
+        @include relative-prop(font-size, 16, 16, 20);
+        @include relative-prop(line-height, 20.8, 20.8, 23);
+        @include relative-prop(margin-bottom, null, 70, 70);
+
+        letter-spacing: -2%;
+        color: $white;
+
+        @include mobile {
+            margin-bottom: 30px;
+        }
+    }
+
+    &-cta {
+        position: absolute;
+        bottom: 0;
+
+        @include mobile {
+            position: static;
+        }
+    }
+
+    &-button {
+        @include relative-prop(height, 52, 52, 52);
+        @include relative-prop(padding-right, 50, 50, 50);
+        @include relative-prop(padding-left, 50, 50, 50);
+
+        width: fit-content;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        background-color: $white;
+        border-radius: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-buttonText {
+        @include relative-prop(font-size, 18, 18, 18);
+        @include relative-prop(line-height, 21.8, 21.8, 21.8);
+
+        font-family: $font-family-bold;
+        color: $mid-dark-blue;;
+        white-space: nowrap;
+    }
+}

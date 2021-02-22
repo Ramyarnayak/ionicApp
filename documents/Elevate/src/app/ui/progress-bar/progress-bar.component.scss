@@ -1,0 +1,15 @@
+@import "../../styles/common.scss";
+
+.ProgressBar {
+    &-outer {
+        width: 100%;
+        @include relative-prop(height, 8, 8, 8);
+        background-color: $light-gray-light-tint;
+    }
+
+    &-inner {
+        transition: width .5s ease;
+        @include relative-prop(height, 8, 8, 8);
+        background-color: $elevate_blue;
+    }
+}

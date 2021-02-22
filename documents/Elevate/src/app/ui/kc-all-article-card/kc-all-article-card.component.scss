@@ -1,0 +1,42 @@
+@import "src/app/styles/common";
+
+.KCAllArticleCard {
+  &-visual {
+    @include relative-prop(margin-bottom, 30, 30, 32);
+    width: 100%;
+
+    &-image {
+      @include relative-prop(height, null, 120, 200);
+      width: 100%;
+      object-fit: cover;
+      display: block;
+
+      @include mobile {
+        height: calc(120/375 * 100vw);
+      }
+    }
+  }
+
+  &-type {
+    @include relative-prop(margin-bottom, 14, 12, 18);
+    @include relative-prop(font-size, 12, 12, 16);
+    @include relative-prop(line-height, 13.2, 13.2, 17.6);
+    display: block;
+    opacity: 0.6;
+    text-transform: uppercase;
+  }
+
+  &-title {
+    @include relative-prop(padding-bottom, 14, 14, 17);
+    @include relative-prop(font-size, 20, 20, 24);
+    @include relative-prop(line-height, 26, 26, 31.2);
+    margin: 0;
+  }
+
+  &-link {
+    @include relative-prop(font-size, 12, 12, 12);
+    display: inline-block;
+    text-decoration: underline;
+    color: $mid-dark-blue;
+  }
+}

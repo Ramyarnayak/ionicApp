@@ -1,0 +1,80 @@
+@import "src/app/styles/common";
+
+.CreditResources {
+
+    &-inner {
+        @include relative-prop(padding-top, 119, 107, 182);
+        @include relative-prop(padding-bottom, 119, 107, 182);
+    }
+
+    &-small {
+        @include flexi-relative-prop(display, flex, flex, none);
+    }
+
+    &-large {
+        @include flexi-relative-prop(display, none, none, flex);
+        margin-right: 45px;
+    }
+
+    &-title {
+        @include relative-prop(font-size, 42, 96, 96);
+        @include relative-prop(line-height, 46, 106, 106);
+
+        font-family: $font-family-bold;
+        letter-spacing: -0.02em;
+    }
+
+    &-subHeading {
+        @include relative-prop(font-size, 16, 20, 20);
+        @include relative-prop(line-height, 26, 32, 32);
+        @include relative-prop(margin-bottom, 60, 60, 0);
+
+        @include tablet-only {
+            width: 48%;
+        }
+
+        width: 95%;
+        margin-top: 30px;
+    }
+
+    &-showMeMore {
+        @include relative-prop(width, 252, 469, 469);
+    }
+
+    &-showMeMoreText {
+        @include relative-prop(font-size, 38, 48, 48);
+        @include relative-prop(line-height, 38, 48, 48);
+        @include relative-prop(margin-top, 32, 64, 64);
+        @include relative-prop(width, 283, 209, 209);
+
+        font-family: $font-family-bold;
+        letter-spacing: -0.02em;
+    }
+
+    &-showMeMoreButton {
+        margin-top: 32px;
+    }
+
+    &-showMeMoreImage {
+        @include flexi-relative-prop(width, 80px, 100px, 100px);
+        cursor: pointer;
+    }
+}
+
+.horizontal-scroll-element {
+    @include relative-prop(padding-left, 27, 32, 45);
+    @include relative-prop(padding-right, 24, 27, 30);
+
+        &:nth-child(2) {
+            @include mobile {
+                border-left: 0;
+                padding-left: 0;
+            }
+            @include tablet-only {
+                border-left: 0;
+                padding-left: 0;
+            }
+        }
+
+    border-left: 2px solid $light-gray;
+}

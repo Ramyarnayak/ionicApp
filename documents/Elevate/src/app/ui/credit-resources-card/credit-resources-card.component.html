@@ -1,0 +1,16 @@
+<section class="CreditResourcesCard">
+    <div class="CreditResourcesCard-inner">
+        <img class="CreditResourcesCard-image" appImageLoader [imageId]="(post | async)?.thumbnailImage?.id">
+        <div class="CreditResourcesCard-category">{{ (post | async)?.category?.title }}</div>
+        <div class="CreditResourcesCard-heading">{{ (post | async)?.title }}
+        </div>
+        <div class="CreditResourcesCard-subHeading">{{ (post | async)?.description }}</div>
+        <div class="CreditResourcesCard-readMoreText">
+            <a [appTealiumClickEvent]="getTealiumClickEvent((post | async)?.title, 'option' + postNumber)"
+                [customLink]="(post | async)?.navigation?.link"
+                appExternalLink>
+                {{ (post | async)?.navigation?.label }}
+            </a>
+        </div>
+    </div>
+</section>

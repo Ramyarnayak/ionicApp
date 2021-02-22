@@ -1,0 +1,19 @@
+<div class="QuizTip">
+  <div [appTealiumClickEvent]="getTealiumClickEvent('tip') | async">
+    <img class="QuizTip-image" (click)="toggleTip()" src="assets/icons/questionaire-tip.svg" alt="Quiz Tip"/>
+    <div [ngClass]="{ 'QuizTip-borderRadiusBottomNone': isTipVisible }"
+      class="QuizTip-title" (click)="toggleTip()">
+      <span>
+        <img class="QuizTip-imageMobile" (click)="toggleTip()" src="assets/icons/questionaire-tip-mobile.svg" alt="Quiz Tip"/>
+      </span>
+      <div [ngClass]="isEmailScreen ? 'QuizTip-emailTip' : 'QuizTip-questionaireTip'" class="QuizTip-titleText">{{ tooltip?.tooltip }}</div>
+    </div>
+  </div>
+  <div class="QuizTip-overlay" *ngIf="isTipVisible && tooltip?.body" (click)="closeTip()"></div>
+  <div class="QuizTip-description" *ngIf="isTipVisible && tooltip?.body">
+    <div class="QuizTip-close" (click)="closeTip()" [appTealiumClickEvent]="getTealiumClickEvent('tipclose') | async">
+      <img src="assets/icons/close-icon.svg" alt="Close Icon">
+    </div>
+    <div class="QuizTip-descriptionContainer" [innerHTML]="tooltip?.body | safe: 'html'" appTargetBlank></div>
+  </div>
+</div>

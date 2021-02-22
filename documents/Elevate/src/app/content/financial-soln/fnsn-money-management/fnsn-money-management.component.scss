@@ -1,0 +1,192 @@
+@import "../../../styles/common";
+
+:host ::ng-deep {
+    ul {
+        padding-left: 15px;
+    }
+}
+
+.FnSnMoneyManagement {
+    @include flexi-relative-prop(display, null, null, flex);
+    @include flexi-relative-prop(margin-left, null, null, auto);
+    @include flexi-relative-prop(margin-right, null, null, auto);
+    @include flexi-relative-prop(padding-bottom, 24px, 24px, 95px);
+    @include flexi-relative-prop(padding-top, 64px, 64px, 100px);
+
+    &-body {
+        flex: 1 1 auto;
+    }
+
+    &-card {
+        @include flexi-relative-prop(border-top, 1px solid rgba(0,0,0,.2), 1px solid rgba(0,0,0,.2), none);
+        @include flexi-relative-prop(box-shadow, null, null, 0px 0px 22px rgba(171, 171, 171, 0.22));
+        @include flexi-relative-prop(display, null, null, flex);
+        @include flexi-relative-prop(margin-bottom, null, null, 20px);
+        @include flexi-relative-prop(padding-bottom, 40px, 40px, 45px);
+        @include flexi-relative-prop(padding-left, 0, 0, 32px);
+        @include flexi-relative-prop(padding-right, 0, 0, 32px);
+        @include flexi-relative-prop(padding-top, 40px, 40px, 51px);
+        @include flexi-relative-prop(position, null, null, relative);
+
+        background-color: $white;
+        border-radius: 8px;
+        line-height: 130%;
+
+        @include mobile {
+            border-radius: 0;
+        }
+
+        &:last-child {
+            @include flexi-relative-prop(margin-bottom, null, null, 0);
+        }
+
+        &-body {
+            @include flexi-relative-prop(max-width, null, null, 465px);
+        }
+
+        &-body1 {
+            @include flexi-relative-prop(line-height, 130%, 130%, 160%);
+            @include flexi-relative-prop(margin-bottom, 20px, 20px, 26px);
+            
+            opacity: .6;
+        }
+
+        &-body2 {
+            @include flexi-relative-prop(font-size, 12px, 12px, 16px);
+            @include flexi-relative-prop(letter-spacing, null, null, -.02em);
+            @include flexi-relative-prop(line-height, null, null, 150%);
+            @include flexi-relative-prop(margin-bottom, 30px, 30px, 0);
+            
+            background-color: $lighter-gray;
+            border-radius: 8px;
+            opacity: .6;
+            padding: 19px 17px 20px;
+        }
+
+        &-cta {
+            @include flexi-relative-prop(position, null, null, absolute);
+            @include flexi-relative-prop(right, null, null, 30px);
+            @include flexi-relative-prop(top, null, null, 30px);
+
+            a {
+                @include relative-prop(width,null,149,149);
+                @include relative-prop(height,52,52,52);
+                @include relative-prop(font-size,16,18,18);
+                @include relative-prop(border-radius,54,54,54);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: $font-family-bold;
+                text-align: center;
+                text-decoration: none;
+
+                @include mobile {
+                    width: 100%;
+                    margin: 0 auto;
+                    max-width: 200px;
+                }
+            }
+        } 
+
+        &-headline {
+            &--desktop {
+                @include flexi-relative-prop(display, none, none, null);
+
+                font-family: $font-family-bold;
+                font-size: 24px;
+                letter-spacing: -.02em;
+                margin-bottom: 21px;
+            }
+
+            &--mobile {
+                @include flexi-relative-prop(display, null, null, none);
+                font-weight: $font-weight-medium;
+                font-size: 18px;
+                letter-spacing: -.02em;
+                margin-bottom: 12px;
+            }
+        }
+
+        &-logo {
+            @include flexi-relative-prop(margin-bottom, 24px, 24px, null);
+            @include flexi-relative-prop(margin-right, null, null, 25px);
+
+            img {
+                @include flexi-relative-prop(max-width, 150px, 150px, 100px);
+
+                @include mobile {
+                    width: 84px;
+                    height: 61px;
+                    object-fit: contain;
+                    display: block;
+                }
+            }
+        }
+
+        &-ratings {
+            @include flexi-relative-prop(margin-bottom, 30px, 30px, 22px);
+
+            display: flex;
+
+            &-rating {
+                @include flexi-relative-prop(margin-right, 16px, 16px, 8px);
+                
+                img {
+                    max-width: 86px;
+                }
+            }
+
+            &-review {
+                font-size: 14px;
+                opacity: .5;
+            }
+        }
+    }
+
+    &-description {
+        @include flexi-relative-prop(font-size, 14px, 14px, 16px);
+        @include flexi-relative-prop(letter-spacing, null, null, -.02em);
+        @include flexi-relative-prop(line-height, 130%, 130%, 150%);
+        
+        margin-bottom: 30px;
+    }
+
+    &-header {
+        @include relative-prop(width, null, null, 304);
+        @include relative-prop(margin-right, 0, 0, 111);
+        flex: 0 0 auto;
+
+        @include tablet-only {
+            width: 100%;
+        }
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    &-headline {
+        @include flexi-relative-prop(font-size, 42px, 42px, 40px);
+        @include flexi-relative-prop(line-height, 110%, 110%, 130%);
+        @include flexi-relative-prop(margin-bottom, 16px, 16px, 32px);
+
+        font-family: $font-family-bold;
+        letter-spacing: -.02em;
+    }
+
+    &-loadMore {
+        @include flexi-relative-prop(margin-bottom, 40px, 40px, null);
+        @include flexi-relative-prop(margin-top, 24px, 24px, 95px);
+    
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    
+        button {
+            @include flexi-relative-prop(width, 61%, 61%, 47%);
+            font-family: $font-family-bold;
+            font-size: 18px;
+            padding: 16px 0 17px;
+        }
+    }
+}

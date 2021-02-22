@@ -1,0 +1,58 @@
+@import "src/app/styles/common";
+
+:host {
+  @include mobile {
+    display: none;
+  }
+  @include responsive-prop(height, null, 141);
+}
+
+.HeaderDesktop {
+  position: relative;
+}
+
+.HeaderDefault {
+  @include responsive-prop(height, $header-mobile-height-num, $header-desktop-height-num);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  &-elevateLogo {
+    @include responsive-prop(height, 0, 47);
+    cursor: pointer;
+    outline: none;
+  }
+
+  &-menu {
+    @include responsive-prop(height, 0, 32);
+    @include responsive-prop(padding, 0, 5);
+    cursor: pointer;
+  }
+}
+
+.HeaderLevel1Container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: none;
+  width: 0;
+
+  &-fullWidth {
+    width: 100%;
+    display: block;
+    animation: fullMoveInRight .4s;
+  }
+}
+
+@keyframes fullMoveInRight {
+  0% {
+      transform: translateX(100vw);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+

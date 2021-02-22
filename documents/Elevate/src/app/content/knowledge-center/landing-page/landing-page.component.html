@@ -1,0 +1,102 @@
+<div class="KnowledgeCenter-Subpage container">
+    <div class="KnowledgeCenter-Subpage-Hero">
+        <div class="KnowledgeCenter-Subpage-Hero-back">
+            <a [appTealiumClickEvent]="getTealiumClickEvent((knowledgeCenterlandingPage | async)?.title, 'back')"
+                routerLink="/knowledge-center"
+                class="KnowledgeCenter-Subpage-Hero-back-link">
+                Knowledge Center
+            </a>
+        </div>
+        <h1 class="KnowledgeCenter-Subpage-Hero-title">
+            {{(knowledgeCenterlandingPage | async)?.title}}
+        </h1>
+        <div class="KnowledgeCenter-Subpage-Hero-text">
+            {{(knowledgeCenterlandingPage | async)?.description}}
+        </div>
+    </div>
+    <div class="KnowledgeCenter-Subpage-Featured">
+        <h3 class="KnowledgeCenter-Subpage-Featured-title">
+            {{(knowledgeCenterlandingPage | async)?.featuredHeadline}}
+        </h3>
+        <div class="KnowledgeCenter-Subpage-Featured-content">
+            <div class="KnowledgeCenter-Subpage-Featured-content-sticky">
+                <div class="KnowledgeCenter-Subpage-Featured-content-sticky-visual">
+                    <img [imageId]="(knowledgeCenterlandingPage | async)?.featuredCardArticle.thumbnailImage.id"
+                        class="KnowledgeCenter-Subpage-Featured-content-sticky-visual-image"
+                        appImageLoader>
+                </div>
+                <strong class="KnowledgeCenter-Subpage-Featured-content-sticky-type">{{ (knowledgeCenterlandingPage | async)?.featuredCardArticle.category.title }}</strong>
+                <h3 class="KnowledgeCenter-Subpage-Featured-content-sticky-title">
+                   {{ (knowledgeCenterlandingPage | async)?.featuredCardArticle.title }}
+                </h3>
+                <div class="KnowledgeCenter-Subpage-Featured-content-sticky-text">
+                  {{ (knowledgeCenterlandingPage | async)?.featuredCardArticle.description }}
+                </div>
+                <a [appTealiumClickEvent]="getTealiumClickEvent((knowledgeCenterlandingPage | async)?.title, 'feature')"
+                    [customLink]="(knowledgeCenterlandingPage | async)?.featuredCardArticle.navigation.link"    
+                    class="KnowledgeCenter-Subpage-Featured-content-sticky-link"
+                    appExternalLink>
+                  {{ (knowledgeCenterlandingPage | async)?.featuredCardArticle.navigation.label }}
+                </a>
+            </div>
+            <div class="KnowledgeCenter-Subpage-Featured-content-side">
+                <app-horizontal-scroll-container [scrollButtonColor]="'grey'" [showScrollButtons]="true" [scrollThumbColor]="scrollBarThumbColor">
+                    <div class="KnowledgeCenter-Subpage-Featured-content-list">
+                      <div *ngFor="let post of (knowledgeCenterlandingPage | async)?.relatedArticles; let i = index">
+                        <div class="KnowledgeCenter-Subpage-Featured-content-list-item">
+                            <div class="KnowledgeCenter-Subpage-Featured-content-list-item-visual">
+                                <img appImageLoader [imageId]="post.article.thumbnailImage?.id" class="KnowledgeCenter-Subpage-Featured-content-list-item-visual-image" alt="">
+                            </div>
+                            <div class="KnowledgeCenter-Subpage-Featured-content-list-item-text">
+                                <strong class="KnowledgeCenter-Subpage-Featured-content-list-item-text-type">{{ post.article.category.title }}</strong>
+                                <h4 class="KnowledgeCenter-Subpage-Featured-content-list-item-text-title">{{ post.article.title }}</h4>
+                                <a [appTealiumClickEvent]="getTealiumClickEvent((knowledgeCenterlandingPage | async)?.title, 'article' + (i+1), post.article.title)"
+                                    [customLink]="post.article.navigation.link"
+                                    class="KnowledgeCenter-Subpage-Featured-content-list-item-text-link"
+                                    appExternalLink>
+                                  {{ post.article.navigation.label }}
+                                </a>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </app-horizontal-scroll-container>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container kc-container">
+    <app-kc-series-articles [knowledgeCenterSeriesArticles]="(knowledgeCenterlandingPage | async)?.series1" (navigationClick)="sendTealiumClickEventSeriesArticle($event)"></app-kc-series-articles>
+</div>
+
+<div class="container">
+    <app-kc-all-articles [knowledgeCenterLongArticles]="(knowledgeCenterlandingPage | async)?.articles"
+        [rowIndex]="1"
+        (navigationClick)="sendTealiumClickEventLongArticle($event)">
+    </app-kc-all-articles>
+</div>
+
+<div class="container">
+    <app-kc-marketing-bar [marketingBar]="(knowledgeCenterlandingPage | async)?.marketingBar" (navigationClick)="sendTealiumClickEventMarketingBar()"></app-kc-marketing-bar>
+</div>
+
+<div class="container">
+    <app-kc-all-articles [knowledgeCenterLongArticles]="(knowledgeCenterlandingPage | async)?.articles"
+        [rowIndex]="2"
+        (navigationClick)="sendTealiumClickEventLongArticle($event)">
+    </app-kc-all-articles>
+</div>
+
+<div class="container kc-container">
+    <app-kc-series-articles [knowledgeCenterSeriesArticles]="(knowledgeCenterlandingPage | async)?.series2" (navigationClick)="sendTealiumClickEventSeriesArticle($event)"></app-kc-series-articles>
+</div>
+
+<div class="container">
+    <app-kc-all-articles [knowledgeCenterLongArticles]="(knowledgeCenterlandingPage | async)?.articles"
+        [rowIndex]="3"
+        (navigationClick)="sendTealiumClickEventLongArticle($event)"></app-kc-all-articles>
+</div>
+
+<div class="container">
+    <div class="KnowledgeCenter-Subpage-disclaimer" [innerHTML]="(knowledgeCenterlandingPage | async)?.disclaimer.description"></div>
+</div>

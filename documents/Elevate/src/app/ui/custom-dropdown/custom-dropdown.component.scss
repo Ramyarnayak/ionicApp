@@ -1,0 +1,89 @@
+@import "src/app/styles/common";
+
+.AppCustomSelect {
+
+    width: 100%;
+
+    &-inner {
+        position: relative;
+    }
+
+    &-list {
+        position: absolute;
+        z-index: 1;
+        border: 1px solid $light-gray;
+        border-radius: 25px;
+        overflow: hidden;
+        width: 100%;
+
+        img {
+            margin: auto 0 auto auto;
+        }
+    }
+
+    &-overflow {
+        max-height: 260px;
+        overflow-y: auto;
+        position: relative;
+
+        @include custom-scroll();
+    }
+
+    &-listItem {
+        @include relative-prop(height, 52, 52, 52);
+        @include relative-prop(padding-left, 25, 25, 25);
+        @include relative-prop(padding-right, 25, 25, 25);
+
+        background: $white;
+        display: flex;
+        align-items: center;
+        outline: none;
+
+        input[type=checkbox] {
+            visibility: hidden;
+        }
+
+        &:hover {
+            background: $light-gray-light-tint;
+        }
+
+        &:focus {
+            border: 1px solid $elevate-blue;
+            border-radius: 4px;
+            width: fit-content;
+        }
+    }
+
+    &-selectedItem {
+        @include relative-prop(padding-left, 25, 25, 25);
+        @include relative-prop(padding-right, 25, 25, 25);
+        @include relative-prop(padding-top, 15, 15, 15);
+        @include relative-prop(padding-bottom, 15, 15, 15);
+        @include relative-prop(border-radius, 72, 72, 72);
+        @include relative-prop(height, 52, 52, 52);
+        background: $white;
+        border: none;
+        width: 100%;
+        outline: none;
+
+        &-container::after {
+            position: absolute;
+            content: url('/assets/icons/dropdown-arrow.svg');
+            top: 50%;
+            transform: translateY(-50%);
+            right: 25px;
+            pointer-events: none;
+        }
+
+        &:focus {
+            border: 1px solid $elevate-blue;
+            box-shadow: 0px 0px 10px $elevate-blue;
+        }
+    }
+
+    &-itemText {
+        @include relative-prop(font-size, 18, 18, 18);
+        font-weight: 500;
+        color: $black;
+    }
+}

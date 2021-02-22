@@ -1,0 +1,124 @@
+<div class="app-header-offset"></div>
+<div id="FnSnBorrowing" class="FnSnBorrowing container" [ngClass]="financialSolutionBorrowing?.settings?.theme">
+    <div class="FnSnBorrowing">
+        <div class="BorrowingCard-container">
+            <div class="BorrowingCard-sidebar">
+                <h3 class="BorrowingCard-sidebar-title">{{ financialSolutionBorrowing?.headline }}</h3>
+                <div class="BorrowingCard-sidebar-text">{{ financialSolutionBorrowing?.description }}</div>
+                <div class="BorrowingCard-sidebar-filter">
+                    <form action="#" class="BorrowingCard-sidebar-filter-form">
+                        <div class="BorrowingCard-sidebar-filter-form-row">
+                            <div class="BorrowingCard-sidebar-filter-noStateSelected" *ngIf="noStateSelected">{{
+                                financialSolutionBorrowing?.noStateSelectedHeadline }}</div>
+                            <div class="BorrowingCard-sidebar-filter-form-select" [ngClass]="{ 'noStateSelected' : noStateSelected}">
+                                <app-custom-dropdown
+                                    *ngIf="stateListToDisplay as list"
+                                    [listItem]="list"
+                                    (dropdownOptionSelected)="dropdownOptionSelected($event)" 
+                                    [defaultSelectedItem]="selectedState">
+                                </app-custom-dropdown>
+                            </div>
+                        </div>
+                        <ng-container *ngIf="!noStateSelected && !noOfferError">
+                            <div class="BorrowingCard-sidebar-filter-form-input_row">
+                                <label class="BorrowingCard-sidebar-filter-form-input_row-label">{{
+                                    financialSolutionBorrowing?.needToBorrowText }}</label>
+                                <input type="text" class="BorrowingCard-sidebar-filter-form-input" readonly
+                                    [value]="rangeValue | currency : 'USD' : 'symbol' : '1.0-0'">
+                            </div>
+                            <div class="BorrowingCard-sidebar-filter-form-range_row">
+                                <label class="BorrowingCard-sidebar-filter-form-range_row-label_left">
+                                    {{filterAmountRange?.minValue | currency : 'USD' : 'symbol' : '1.0-0'}}
+                                </label>
+                                <input [(ngModel)]="rangeValue"
+                                    [max]="filterAmountRange?.maxValue"    
+                                    [min]="filterAmountRange?.minValue"
+                                    (change)="onAmountChange($event.target.value)"
+                                    class="BorrowingCard-sidebar-filter-form-range"
+                                    name="range"
+                                    type="range">
+                                <label class="BorrowingCard-sidebar-filter-form-range_row-label_right">
+                                    {{filterAmountRange?.maxValue | currency : 'USD' : 'symbol' : '1.0-0'}}
+                                </label>
+                            </div>
+                            <div class="BorrowingCard-sidebar-filter-form-checkbox_filters_mobile" *ngIf="toggleFilter">
+                                <div class="BorrowingCard-sidebar-filter-form-checkbox_filters_mobile-overlay" (click)="toggleFilter = false"></div>
+                                <div class="BorrowingCard-sidebar-filter-form-checkbox_filters_mobile-container">
+                                    <div class="BorrowingCard-sidebar-filter-form-checkbox_row-mobile_heading">
+                                        <button [appTealiumClickEvent]="getTealiumResetClickEvent()"
+                                            (click)="resetCategoryFilter()"
+                                            class="BorrowingCard-sidebar-filter-form-checkbox_row-mobile_heading-button">
+                                            Reset
+                                        </button>
+                                        <span class="BorrowingCard-sidebar-filter-form-checkbox_row-mobile_heading-title">
+                                            {{ financialSolutionBorrowing?.filterHeadline }}
+                                        </span>
+                                        <button (click)="toggleFilterSheet()"
+                                            class="BorrowingCard-sidebar-filter-form-checkbox_row-mobile_heading-button">
+                                            Done
+                                        </button>
+                                    </div>
+                                    <ng-container *ngTemplateOutlet="cardCategoryFilterTemplate"></ng-container>
+                                </div>
+                            </div>
+                            <div class="BorrowingCard-sidebar-filter-form-checkbox_filters_desktop">
+                                <div class="BorrowingCard-sidebar-filter-form-checkbox_row">
+                                    <ng-container *ngTemplateOutlet="cardCategoryFilterTemplate"></ng-container>
+                                    <button [appTealiumClickEvent]="getTealiumResetClickEvent()"
+                                        (click)="resetCategoryFilter()"
+                                        class="BorrowingCard-sidebar-filter-form-checkbox_row-reset_button">
+                                        Reset Filters
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-container>
+                    </form>
+                    <button class="BorrowingCard-sidebar-filter-mobile_button" *ngIf="!noStateSelected && !noOfferError"
+                        (click)="toggleFilterSheet()">
+                        Filter
+                    </button>
+                </div>
+            </div>
+            <div class="BorrowingCard-content" [ngClass]="{'errorBlock': noOfferError || noResultError}">
+                <ng-container *ngFor="let card of cardsToDisplay; let i =index; trackBy: trackByCardId">
+                    <app-fnsn-borrowing-card [borrowingCardCategoryList]="borrowingCardCategory"
+                        [financialSolutionBorrowingCard]="card"
+                        [noStateSelected]="noStateSelected"
+                        [selectedStateId]="selectedState.id"
+                        (tealiumShowLessClickEvent)="sendTealiumBorrowingCardClickEvent(i+1, $event, 'showless')"
+                        (tealiumShowMoreClickEvent)="sendTealiumBorrowingCardClickEvent(i+1, $event, 'showmore')"
+                        (tealiumVisitClickEvent)="sendTealiumBorrowingCardClickEvent(i+1, $event, 'visit')">
+                    </app-fnsn-borrowing-card>
+                </ng-container>
+                <div class="BorrowingCard-content-noOfferError" *ngIf="noOfferError">
+                    <app-no-offer-error [noOfferError]="noOfferErrorContent"
+                        (tealiumClickEvent)="onErrorTealiumClickEvent()">
+                    </app-no-offer-error>
+                </div>
+                <div class="BorrowingCard-content-noOfferError" *ngIf="noResultError">
+                    <app-no-result-error [noResultError]="noResultErrorContent" (hasCtaClicked)="setMinRangeFilter()"></app-no-result-error>
+                </div>
+                <div class="BorrowingCard-content-load_more" *ngIf="hasMoreCards">
+                    <button class="button--load-more" (click)="onLoadMore()">
+                        {{ financialSolutionBorrowing?.loadMoreCta }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #cardCategoryFilterTemplate>
+    <label class="BorrowingCard-sidebar-filter-form-checkbox_row-label">
+        {{ financialSolutionBorrowing?.filterHeadline }}
+    </label>
+    <div *ngFor="let category of categoryFilterList" class="BorrowingCard-sidebar-filter-form-checkbox_row-checkbox">
+        <label class="BorrowingCard-sidebar-filter-form-checkbox_row-checkbox-label">
+            <input [(ngModel)]="category.checked"
+                [name]="category.id"
+                (change)="onCheckboxChange(category.label, $event.target.checked)"
+                class="BorrowingCard-sidebar-filter-form-checkbox_row-checkbox-input"
+                type="checkbox">
+            <span>{{ category.label }}</span>
+        </label>
+    </div>
+</ng-template>

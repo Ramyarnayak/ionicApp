@@ -1,0 +1,25 @@
+<section class="StartYourClimb">
+    <div class="StartYourClimb-emptyBox">
+
+    </div>
+    <div class="StartYourClimb-main" [appBackgroundColor]="improving?.settings.theme">
+        <h1 class="StartYourClimb-title container-left" [innerHTML]="improving?.headline | safe: 'html'"></h1>
+        <div class="StartYourClimb-tiles container">
+            <app-start-your-climb-tile [data]="improving?.section1"></app-start-your-climb-tile>
+            <app-start-your-climb-tile [data]="improving?.section2"></app-start-your-climb-tile>
+            <app-start-your-climb-tile [data]="improving?.section3"></app-start-your-climb-tile>
+        </div>
+
+        <div class="container">
+            <div class="StartYourClimb-disclaimer" [innerHTML]="(getDisclaimer(improving?.disclaimer?.id) | async)?.description | safe : 'html'"></div>
+        </div>
+
+        <div class="StartYourClimb-Images">
+            <img class="StartYourClimb-Images-arrows" id="StartYourClimb-Images-arrows-Paralax" src="/assets/images/start-your-climb-resources/start-your-climb-today-arrows.png" alt="Arrows">
+            <img class="StartYourClimb-Images-cloudone" src="/assets/images/start-your-climb-resources/cloud1.png" alt="Cloud 1">
+            <img class="StartYourClimb-Images-cloudtwo" src="/assets/images/start-your-climb-resources/cloud2.png" alt="Cloud 2">
+            <img class="StartYourClimb-Images-cloudthree" src="/assets/images/start-your-climb-resources/cloud3.png" alt="Cloud 3">
+            <img class="StartYourClimb-Images-cloudfour" src="/assets/images/start-your-climb-resources/cloud4.png" alt="Cloud 4">
+        </div>
+    </div>
+</section>

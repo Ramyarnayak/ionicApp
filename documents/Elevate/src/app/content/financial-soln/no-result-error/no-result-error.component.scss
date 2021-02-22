@@ -1,0 +1,27 @@
+@import "src/app/styles/common";
+
+.NoResultError {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  &-headline {
+    @include relative-prop(font-size, 18, 18, 18);
+    @include relative-prop(line-height, 23, 20, 20);
+    color: $black;
+  }
+
+  &-cta {
+    @include relative-prop(font-size, 12, 12, 12);
+    @include relative-prop(line-height, 16, 16, 16);
+    @include relative-prop(margin-top, 21, 21, 21);
+    color: $mid-dark-blue;
+    padding: 0;
+    background: none;
+    text-decoration: underline;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}

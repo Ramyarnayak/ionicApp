@@ -1,0 +1,228 @@
+@import "../../styles/common.scss";
+
+.FinancialSolutions {
+  font-family: $font-family-regular;
+  position: relative;
+
+  &-titleOne {
+    @include relative-prop(width, 327, 610, 1308);
+    @include relative-prop(font-size, 32, 32, 46);
+    @include relative-prop(line-height, 36.8, 50.6, 50.6);
+    @include relative-prop(margin-top, 90, 90, 218);
+    @include relative-prop(margin-bottom, 35, 35, 30);
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  &-descriptionOne {
+    @include relative-prop(width, 327, 610, 1000);
+    @include relative-prop(font-size, 16, 16, 24);
+    @include relative-prop(line-height, 20.8, 20.8, 31.2);
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    @include mobile {
+      text-align: left;
+      padding: 0 15px;
+    }
+  }
+
+  &-emptyBox {
+    @include relative-prop(height, 420, null, 550);
+
+    @include tablet-only {
+      height: calc(550/1600 * 100vw);
+    }
+  }
+
+  &-main {
+    @include relative-prop(padding-bottom, 255, 120, 242);
+    @include relative-prop(padding-top, 182, null, null);
+    background-color: $dark-blue;
+  }
+
+  &-titleTwo {
+    @include relative-prop(font-size, 42, 42, 96);
+    @include relative-prop(line-height, 46.2, 46.2, 105.6);
+    @include relative-prop(padding-top, null, null, 130);
+    @include relative-prop(padding-bottom, 24, 24, 80);
+    @include flexi-relative-prop(width, 80%, null, 44%);
+
+    font-weight: 700;
+    letter-spacing: -2%;
+    color: $white;
+    z-index: 3;
+    position: relative;
+    background-color: $dark-blue;
+
+    @include tablet-only {
+      width: 44%;
+      padding-top: calc(130/1600 * 100vw);
+    }
+  }
+
+  &-description {
+    @include flexi-relative-prop(display, null, null, none);
+    @include relative-prop(font-size, 16, 16, null);
+    @include relative-prop(line-height, 25.6, 25.6, null);
+    @include relative-prop(padding-top, 30, 30, null);
+    @include relative-prop(padding-bottom, 50, 50, null);
+
+    color: $white;
+    z-index: 3;
+    position: relative;
+  }
+
+  &-subheading {
+    @include flexi-relative-prop(display, none, none, null);
+    @include relative-prop(font-size, 16, 20, 20);
+    @include relative-prop(line-height, 25.6, 32, 32);
+    @include relative-prop(padding-right, null, null, 130);
+
+    color: $white;
+    z-index: 3;
+    position: relative;
+  }
+
+  &-disclaimer {
+    @include relative-prop(font-size, 12, 12, 14);
+    @include relative-prop(line-height, 16.2, 16.2, 18.9);
+    @include relative-prop(padding-top, 80, 80, 80);
+
+    @include bp-up(xl) {
+      width: 72%;
+    }
+
+    color: $white;
+  }
+
+  &-Images {
+    display: inline-block;
+    position: absolute;
+
+    @include relative-prop(left, 7, null, 727.7);
+    @include relative-prop(top, 650, 480, 650);
+
+    @include tablet-only {
+      left: calc(727.7/1600 * 100vw);
+    }
+
+    &-HandImageContainer {
+      position: relative;
+      z-index: 2;
+    }
+
+    &-handImg {
+      @include relative-prop(width, null, null, 364);
+
+      clip-path: inset(0px 0px calc(440/1600 * 100vw) 0px);
+      z-index: 1;
+      display: block;
+
+      @include mobile {
+        min-width: 183px;
+        clip-path: inset(0px 0px 160px 0px);
+
+      }
+
+      @include tablet-only {
+        width: calc(364/1600 * 100vw);
+      }
+    }
+  
+    &-handText {
+      @include flexi-relative-prop(top, 9%, 9%, 9%);
+      @include relative-prop(line-height, 55, 55, 110);
+      @include relative-prop(font-size, 16, 20, 54);
+      @include flexi-relative-prop(right, -80px, -100px, -78%);
+
+      font-family: $font-family-medium;
+      position: absolute;
+      z-index: 2;
+    }
+  
+    &-midCloudImg {
+      @include flexi-relative-prop(top, 18%, 15%, 28%);
+      @include relative-prop(width, null, null, 163);
+
+      right: -25%;
+      position: absolute;
+      z-index: 0;
+
+      @include mobile {
+        min-width: 82.42px;
+        right: calc((-50)/375 * 100vw);
+      }
+
+      @include tablet-only {
+        width: calc(163/1600 * 100vw);
+      }
+    }
+  
+    &-leftCloudImg {
+      @include flexi-relative-prop(top, -40%, -30%, -14%);
+      @include flexi-relative-prop(right, 25%, 25%, 100%);
+      @include relative-prop(width, null, null, 207);
+
+      position: absolute;
+      z-index: 1;
+
+      @include mobile {
+        min-width: 104.88px;
+      }
+
+      @include tablet-only {
+        width: calc(207/1600 * 100vw);
+      }
+    }
+  
+    &-rightCloudImg {
+      @include flexi-relative-prop(top, -15%, -15%, 3%);
+      @include relative-prop(width, null, null, 163);
+
+      right: -108%;
+      position: absolute;
+      z-index: -1;
+
+      @include mobile {
+        min-width: 82.42px;
+        right: -175px;
+      }
+
+      @include tablet-only {
+        width: calc(163/1600 * 100vw);
+      }
+    }
+  }
+
+  &-seeAllLink {
+    @include vwb(font-size, 48, 20, 24, 24);
+    @include vwb(line-height, 52.8, 28, 31.2, 31.2);
+    @include flexi-relative-prop(right, 0, 8.9%, 8.9%);
+    @include mobile {
+      display: none;
+    }
+    color: $elevate-blue;
+    position: absolute;
+  }
+}
+
+.horizontal-scroll-element {
+  @include relative-prop(width, 259, 259, 568);
+  z-index: 5;
+}
+
+.show-all {
+  @include relative-prop(width, 239, 239, 366);
+}
+
+.score40Results {
+  @include relative-prop(padding-bottom, 150, 120, 75);
+  @include mobile {
+    padding-top: 60px;
+  }
+}

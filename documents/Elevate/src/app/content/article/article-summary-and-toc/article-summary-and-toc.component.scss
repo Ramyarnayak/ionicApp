@@ -1,0 +1,80 @@
+@import "src/app/styles/common";
+
+:host ::ng-deep {
+  .ArticleSummaryAndToc-toc {
+    a {
+      color: $light-gray-dark-tint;
+      text-decoration: none;
+    }
+
+    >p {
+      @include relative-prop(font-size,12,15,15);
+      @include relative-prop(line-height,13.2,16.5,16.5);
+      @include relative-prop(margin-bottom,27,19,19);
+      color: $black;
+      text-transform: uppercase;
+    }
+
+    ul {
+      @include relative-prop(font-size,14,14,14);
+      @include relative-prop(line-height,18.9,18.9,18.9);
+      @include relative-prop(padding-left,12,12,12);
+      color: $light-gray-dark-tint;
+
+      li {
+        @include relative-prop(margin-bottom,18.9,18.9,18.9);
+
+        &::marker {
+          color: $elevate-blue;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        p {
+          @include relative-prop(font-size,14,14,14);
+          @include relative-prop(line-height,18.9,18.9,18.9);
+        }
+      }
+    }
+  }
+}
+.ArticleSummaryAndToc {
+  @include mobile {
+    display: block;
+  }
+  @include relative-prop(padding-bottom, 50, 54, 82);
+  display: flex;
+  justify-content: space-between;
+
+  &-summary {
+    @include mobile {
+      width: 100%;
+      padding-bottom: 43px;
+    }
+    @include relative-prop(width, null, 324, 640);
+    @include relative-prop(font-size, 20, 20, 26);
+    @include relative-prop(line-height, 26, 26, 39);
+    font-family: $font-family-medium;
+  }
+
+  &-toc {
+    @include mobile {
+      width: 100%;
+      border-left: 0;
+      border-bottom: 1px solid $light-gray-light-tint;
+      padding-bottom: 50px;
+    }
+    @include tablet-only {
+      border-left: 0;
+    }
+    @include relative-prop(width, null, 327, 335);
+    @include relative-prop(font-size, 14, 14, 14);
+    @include relative-prop(line-height, 18.9, 18.9, 18.9);
+    @include relative-prop(padding-left, 0, 0, 31);
+    border-left: 1px solid $light-gray-light-tint;
+    color: $light-gray-dark-tint;
+
+  }
+}

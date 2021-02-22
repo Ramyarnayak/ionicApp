@@ -1,0 +1,29 @@
+<mat-accordion [multi]="true" class="HeaderMobileNav" displayMode="flat">
+    <mat-expansion-panel *ngFor="let topLevelNavItem of headerNavigationItemList; let last = last"
+        [ngClass]="{
+            'HeaderMobileNav--lastNavItem': last,
+            'HeaderMobileNav--open': topLevelNavItem.isOpen
+        }"
+        (closed)="topLevelNavItem.isOpen = false"
+        (click)="topLevelNavItem.secondaryNavigation.length ? null : onNavigate(topLevelNavItem.navigation.link)"
+        (opened)="topLevelNavItem.isOpen = true"
+        hideToggle>
+        <mat-expansion-panel-header [appTealiumClickEvent]="getTealiumClickEvent(topLevelNavItem.navigation.label)"
+            [ngClass]="{ 'mat-expansion-panel-header--hideBorderBottom': last && !showLastItemBottomBorder }">
+            <mat-panel-title>{{ topLevelNavItem.navigation.label }}</mat-panel-title>
+            <img *ngIf="topLevelNavItem.secondaryNavigation.length"
+                class="HeaderMobileNav-caret"
+                src="/assets/icons/header-mobile-caret.svg">
+        </mat-expansion-panel-header>
+        <div class="HeaderMobileNav-subnavList">
+            <button *ngFor="let subnavItem of topLevelNavItem.secondaryNavigation"
+                (click)="onNavigate(subnavItem.navigation.link, subnavItem.tertiaryNavigation)"
+                class="HeaderMobileNav-subnavListItem"
+                type="button"
+                [appTealiumClickEvent]="getTealiumClickEvent(topLevelNavItem.navigation.label, subnavItem.navigation.label)">
+                <span>{{ subnavItem.navigation.label }}</span>
+                <img *ngIf="subnavItem.tertiaryNavigation.length" src="/assets/icons/header-mobile-subnav-caret.svg">
+            </button>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

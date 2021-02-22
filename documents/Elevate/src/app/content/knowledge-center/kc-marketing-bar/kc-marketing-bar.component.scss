@@ -1,0 +1,75 @@
+@import "src/app/styles/common";
+
+.KnowledgeCenterMarketingBar {
+    @include relative-prop(margin-top, 0, 56, 56);
+    @include relative-prop(margin-bottom, 64, 100, 100);
+
+    display: flex;
+    box-shadow: 0px 8px 35px rgba(171, 171, 171, 0.08);
+
+    @include mobile {
+        display: block;
+    }
+
+    &-titleContainer {
+        @include relative-prop(padding-top, 28, 58, 55);
+        @include relative-prop(padding-bottom, 27, 73, 55);
+        @include relative-prop(padding-left, 80, 53, 80);
+
+        flex: 1;
+
+        @include mobile {
+            padding-left: 18px;
+            padding-right: 18px;
+            width: 100%;
+        }
+    }
+
+    &-overline {
+        @include relative-prop(font-size, 12, 12, 16);
+        @include relative-prop(line-height, 13.2, 13.2, 17.6);
+        @include relative-prop(padding-bottom, 8, 8, 8);
+
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $black;
+    }
+
+    &-title {
+        @include relative-prop(font-size, 20, 20, 32);
+        @include relative-prop(line-height, 26, 26, 41.6);
+        @include relative-prop(width, null, 292, 388);
+
+        letter-spacing: -0.02em;
+        color: $black;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+
+    &-ctaContainer {
+        @include relative-prop(margin-right, null, 77.75, 80);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-cta {
+        @include relative-prop(font-size, 16, 16, 18);
+        @include relative-prop(line-height, 17.6, 17.6, 19.9);
+        @include relative-prop(padding-top, 17, 17, 17);
+        @include relative-prop(padding-bottom, 17, 17, 17);
+        @include relative-prop(padding-left, 32, 32, 32);
+        @include relative-prop(padding-right, 32, 32, 32);
+
+        font-family: $font-family-bold;
+        letter-spacing: -.02em;
+
+        @include mobile {
+            margin-bottom: 27px;
+        }
+    }
+
+}

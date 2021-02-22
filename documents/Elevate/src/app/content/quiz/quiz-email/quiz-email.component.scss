@@ -1,0 +1,259 @@
+@import 'src/app/styles/common';
+
+.QuizEmail {
+  position: relative;
+  @include relative-prop(padding-top, 33, 33, 78);
+  @include responsive-prop-offset-from-vh(min-height, $header-desktop-height-num + 8); //  8px for the progress bar
+
+  @include mobile {
+    min-height: calc(100vh - #{$header-mobile-height} - 8px); //  8px for the progress bar
+  }
+
+  @include tablet-only {
+    min-height: calc(100vh - #{$header-mobile-height} - 8px); //  8px for the progress bar
+  }
+
+  display: flex;
+
+  &-left {
+    @include bp-down(md) {
+      width: 100%;
+      padding-right: 24px;
+    }
+    
+    width: 42%;
+    @include relative-prop(padding-bottom, 112, 92, 92);
+
+    @include tablet-only {
+      flex: 0 0 auto;
+      width: calc(56vw - 23px - 37px - 33px);
+    }
+  }
+
+  &-right {
+    @include bp-down(md) {
+      display: none;
+    }
+
+    @include flexi-relative-prop(padding-left, 0, 7.8%, 16%);
+    overflow-y: hidden;
+    width: 58%;
+  }
+
+  &-header {
+    @include relative-prop(margin-left, 24, 48, 256);
+    @include relative-prop(font-size, 20, 24, 38);
+    @include relative-prop(line-height, 26, 31.2, 49);
+    letter-spacing: -0.02em;
+  }
+
+  &-description {
+    @include relative-prop(margin-left, 24, 48, 256);
+    @include relative-prop(font-size, 14, 16, 16);
+    @include relative-prop(line-height, 18, 21, 21);
+    @include relative-prop(margin-top, 15, 6, 29);
+    letter-spacing: -0.02em;
+  }
+
+  &-userInputBox {
+    @include relative-prop(margin-left, 24, 48, 256);
+    @include relative-prop(margin-top, 46, 46, 46);
+    @include relative-prop(margin-bottom, 20, 20, 20);
+    @include relative-prop(min-height, 148, 148, 183);
+
+    border-radius: 16px;
+    padding: 25px;
+  }
+
+  &-email {
+    height: 52px;
+    width: 100%;
+    border-radius: 8px;
+    padding: 21px;
+    @include relative-prop(font-size, 18, 18, 18);
+    @include relative-prop(line-height, 23, 23, 23);
+    letter-spacing: -0.02em;
+    text-overflow: ellipsis;
+    border: none;
+    outline: none;
+    box-shadow: none;
+
+    &-helpText {
+      color: $danger;
+    }
+  }
+
+  &-email.ng-invalid.ng-touched {
+    border: 1px solid $danger;
+  }
+
+  &-email::placeholder {
+    font-size: 14px;
+    color: $black;
+  }
+
+  &-checkboxField {
+    display: flex;
+    align-items: flex-start;
+    @include relative-prop(margin-top, 18, 18, 27);
+  }
+
+  &-checkbox {
+    cursor: pointer;
+    height: 19px;
+    width: 19px;
+    border: 1px solid #B4B6B8;
+    border-radius: 2px;
+    background-color: transparent;
+    outline: none;
+  }
+
+  &-checkboxLabel {
+    @include relative-prop(font-size, 10, 14, 14);
+    @include relative-prop(line-height, 14, 19, 19);
+    padding-left: 7px;
+    color: $dark-charcoal;
+  }
+
+  &-actions-wrapper {
+    @include relative-prop(height, 112, 92, 92);
+    @include relative-prop(padding-left, 24, 48, 256);
+    @include relative-prop(padding-right, 24, 47, 50);
+    width: 100%;
+    background-color: $light-blue;
+    position: absolute;
+    bottom: 0;
+    z-index: 11;
+  }
+
+  &-actions {
+    @include relative-prop(width, 327, 416, 416);
+    @include relative-prop(padding-bottom, 28, 0, 0);
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    @include tablet-only {
+      width: calc(56vw - 48px - 23px - 37px - 33px);
+    }
+    @include mobile {
+      width: 100%;
+      border: 0;
+      justify-content: space-between;
+    }
+
+    &-button {
+      @include relative-prop(height, 52, 52, 52);
+      @include relative-prop(font-size, 16, 16, 18);
+      @include relative-prop(line-height, 17, 17, 22);
+      font-family: $font-family-bold;
+      width: 50%;
+      border-radius: 54px;
+      color: $black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      text-decoration: none;
+    }
+
+    &-skip {
+      background-color: $lighter-gray;
+      margin-right: 16px;
+    }
+
+    &-next {
+      &:disabled {
+        cursor: not-allowed;
+        background-color: rgba(239, 239, 239, 0.3);
+      }
+
+      background-color: $yellow;
+    }
+  }
+
+  &-tip_desktop {
+    @include flexi-relative-prop(left, null, 56%, 60%);
+    @include relative-prop(top, null, 33, 83);
+
+    position: absolute;
+    z-index: 1;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &-tip_mobile {
+    display: none;
+
+    @include mobile {
+      display: block;
+      padding: 0 25px;
+      width: 100%;
+    }
+  }
+
+  &-images {
+    position: relative;
+
+    &-mainBalloon {
+      @include mobile {
+        display: none;
+      }
+
+      position: absolute;
+      width: 30%;
+      @include relative-prop(right, null, 218, 300);
+      @include relative-prop(top, null, 130, 155);
+    }
+
+    &-secondaryBalloon {
+      @include mobile {
+        display: none;
+      }
+
+      position: absolute;
+      width: 10%;
+      @include relative-prop(right, null, 65, 100);
+      @include relative-prop(top, null, 400, 450);
+    }
+
+    &-cloudOne {
+      @include mobile {
+        display: none;
+      }
+
+      position: absolute;
+      width: 25%;
+      @include relative-prop(right, null, 25, 15);
+      @include relative-prop(top, null, 85, 120);
+    }
+
+    &-cloudTwo {
+      @include mobile {
+        display: none;
+      }
+
+      position: absolute;
+      width: 15%;
+      @include relative-prop(right, null, 220, 285);
+      @include relative-prop(top, null, 365, 445);
+    }
+
+    &-cloudThree {
+      @include mobile {
+        display: none;
+      }
+
+      position: absolute;
+      width: 15%;
+      @include relative-prop(right, null, 355, 550);
+      @include relative-prop(top, null, 310, 340);
+    }
+  }
+}

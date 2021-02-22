@@ -1,0 +1,43 @@
+<div class="ArticleBody">
+  <div *ngFor="let section of articleBody?.sections">
+    <a [id]="removeHash(section.section.hashtag)" class="ArticleBody-anchor"></a>
+    <div *ngIf="section.section.bodyType == 'default'"
+      [innerHTML]="section.section.body"
+      class="ArticleBody-default article-container-left article-container-right">
+    </div>
+    <div *ngIf="section.section.bodyType == 'text_with_bottom_media'" class="ArticleBody-textWithBottomMedia article-container-left article-container-right">
+      <div [innerHTML]="section.section.body" class="ArticleBody-textWithBottomMedia-text"></div>
+      <div class="ArticleBody-textWithBottomMedia-imageholder">
+        <ng-container [ngTemplateOutlet]="image" [ngTemplateOutletContext]="{ section: section.section }"></ng-container>
+      </div>
+    </div>
+    <div *ngIf="section.section.bodyType == 'text_with_top_media'" class="ArticleBody-textWithTopMedia article-container-left article-container-right">
+      <div class="ArticleBody-textWithTopMedia-imageholder">
+        <ng-container [ngTemplateOutlet]="image" [ngTemplateOutletContext]="{ section: section.section }"></ng-container>
+      </div>
+      <div [innerHTML]="section.section.body" class="ArticleBody-textWithTopMedia-text"></div>
+    </div>
+    <div *ngIf="section.section.bodyType == 'text_with_left_media'" class="ArticleBody-textWithLeftMedia container-left article-container-right">
+      <div class="ArticleBody-textWithLeftMedia-imageholder">
+        <ng-container [ngTemplateOutlet]="image" [ngTemplateOutletContext]="{ section: section.section }"></ng-container>
+      </div>
+      <div [innerHTML]="section.section.body" class="ArticleBody-textWithLeftMedia-text"></div>
+    </div>
+    <div *ngIf="section.section.bodyType == 'text_with_right_media'" class="ArticleBody-textWithRightMedia article-container-left container-right">
+      <div [innerHTML]="section.section.body" class="ArticleBody-textWithRightMedia-text"></div>
+      <div class="ArticleBody-textWithRightMedia-imageholder">
+        <ng-container [ngTemplateOutlet]="image" [ngTemplateOutletContext]="{ section: section.section }"></ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template let-section="section" #image>
+  <ng-container *ngIf="section.media.image.id">
+    <img [imageId]="section.media.image.id"
+      class="ArticleBody-image"
+      appImageLoader>
+    <em class="ArticleBody-caption">{{ section.caption }}</em>
+    <div class="ArticleBody-mediaBottomText">{{ section.mediaBottomText }}</div>
+  </ng-container>
+</ng-template>

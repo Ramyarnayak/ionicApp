@@ -1,0 +1,71 @@
+
+<app-progress-bar [pages]="5" [currentPage]="0"></app-progress-bar>
+<div class="QuizIntro container-left" [ngStyle]="setBackgroundColor(quizIntro | async)" [ngClass]="{'startEnterAnimation': startEnterAnimation}">
+
+  <div class="QuizIntro-left" [class]="{'QuizIntro-left--leaveAnimation': !!startLeaveAnimation}" @fade>
+    <div class="QuizIntro-title">
+      {{ (quizIntro | async)?.headline1}}
+    </div>
+    <div class="QuizIntro-mainTitle" [innerHTML]="(quizIntro | async)?.headline2 | safe: 'html'">
+    </div>
+    <div class="QuizIntro-subTitle">
+      {{(quizIntro | async)?.subheading}}
+    </div>
+
+    <div class="QuizIntro-introPoints" *ngFor="let step of (quizIntro | async)?.steps; let i = index;">
+      <div class="QuizIntro-introPointWrapper">
+        <span class="QuizIntro-number">{{i+1}}</span>
+        <div class="QuizIntro-introPoint">
+          {{step.step}}
+        </div>
+      </div>
+    </div>
+
+    <button [appTealiumClickEvent]="tealiumClickEvent"
+      [disabled]="isStartButtonDisabled"
+      (click)="startQuiz()"
+      class="QuizIntro-letsgo button button--yellow">
+      {{ (quizIntro | async)?.cta }}
+    </button>
+
+    <div class="QuizIntro-disclaimer" *ngIf="(quizIntro | async) as quizIntroContent">
+      <div class="QuizIntro-disclaimer-cta">
+        <button class="QuizIntro-disclaimer-cta-button" id="disclaimer-cta-button" (click)="showDisclaimer = !showDisclaimer">
+          {{ showDisclaimer ? '-' : '+' }}
+        </button>
+        <label for="disclaimer-cta-button" class="QuizIntro-disclaimer-cta-text">
+          {{ showDisclaimer ? quizIntroContent?.hideDisclaimerCta : quizIntroContent?.showDisclaimerCta }}
+        </label>
+      </div>
+
+      <div class="QuizIntro-disclaimer-description-mobile" *ngIf="showDisclaimer">
+        <ng-container *ngTemplateOutlet="disclaimerDescription"></ng-container>
+      </div>
+
+      <div class="QuizIntro-disclaimer-description-desktop">
+        <ng-container *ngTemplateOutlet="disclaimerDescription"></ng-container>
+      </div>
+
+      <ng-template #disclaimerDescription>
+        <div class="QuizIntro-disclaimer-description" [innerHTML]="(getQuizIntroDisclaimer(quizIntroContent?.disclaimer?.id) | async)?.description | safe : 'html'"></div>
+      </ng-template>
+    </div>
+
+  </div>
+
+  <img class="QuizIntro-mainBalloon" @fade @movetop alt="main balloon"
+    src="assets/images/quiz-intro-balloon-1_intro.png"
+    [class]="{'QuizIntro-mainBalloon--leaveAnimation': !!startLeaveAnimation}"/>
+  <img class="QuizIntro-secondaryBalloon" @fade @movetop alt="secondary balloon" src="assets/images/quiz-intro-balloon-2.png"
+    [class]="{'QuizIntro-secondaryBalloon--leaveAnimation': !!startLeaveAnimation}"/>
+  <img class="QuizIntro-cloudLeft1" @fade @movetop alt="cloud left" src="assets/cloud 2.png"
+    [class]="{'QuizIntro-cloudLeft1--leaveAnimation': !!startLeaveAnimation}"/>
+  <img class="QuizIntro-cloudRight" @fade @movetop alt="cloud right" src="assets/right-white-cloud.png"
+    [class]="{'QuizIntro-cloudRight--leaveAnimation': !!startLeaveAnimation}"/>
+  <img class="QuizIntro-cloudLeft2" @fade @movetop alt="cloud left" src="assets/cloud 2.png"
+    [class]="{'QuizIntro-cloudLeft2--leaveAnimation': !!startLeaveAnimation}"/>
+  <img class="QuizIntro-cloudLeft3" @fade @movetop alt="cloud left" src="assets/cloud 2.png"
+    [class]="{'QuizIntro-cloudLeft3--leaveAnimation': !!startLeaveAnimation}"/>
+
+</div>
+

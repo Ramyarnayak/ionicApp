@@ -1,0 +1,13 @@
+<div class="ModularTemplateMarketingBar" [ngClass]="(getModularTemplateMarketingBar(customerhubMtMarketingBar?.id) | async)?.settings.theme">
+    <div class="ModularTemplateMarketingBar-titleContainer">
+        <div class="ModularTemplateMarketingBar-overline">{{ (getModularTemplateMarketingBar(customerhubMtMarketingBar?.id) | async)?.headline1 }}</div>
+        <div class="ModularTemplateMarketingBar-title">{{ (getModularTemplateMarketingBar(customerhubMtMarketingBar?.id) | async)?.headline2 }}</div>
+    </div>
+    <div class="ModularTemplateMarketingBar-ctaContainer">
+        <button class="ModularTemplateMarketingBar-cta button--dark-blue"
+            [appTealiumClickEvent]="tealiumClickEventSend"
+            [customLink]="(getModularTemplateMarketingBar(customerhubMtMarketingBar?.id) | async)?.cta.link" appExternalLink>
+            {{ (getModularTemplateMarketingBar(customerhubMtMarketingBar?.id) | async)?.cta.label }}
+        </button>
+    </div>
+</div>

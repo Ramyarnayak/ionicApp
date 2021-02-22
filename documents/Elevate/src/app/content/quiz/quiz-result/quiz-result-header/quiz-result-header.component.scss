@@ -1,0 +1,44 @@
+@import "src/app/styles/common";
+
+.QuizResultHeader {
+  @include relative-prop(height, $header-mobile-height-num, $header-mobile-height-num, $header-desktop-height-num);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  position: relative;
+  // position: sticky;
+  // top: 0;
+  // left: 0;
+  // z-index: 12;
+
+  &-restart {
+    @include relative-prop(font-size, 18, 18, 18);
+    @include relative-prop(line-height, 23, 23, 23);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: $font-family-medium;
+    padding: 0;
+    text-decoration: underline;
+  }
+
+  &-elevateLogo {
+    @include relative-prop(height, 21, 30, 47);
+    cursor: pointer;
+    outline: none;
+
+    @include mobile {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+  }
+
+  &-close {
+    @include relative-prop(height, 17.25, 17.25, 17.25);
+    @include relative-prop(width, 17.25, 17.25, 17.25);
+    cursor: pointer;
+  }
+}

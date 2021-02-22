@@ -1,0 +1,425 @@
+@import "src/app/styles/common";
+
+
+.Search {
+  display: flex;
+  justify-content: space-between;
+  @include relative-prop(padding-top, 31, 60, 60);
+
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  &-Content {
+    flex: 0 0 auto;
+    order: 2;
+    @include relative-prop(width, null, null, 1013);
+
+    @include tablet-only {
+      width: auto;
+      flex: 1 1 auto;
+      @include relative-prop(margin-left,50, 50, 0);
+    }
+    @include mobile {
+      width: 100%;
+      margin: 0;
+    }
+    &-search-form {
+      position: relative;
+      @include relative-prop(margin-bottom, 14, 80, 80);
+      @include relative-prop(padding-bottom, 69, null, null);
+
+      &-found {
+        display: block;
+        color: $light-gray-dark-tint;
+        text-transform: uppercase;
+        @include relative-prop(margin-bottom, 29, 20, 20);
+        @include relative-prop(font-size, 12, 16, 16);
+        @include relative-prop(line-height, 13.2, 17.6, 17.6);
+      }
+      &-row {
+        display: flex;
+        justify-content: space-between;
+      }
+      &-mobile-filter {
+        display: none;
+        border: 0;
+        background: none;
+        color: $dark-charcoal;
+        cursor: pointer;
+        outline: none;
+        @include relative-prop(font-size,14,14,14);
+        @include relative-prop(line-height,19.6,19.6,19.6);
+        text-decoration: underline;
+
+        @include mobile {
+          display: block;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+        }
+      }
+      &-input {
+        position: relative;
+        border-bottom: 1px solid #000;
+        @include relative-prop(padding-bottom, 5, 10, 10);
+        @include relative-prop(width, 829, 829, 829);
+
+        @include tablet-only {
+          width: auto;
+          flex: 1 1 auto;
+          @include relative-prop(margin-right, 29, 29, 29);
+        }
+        @include mobile {
+          width: 100%;
+        }
+
+        &:before {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-50%);
+          background: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjciIGhlaWdodD0iMjciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTEwLjkzIDIyLjAyM2MyLjI3MSAwIDQuMzgtLjcxOCA2LjEyNC0xLjkzNGw2LjQwMSA2LjQxNmMuMzM3LjMyMi43NzYuNDgzIDEuMjQ1LjQ4My45ODIgMCAxLjY4NS0uNzQ3IDEuNjg1LTEuNzE0IDAtLjQ1NC0uMTQ3LS44OTMtLjQ4NC0xLjIzbC02LjM1Ny02LjM3MmExMC42NTIgMTAuNjUyIDAgMDAyLjEyNC02LjM4N2MwLTUuOTAzLTQuODM0LTEwLjczNy0xMC43MzctMTAuNzM3QzUuMDEzLjU0OC4xOTMgNS4zODIuMTkzIDExLjI4NWMwIDUuOTA0IDQuODIgMTAuNzM4IDEwLjczOCAxMC43Mzh6bTAtMi41MDVjLTQuNTI2IDAtOC4yNDYtMy43MjEtOC4yNDYtOC4yMzMgMC00LjUxMiAzLjcyLTguMjMyIDguMjQ3LTguMjMyIDQuNTExIDAgOC4yMzIgMy43MiA4LjIzMiA4LjIzMiAwIDQuNTEyLTMuNzIgOC4yMzMtOC4yMzIgOC4yMzN6IiBmaWxsPSIjMDM2Ii8+PC9zdmc+") 0 0 no-repeat;
+          background-size: 100% 100%;
+          content: "";
+          @include relative-prop(margin-top, -2.5, -5, -5);
+          @include relative-prop(width, 20, 33, 33);
+          @include relative-prop(height, 18, 31, 31);
+
+          @include mobile {
+            left: auto;
+            right: 0;
+            background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTciIGhlaWdodD0iMTciIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTcuMzU4IDEzLjgxM2MxLjM2MyAwIDIuNjI4LS40MyAzLjY3NC0xLjE2bDMuODQxIDMuODVjLjIwMi4xOTMuNDY2LjI5Ljc0Ny4yOS41ODkgMCAxLjAxLS40NDggMS4wMS0xLjAyOGExLjAyIDEuMDIgMCAwMC0uMjktLjczOWwtMy44MTQtMy44MjNhNi4zOTEgNi4zOTEgMCAwMDEuMjc1LTMuODMyQzEzLjggMy44MyAxMC45LjkzIDcuMzU4LjkzIDMuODE2LjkyOS45MTYgMy44Mi45MTYgNy4zN2MwIDMuNTQyIDIuODkyIDYuNDQyIDYuNDQyIDYuNDQyem0wLTEuNTAzYy0yLjcxNSAwLTQuOTQ4LTIuMjMyLTQuOTQ4LTQuOTM5czIuMjMzLTQuOTQgNC45NDgtNC45NGMyLjcwNyAwIDQuOTQgMi4yMzMgNC45NCA0Ljk0IDAgMi43MDctMi4yMzMgNC45NC00Ljk0IDQuOTR6IiBmaWxsPSIjMDAwIi8+PC9zdmc+")
+          }
+        }
+        &-text {
+          display: block;
+          width: 100%;
+          border: 0;
+          background: none;
+          color: $black;
+          font-family: $font-family-medium;
+          outline: none;
+          @include relative-prop(padding-left, 0, 50, 50);
+          @include relative-prop(padding-right, 35, 0, 0);
+          @include relative-prop(font-size, 18, 24, 24);
+          @include relative-prop(line-height, 23.4, 52, 52);
+        }
+      }
+      &-button {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        font-family: $font-family-bold;
+        color: $white;
+        background: $dark-blue;
+        border: 0;
+        cursor: pointer;
+        @include relative-prop(border-radius, 54, 54, 54);
+        @include relative-prop(width, 149, 149, 149);
+        @include relative-prop(height, 52, 52, 52);
+        @include relative-prop(font-size, 18, 18, 18);
+
+        &:disabled {
+          background: $light-gray-light-tint;
+          color: $dark-gray;
+        }
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+    &-results {
+      @include relative-prop(margin-bottom, 120,120,120);
+
+      &-item {
+        margin: 0 0 20px 0;
+        box-shadow: 0px 0px 22px rgba(171, 171, 171, 0.22);
+        background: $white;
+        @include relative-prop(width, 976, 976, 976);
+        @include relative-prop(padding-top, 24,24,24);
+        @include relative-prop(padding-bottom, 24,24,24);
+        @include relative-prop(padding-left, 24,24,24);
+        @include relative-prop(padding-right, 28,28,28);
+        @include relative-prop(border-radius, 8,8,8);
+
+        @include tablet-only {
+          width: 100%;
+        }
+        @include mobile {
+          width: 100%;
+          margin-bottom: 24px;
+        }
+
+        &-mark {
+          font-family: $font-family-bold;
+        }
+        &-type {
+          display: block;
+          text-transform: uppercase;
+          color: $dark-gray;
+          font-family: $font-family-bold;
+          @include relative-prop(margin-bottom,12,12,12);
+          @include relative-prop(font-size, 12,12,12);
+          @include relative-prop(line-height, 15.6,15.6,15.6);
+        }
+        &-title {
+          font-family: $font-family-medium;
+          @include relative-prop(margin-bottom,0,0,0);
+          @include relative-prop(font-size, 24,24,24);
+          @include relative-prop(line-height,31.2,31.2,31.2);
+        }
+        &-text {
+          font-family: $font-family-regular;
+          @include relative-prop(margin-top,12,12,12);
+          @include relative-prop(font-size, 16,16,16);
+          @include relative-prop(line-height,24,24,24);
+        }
+        &-image {
+          display: block;
+          @include relative-prop(margin-top,12,12,12);
+
+          img {
+            border-radius: 4px;
+            overflow: hidden;
+            max-width: 100%;
+            height: auto;
+          }
+        }
+
+      cursor: pointer;
+      }
+    }
+  }
+  &-Sidebar {
+    flex: 0 0 auto;
+    order: 1;
+
+    &-filter-form {
+      &-title {
+        font-family: $font-family-medium;
+        display: block;
+        @include relative-prop(margin-bottom, 23, 23, 23);
+        @include relative-prop(font-size, 18, 18, 18);
+        @include relative-prop(line-height, 23.4, 23.4, 23.4);
+      }
+      @include mobile {
+        display: none;
+      }
+      &-group {
+        @include relative-prop(margin-bottom, 46,46,46);
+      }
+      &-checkbox {
+        @include relative-prop(margin-bottom, 17, 14, 14);
+
+        &-input {
+            display: none;
+        }
+
+        &-label {
+            @include relative-prop(font-size, 14, 16, 16);
+            @include relative-prop(line-height, 18.2, 24, 24);
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+
+            span {
+                @include relative-prop(padding-left, 32, 32, 32);
+                position: relative;
+                display: inline-block;
+
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    border: 2px solid $dark-blue;
+                    @include relative-prop(width, 18, 18, 18);
+                    @include relative-prop(height, 18, 18, 18);
+                    @include relative-prop(border-width,2,2,2);
+                    @include relative-prop(border-radius,2,2,2);
+                    border-radius: 2px;
+                    content: "";
+                    background-color: $white;
+                }
+            }
+
+        }
+
+        &-input:checked+span {
+            &:before {
+                background: $white url('/assets/icons/checkbox-selected.svg') 50% 50% no-repeat;
+                background-size: 100% 100%;
+                border: 0;
+            }
+        }
+      }
+
+      &-filters_mobile {
+        display: none;
+
+        @include mobile {
+          display: block;
+        }
+
+        &-heading {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 30px;
+
+          &-button {
+              color: $mid-blue;
+              border: 0;
+              background: none;
+              padding: 0;
+              margin: 0;
+              -webkit-appearance: none;
+              font-family: $font-family-medium;
+              font-weight: $font-weight-medium;
+              @include relative-prop(font-size, 16, 16, 16);
+              @include relative-prop(line-height, 25.6, 25.6, 25.6);
+              cursor: pointer;
+          }
+
+          &-title {
+              font-family: $font-family-bold;
+              font-weight: $font-weight-bold;
+              @include relative-prop(font-size, 16, 16, 16);
+
+              +button {
+                  font-family: $font-family-bold;
+                  font-weight: $font-weight-bold;
+              }
+          }
+        }
+        &-overlay {
+          display: block;
+          position: fixed;
+          height: 100%;
+          width: 100%;
+          background-color: $dark-blue;
+          top: 0;
+          left: 0;
+          z-index: 11111;
+          opacity: 0.5;
+        }
+
+        &-container {
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            width: 100%;
+            background-color: $white;
+            z-index: 11112;
+            padding: 19px 24px;
+        }
+      }
+    }
+  }
+
+  &-pagination {
+    @include mobile {
+      font-size: 12px;
+    }
+    @include relative-prop(padding-bottom, 52, 100, 150);
+    font-family: $font-family-medium;
+    font-size: 16px;
+    line-height: 110%;
+    letter-spacing: 0.02em;
+    color: $dark-charcoal;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-leftArrow {
+    @include mobile {
+      width: 9px;
+      height: 14px;
+    }
+    @include relative-prop(margin-right, 101, 89, 89);
+    width: 11px;
+    height: 11px;
+    line-height: 19px;
+    text-align: center;
+    cursor: pointer;
+
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+  }
+
+  &-rightArrow {
+    @include mobile {
+      width: 9px;
+      height: 14px;
+    }
+    @include relative-prop(margin-left, 101, 89, 89);
+    width: 11px;
+    height: 11px;
+    line-height: 19px;
+    text-align: center;
+    cursor: pointer;
+
+    border: solid;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+  }
+
+  &-firstPage,
+  &-prevPage,
+  &-currentPage,
+  &-nextPage,
+  &-lastPage {
+    padding-right: 1px;
+    padding-left: 1px;
+    cursor: pointer;
+  }
+
+  &-opacity {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  &-active {
+    color: $elevate-blue;
+    text-decoration: underline;
+  }
+
+  &-margin {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  &-loader {
+    @include relative-prop(margin-top, 50, 50, 150);
+  }
+
+  &-loaderImage {
+    @include relative-prop(height, 50, 50, 100);
+    @include relative-prop(width, 50, 50, 100);
+    @include relative-prop(margin-left, -25, -25, -50);
+    @include relative-prop(margin-top, -25, -25, -50);
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+
+    img {
+      width: inherit;
+    }
+  }
+
+}

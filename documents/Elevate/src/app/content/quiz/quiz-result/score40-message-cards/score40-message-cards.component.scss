@@ -1,0 +1,329 @@
+@import "src/app/styles/common";
+
+.MessageCards {
+  display: flex;
+  flex-flow: row wrap;
+
+  &-container {
+    @include relative-prop(margin-top, 32, 15, 15);
+    @include relative-prop(margin-bottom, 0, 15, 15);
+    @include flexi-relative-prop(margin-right, 0, 60px, 40px);
+    @include relative-prop(margin-left, 0, 0, 0);
+
+    width: calc((100% / 4) - 30px);
+
+    @include tablet-only {
+      width: calc((100% / 2) - 30px);
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &.is-collapsed {
+      .MessageCards-expander {
+        max-height: 0;
+        min-height: 0;
+        overflow: hidden;
+        margin-top: 0;
+        opacity: 0;
+      }
+    }
+
+    &.is-expanded {
+      .MessageCards-card {
+        &:after {
+          content: "";
+          opacity: 1;
+          display: block;
+          height: 0;
+          width: 0;
+          position: absolute;
+          bottom: -30px;
+          left: calc(50% - 15px);
+          border-left: 15px solid transparent;
+          border-right: 15px solid transparent;
+          border-bottom: 15px solid $lighter-gray;
+        }
+      }
+
+      .MessageCards-expander {
+        max-height: 2000px;
+        min-height: 200px;
+        overflow: visible;
+        margin-top: 30px;
+        opacity: 1;
+      }
+
+      .MessageCards-detailButton {
+        background-color: $elevate_blue;
+        color: $dark_blue;
+      }
+    }
+  }
+
+  &-container:last-child {
+    margin-right: 0;
+
+    @include mobile {
+      margin-bottom: 48px;
+    }
+  }
+
+  &-container:nth-child(2n + 2) {
+    @include tablet-only {
+      margin-right: 0;
+    }
+  }
+
+  &-container:first-child {
+    @include mobile {
+      margin-top: 0;
+    }
+  }
+
+  &-card {
+    width: 100%;
+    position: relative;
+  }
+
+  &-points {
+    @include relative-prop(height, 178, 187, 187);
+    @include relative-prop(padding-left, 46, 46, 46);
+    @include relative-prop(padding-right, 40, 40, 40);
+    @include relative-prop(padding-bottom, 42, 42, 42);
+    @include relative-prop(padding-top, 25, 25, 25);
+
+    background-color: $elevate_blue;
+    border-radius: 16px 16px 0 0;
+  }
+
+  &-uptoText {
+    @include relative-prop(font-size, 12, 15, 15);
+    @include relative-prop(line-height, 10, 10, 10);
+
+    color: $dark_blue;
+  }
+
+  &-uptoImage {
+    @include relative-prop(margin-right, 9, 9, 9);
+    @include relative-prop(width, 12, 12, 12);
+    @include relative-prop(height, 12, 12, 12);
+  }
+
+  &-pointText {
+    @include relative-prop(font-size, 128, 128, 128);
+    @include relative-prop(line-height, 76.8, 76.8, 76.8);
+    @include relative-prop(margin-top, 37, 37, 37);
+    @include relative-prop(margin-left, -15, -15, -15);
+
+    font-family: $font-family-bold;
+    color: $dark_blue;
+  }
+
+  &-postfix {
+    @include relative-prop(font-size, 24, 24, 22);
+    @include relative-prop(line-height, 31.2, 31.2, 12);
+    @include relative-prop(margin-left, 5, 5, 5);
+  }
+
+  &-description {
+    @include relative-prop(height, 190, 190, 237);
+    @include relative-prop(padding-top, 24, 24, 22);
+    @include relative-prop(padding-bottom, 24, 24, 30);
+    @include relative-prop(padding-left, 24, 24, 24);
+    @include relative-prop(padding-right, 24, 24, 24);
+    @include relative-prop(font-size, 20, 20, 24);
+    @include relative-prop(line-height, 26, 26, 31.2);
+
+    background-color: $white;
+    border-radius: 0 0 16px 16px;
+    color: $dark_blue;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  &-detailButtonContainer {
+    @include relative-prop(margin-top, 37, 37, 37);
+    @include relative-prop(width, 212, null, 213);
+    @include relative-prop(font-size, 16, 16, 20);
+    @include relative-prop(line-height, 20.8, 20.8, 26);
+    @include relative-prop(bottom, 24, 24, 30);
+
+    position: absolute;
+
+    @include tablet-only {
+      width: calc(298 / 1024 * 100vw);
+    }
+  }
+
+  &-detailButton {
+    @include relative-prop(padding-top, 14, 14, 14);
+    @include relative-prop(padding-bottom, 14, 14, 14);
+    @include relative-prop(padding-right, 48, 48, 48);
+    @include relative-prop(padding-left, 48, 48, 48);
+
+    border-radius: 54px;
+    background-color: $dark_blue;
+    color: $white;
+    border: none;
+    font-family: $font-family-bold;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  &-expander {
+    width: 100%;
+    position: relative;
+  }
+
+  &-expandable {
+    @include relative-prop(padding-left, 25, 48, 60);
+    @include relative-prop(padding-right, 25, 48, 60);
+    @include relative-prop(padding-top, 60, 60, 80);
+    @include relative-prop(padding-bottom, 32, 32, 80);
+
+    width: 100%;
+    background-color: $lighter-gray;
+    border-radius: 16px;
+    position: relative;
+  }
+
+  &-closeIcon {
+    @include relative-prop(width, 16, 16, 23);
+    @include relative-prop(height, 16, 16, 23);
+  }
+
+  &-closeButton {
+    @include relative-prop(top, 25, 35, 45);
+    @include relative-prop(right, 25, 45, 45);
+    position: absolute;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  }
+
+  &-heading {
+    @include relative-prop(font-size, 32, 32, 46);
+    @include relative-prop(line-height, 36.8, 36.8, 50.6);
+    @include relative-prop(margin-bottom, 32, 32, 32);
+    @include flexi-relative-prop(padding-right, 0, 11%, 10%);
+    @include relative-prop(padding-bottom, 32, 32, 32);
+    border-bottom: 1px solid $light-gray-light-tint;
+
+    font-family: $font-family-bold;
+    color: $dark_blue;
+    letter-spacing: -0.02em;
+  }
+
+  &-subHeading {
+    @include relative-prop(font-size, 16, 16, 20);
+    @include relative-prop(line-height, 25.6, 25.6, 32);
+    @include relative-prop(margin-bottom, 57, 57, 57);
+    @include flexi-relative-prop(width, 100%, 89%, 70%);
+
+    color: $black;
+    letter-spacing: -0.01em;
+  }
+
+  &-notesHeading {
+    @include relative-prop(font-size, 20, 20, 24);
+    @include relative-prop(line-height, 26, 26, 31.2);
+    @include relative-prop(margin-bottom, 30, 30, 30);
+
+    color: $black;
+    letter-spacing: -0.02em;
+  }
+
+  &-notes {
+    display: flex;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &-notesSection {
+    @include relative-prop(margin-right, 0, 40, 70);
+    @include mobile {
+      margin-bottom: 32px;
+    }
+
+    flex: 1;
+  }
+
+  &-notesSection:last-child {
+    @include mobile {
+      margin-bottom: 0;
+    }
+
+    flex: 1;
+    margin-right: 0;
+  }
+
+  &-notesTitle {
+    @include relative-prop(font-size, 18, 18, 18);
+    @include relative-prop(line-height, 23.4, 23.4, 19.8);
+    @include relative-prop(margin-bottom, 10, 10, 16);
+
+    color: $black;
+    letter-spacing: -0.02em;
+  }
+
+  &-notesDescription {
+    @include relative-prop(font-size, 14, 14, 16);
+    @include relative-prop(line-height, 18.9, 18.9, 24);
+
+    color: $black;
+    letter-spacing: -0.02em;
+  }
+}
+
+// To adjust the position of expandable section according to cards -- Desktop
+.MessageCards-container:nth-of-type(4n + 2) .MessageCards-expander {
+  margin-left: calc(-100% - 40px);
+}
+.MessageCards-container:nth-of-type(4n + 3) .MessageCards-expander {
+  margin-left: calc(-200% - 80px);
+}
+.MessageCards-container:nth-of-type(4n + 4) .MessageCards-expander {
+  margin-left: calc(-300% - 120px);
+}
+.MessageCards-container:nth-of-type(4n + 4) {
+  clear: left;
+}
+.MessageCards-expander {
+  width: calc(400% + 120px);
+}
+
+// To adjust the position of expandable section according to cards -- Tablet
+@include tablet-only {
+  .MessageCards-container:nth-of-type(2n + 2) .MessageCards-expander {
+    margin-left: calc(-100% - 60px);
+  }
+  .MessageCards-container:nth-of-type(2n + 3) .MessageCards-expander {
+    margin-left: 0;
+  }
+  .MessageCards-container:nth-of-type(2n + 3) {
+    clear: left;
+  }
+  .MessageCards-expander {
+    width: calc(200% + 60px);
+  }
+}
+
+// To adjust the position of expandable section according to cards -- Mobile
+@include mobile {
+  .MessageCards-container:nth-child(n) .MessageCards-expander {
+    margin-left: 0;
+  }
+  .MessageCards-expander {
+    width: 100%;
+  }
+}

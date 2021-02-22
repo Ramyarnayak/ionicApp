@@ -1,0 +1,111 @@
+@import "src/app/styles/common";
+
+.FinancialSolutionsCta {
+    @include flexi-relative-prop(padding, 5%, 4%, 3.5%);
+
+    position: relative;
+    top: -57px;
+    margin-bottom: -57px;
+
+    @include mobile {
+        top: 0;
+        margin-top: -139px;
+        padding: 32px 20px 24px;
+        margin-bottom: -2px;
+    }
+
+    @include bp-down(md) {
+        height: 266px;
+    }
+
+    &-title {
+        @include relative-prop(font-size, 12, 12, 15);
+        @include relative-prop(line-height, 15.6, 13, 17);
+        @include relative-prop(padding-bottom, 6, null, null);
+        @include responsive-prop(padding-bottom, 12, 10);
+
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $rich-black;
+    }
+
+    &-subTitle {
+        @include relative-prop(font-size, 20, 20, 32);
+        @include relative-prop(line-height, 26, 26, 42);
+        @include relative-prop(margin-bottom, 42, 29, 0);
+        max-width: 388.56px;
+        letter-spacing: -0.02em;
+        color: $blue-charcoal;
+        font-family: $font-family-medium;
+    }
+
+    &-sectionTwo {
+        @include bp-down(lg) {
+            flex-direction: column;
+        }
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-action {
+        display: flex;
+        justify-content: space-between;
+
+        @include bp-down(md) {
+            flex-direction: column;
+        }
+    }
+
+    &-dropdown {
+        margin-right: 22px;
+        width: 30vw;
+        @include relative-prop(height,52,52,52);
+
+        @include tablet-only {
+            width: 100%;
+        }
+        @include mobile {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    &-cta {
+        @include bp-only(lg) {
+            width: 38%;
+        }
+    }
+
+    &-button {
+        @include bp-down(md) {
+            margin-top: 17px;
+        }
+
+        @include bp-only(lg) {
+            width: fit-content;
+        }
+
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        background: $dark-blue;
+        @include relative-prop(border-radius,54,54,54);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include relative-prop(height,52,52,52);
+        @include relative-prop(padding-left,25,25,25);
+        @include relative-prop(padding-right,25,25,25);
+    }
+
+    &-buttonText {
+        @include relative-prop(font-size, 16, 16, 18);
+        @include relative-prop(line-height, 18, 18, 20);
+
+        font-family: 'GTWalsheim-Bold';
+        color: $white;
+        white-space: nowrap;
+    }
+}

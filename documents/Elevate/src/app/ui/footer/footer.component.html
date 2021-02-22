@@ -1,0 +1,103 @@
+<section class="Footer container" [ngStyle]="setBackgroundColor()">
+  <div class="Footer-menu" [ngStyle]="setBackgroundColor()">
+    <div class="Footer-menuListTop" [ngStyle]="setBackgroundColor()">
+      <div class="Footer-menuListTop-columnOne">
+        <ng-container *ngFor="let item of footer?.primaryNavigationList">
+          <div *ngIf="item?.footerNavigation?.columnOrder === 1" class="Footer-menuListTop-itemHeading">
+            <a class="app-link"
+              [appTealiumClickEvent]="getTealiumClickEvent(item?.footerNavigation?.menuItem?.label)"
+              appExternalLink [customLink]="item?.footerNavigation?.menuItem?.link"
+            >{{item?.footerNavigation?.menuItem?.label}}</a>
+          </div>
+          <ng-container *ngFor="let subitem of item?.footerNavigation?.submenu">
+            <div *ngIf="item?.footerNavigation?.columnOrder === 1" class="Footer-menuListTop-itemSubHeading">
+              <a class="app-link"
+                [appTealiumClickEvent]="getTealiumClickEvent(subitem?.submenuItem?.label)"
+                appExternalLink [customLink]="subitem?.submenuItem?.link"
+              >{{subitem?.submenuItem?.label}}</a>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="Footer-menuListTop-columnTwo">
+        <ng-container *ngFor="let item of footer?.primaryNavigationList">
+          <div *ngIf="item?.footerNavigation?.columnOrder === 2" class="Footer-menuListTop-itemHeading">
+            <a class="app-link"
+              [appTealiumClickEvent]="getTealiumClickEvent(item?.footerNavigation?.menuItem?.label)"
+              appExternalLink [customLink]="item?.footerNavigation?.menuItem?.link"
+            >{{item?.footerNavigation?.menuItem?.label}}</a>
+          </div>
+          <ng-container *ngFor="let subitem of item?.footerNavigation?.submenu">
+            <div *ngIf="item?.footerNavigation?.columnOrder === 2" class="Footer-menuListTop-itemSubHeading">
+              <a class="app-link"
+                [appTealiumClickEvent]="getTealiumClickEvent(subitem?.submenuItem?.label)"
+                appExternalLink [customLink]="subitem?.submenuItem?.link"
+              >{{subitem?.submenuItem?.label}}</a>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="Footer-menuListTop-columnThree">
+        <ng-container *ngFor="let item of footer?.primaryNavigationList">
+          <div *ngIf="item?.footerNavigation?.columnOrder === 3" class="Footer-menuListTop-itemHeading">
+            <a class="app-link"
+              [appTealiumClickEvent]="getTealiumClickEvent(item?.footerNavigation?.menuItem?.label)"
+              appExternalLink [customLink]="item?.footerNavigation?.menuItem?.link"
+            >{{item?.footerNavigation?.menuItem?.label}}</a>
+          </div>
+          <ng-container *ngFor="let subitem of item?.footerNavigation?.submenu">
+            <div *ngIf="item?.footerNavigation?.columnOrder === 3" class="Footer-menuListTop-itemSubHeading">
+              <a class="app-link"
+                [appTealiumClickEvent]="getTealiumClickEvent(subitem?.submenuItem?.label)"
+                appExternalLink [customLink]="subitem?.submenuItem?.link"
+              >{{subitem?.submenuItem?.label}}</a>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="Footer-menuListBottom" [ngStyle]="setBackgroundColor()">
+      <div class="Footer-menuListBottom-columnOne">
+        <ng-container *ngFor="let item of footer?.secondaryNavigationList">
+          <div *ngIf="item?.footerNavigation?.columnOrder === 1" class="Footer-menuListBottom-itemHeading">
+            <a class="app-link"
+              [appTealiumClickEvent]="getTealiumClickEvent(item?.footerNavigation?.menuItem?.label)"
+              appExternalLink [customLink]="item?.footerNavigation?.menuItem?.link">{{item?.footerNavigation?.menuItem?.label}}</a>
+          </div>
+          <ng-container *ngFor="let subitem of item?.footerNavigation?.submenu">
+            <div *ngIf="item?.footerNavigation?.columnOrder === 1" class="Footer-menuListBottom-itemSubHeading">
+              <a class="app-link"
+                [appTealiumClickEvent]="getTealiumClickEvent(subitem?.submenuItem?.label)"
+                appExternalLink [customLink]="subitem?.submenuItem?.link">{{subitem?.submenuItem?.label}}</a>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="Footer-menuListBottom-columnTwo">
+        <ng-container *ngFor="let item of footer?.secondaryNavigationList">
+          <div *ngIf="item?.footerNavigation?.columnOrder === 2" class="Footer-menuListBottom-itemHeading">
+            <a class="app-link"
+              [appTealiumClickEvent]="getTealiumClickEvent(item?.footerNavigation?.menuItem?.label)"
+              appExternalLink [customLink]="item?.footerNavigation?.menuItem?.link">{{item?.footerNavigation?.menuItem?.label}}</a>
+          </div>
+          <ng-container *ngFor="let subitem of item?.footerNavigation?.submenu">
+            <div *ngIf="item?.footerNavigation?.columnOrder === 2" class="Footer-menuListBottom-itemSubHeading">
+              <a class="app-link"
+                [appTealiumClickEvent]="getTealiumClickEvent(subitem?.submenuItem?.label)"
+                appExternalLink [customLink]="subitem?.submenuItem?.link">{{subitem?.submenuItem?.label}}</a>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="Footer-disclaimer" [innerHTML]="footer?.lendingProductsDisclosure" [ngStyle]="setBackgroundColor()"></div>
+    <div class="Footer-disclaimer" [innerHTML]="footer?.moneyManagementDisclosure" [ngStyle]="setBackgroundColor()"></div>
+  </div>
+  <div class="Footer-socialmedia" [ngStyle]="setBackgroundColor()">
+    <a *ngFor="let socialMedia of footer?.socialMediaList" href="{{socialMedia?.socialMedia?.url}}" target="_blank">
+      <img class="Footer-socialmedia-icons"
+        [appTealiumClickEvent]="getTealiumClickEvent(socialMedia?.socialMedia?.name)"
+        appImageLoader [imageId]="socialMedia?.socialMedia?.icon?.id" />
+    </a>
+  </div>
+</section>

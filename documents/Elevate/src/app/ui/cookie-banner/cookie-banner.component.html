@@ -1,0 +1,20 @@
+<div class="CookieBanner container"
+  [class]="{ 'CookieBanner-disable': !!allowCookies }"
+  [appBackgroundColor]="(cookieBarData | async)?.settings.theme">
+
+  <div
+    #cookieBannerTextRef
+    class="CookieBanner-text"
+    [innerHTML]="(cookieBarData | async)?.text | safe : 'html'"
+    appTargetBlank
+    appMutationObserver
+    (innerHtmlRendered)="onCookieBannerTextRender()">
+  </div>
+
+  <button class="CookieBanner-button button--secondary-white"
+    [appTealiumClickEvent]="tealiumClickEventSend"
+    (click)="setLocalStorageForStoringCookies()"
+    [innerHTML]="(cookieBarData | async)?.cta">
+  </button>
+
+</div>

@@ -1,0 +1,106 @@
+<app-progress-bar [pages]="1" [currentPage]="1"></app-progress-bar>
+
+<div class="QuizEmail" [ngClass]="quizTheme">
+  <div class="QuizEmail-left" @fade>
+
+    <div class="QuizEmail-header" [innerHTML]="(quizEmailData | async)?.headline | safe: 'html'"></div>
+
+    <div class="QuizEmail-description">{{ (quizEmailData | async)?.subheading }}</div>
+
+    <div class="QuizEmail-userInputBox"
+      [ngClass]="[(quizEmailData | async)?.settings?.theme, hasEmailCaptured ? 'container-center-vh' : '']">
+
+      <div [hidden]="hasEmailCaptured">
+        <input
+          class="QuizEmail-email"
+          name="email"
+          type="email"
+          placeholder="Email Address"
+          [(ngModel)]="userEmail"
+          #email="ngModel"
+          required
+          [pattern]="emailValidatorRegExp"
+          (focus)="getTealiumClickEventOnForm()"
+          autocomplete="email">
+        <span
+          class="QuizEmail-email-helpText"
+          [hidden]="!(email.touched && email.invalid)">
+          <small>Please enter a valid email.</small>
+        </span>
+      </div>
+
+      <div class="QuizEmail-checkboxField" *ngIf="!hasEmailCaptured">
+        <div (click)="toggleOptOutState()">
+          <div class="QuizEmail-checkbox" role="checkbox" tabindex=0>
+            <img [hidden]="!optOutState" src="assets/icons/awesome-check-icon.svg" alt="aa">
+          </div>
+        </div>
+        <div class="QuizEmail-checkboxLabel" [innerHTML]="(quizEmailData | async)?.optOutText | safe : 'html'" appTargetBlank></div>
+      </div>
+
+      <app-email-success-message *ngIf="hasEmailCaptured" descriptionText="Your results will be emailed to you."></app-email-success-message>
+
+    </div>
+
+    <div class="QuizEmail-tip_mobile">
+      <app-quiz-tip [isEmailScreen]="true" [tooltip]="(quizEmailData | async)?.tooltip"></app-quiz-tip>
+    </div>
+
+    <div class="QuizEmail-actions-wrapper">
+      <div class="QuizEmail-actions">
+        <button
+          class="QuizEmail-actions-skip QuizEmail-actions-button"
+          (click)="moveToQuizEndScreen()"
+          [appTealiumClickEvent]="getTealiumClickEvent('save', 'skip')">
+          {{ (quizEmailData | async)?.skipCta }}
+        </button>
+        <button
+          class="QuizEmail-actions-next QuizEmail-actions-button"
+          type="submit"
+          [disabled]="email.invalid || loading"
+          (click)="onSubmit(email.valid)"
+          [appTealiumClickEvent]="getTealiumClickEvent('save', 'submit')">
+          {{ (quizEmailData | async)?.nextCta }}
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="QuizEmail-right">
+
+    <div class="QuizEmail-images">
+      <img
+        class="QuizEmail-images-mainBalloon"
+        alt="main balloon"
+        @fade
+        src="assets/images/quiz-intro-balloon-1_intro.png" />
+      <img
+        class="QuizEmail-images-secondaryBalloon"
+        alt="secondary balloon"
+        @fade
+        src="assets/images/quiz-email-balloon-secondary.png"/>
+      <img
+        class="QuizEmail-images-cloudOne"
+        alt="cloud 1"
+        @fade
+        src="assets/cloud 2.png"/>
+      <img
+        class="QuizEmail-images-cloudTwo"
+        alt="cloud 2"
+        @fade
+        src="assets/right-white-cloud.png"/>
+      <img
+        class="QuizEmail-images-cloudThree"
+        alt="cloud 3"
+        @fade
+        src="assets/cloud 2.png"/>
+    </div>
+
+  </div>
+
+  <div class="QuizEmail-tip_desktop">
+    <app-quiz-tip [isEmailScreen]="true" [tooltip]="(quizEmailData | async)?.tooltip"></app-quiz-tip>
+  </div>
+
+</div>

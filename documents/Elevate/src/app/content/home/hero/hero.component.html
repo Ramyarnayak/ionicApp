@@ -1,0 +1,66 @@
+<section [ngClass]="{ 'HomeHero--expanded': showYourOptions }"
+    class="HomeHero container-left">
+    <div class="HomeHero-text" *ngIf="!showYourOptions" @showHideHeroDefault>
+        <div [innerHTML]="homeHero?.headline | safe: 'html'" class="HomeHero-title"></div>
+        <div class="HomeHero-description">
+            {{ homeHero?.description }}
+        </div>
+        <button [appTealiumClickEvent]="tealiumClickEventDiscover"
+            (click)="onShowYourOptionsClick()"
+            class="HomeHero-cta button--yellow"
+            type="button">
+            {{ homeHero?.navigation.label }}
+        </button>
+    </div>
+    <div class="HomeHero-graphics">
+        <img class="HomeHero-balloon" src="/assets/images/balloon.svg">
+        <div class="HomeHero-mountains"></div>
+    </div>
+    <div *ngIf="showYourOptions" class="HomeHero-yourOptions" @showHideHeroExpanded>
+        <div class="HomeHero-yourOptionsLeft">
+            <div class="HomeHero-yourOptionsHeaderSiteName"></div>
+            <div class="HomeHero-yourOptionsText">
+                <div [innerHTML]="yourOptions?.headline | safe: 'html'" class="HomeHero-yourOptionsTitle"></div>
+                <div class="HomeHero-yourOptionsDescription">{{ yourOptions?.subheading }}</div>
+            </div>
+        </div>
+        <div class="HomeHero-yourOptionsRight">
+            <div class="HomeHero-yourOptionsHeaderSiteName--right">
+                <img src="/assets/images/logo.png">
+            </div>
+            <div class="HomeHero-yourOptionsHeaderNavigation">
+                <button [appTealiumClickEvent]="tealiumClickEventBack"
+                    (click)="onBackButtonClick()"
+                    class="HomeHero-backButton">
+                    <img src="/assets/icons/back.svg">
+                    <span>Back</span>
+                </button>
+            </div>
+            <div [innerHTML]="yourOptions?.headline | safe: 'html'" class="HomeHero-yourOptionsTitle--right"></div>
+            <div class="HomeHero-yourOptionsList">
+                <div *ngFor="let item of yourOptions?.optionList"
+                    [ngClass]="'HomeHero-yourOptionsListItem--' + item.option.settings.theme"
+                    class="HomeHero-yourOptionsListItem">
+                    <div class="HomeHero-yourOptionsListItemTitle">{{ item.option.headline }}</div>
+                    <div class="HomeHero-yourOptionsListItemBody">
+                        <div class="HomeHero-yourOptionsListItemDescription">{{ item.option.description }}</div>
+                        <div class="HomeHero-yourOptionsListItemButtonContainer">
+                            <button [appTealiumClickEvent]="getTealiumClickEvent(item.option.navigation.label)"
+                                [customLink]="item.option.navigation.link"
+                                class="button--dark-blue HomeHero-yourOptionsListItemButton"
+                                appExternalLink>
+                                {{ item.option.navigation.label }}
+                            </button>
+                        </div>
+                        <a [appTealiumClickEvent]="getTealiumClickEvent(item.option.navigation.label)"
+                            [customLink]="item.option.navigation.link"
+                            class="HomeHero-yourOptionsListItemLink"
+                            appExternalLink>
+                            {{ item.option.navigation.label }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

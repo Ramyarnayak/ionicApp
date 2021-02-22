@@ -1,0 +1,61 @@
+<div class="BorrowingCard-content-item" [ngClass]="{'expanded' : isExpandedView, 'noStateSelected': noStateSelected}">
+  <div class="BorrowingCard-content-item-heading">
+      <div class="BorrowingCard-content-item-heading-logotype">
+          <img appImageLoader [imageId]="financialSolutionBorrowingCard.logo.id"
+              class="BorrowingCard-content-item-heading-logotype-image" alt="">
+      </div>
+      <div class="BorrowingCard-content-item-heading-info">
+          <h3 class="BorrowingCard-content-item-heading-info-title">{{ financialSolutionBorrowingCard.headline }}</h3>
+          <div class="BorrowingCard-content-item-heading-info-rating" *ngIf="financialSolutionBorrowingCard.ratings?.rating">
+              <div class="BorrowingCard-content-item-heading-info-rating-stars">
+                  <img [src]="'assets/images/ratings/'+ financialSolutionBorrowingCard.ratings.rating +'.png'"
+                      class="BorrowingCard-content-item-heading-info-rating-stars-image" alt="">
+              </div>
+              <div class="BorrowingCard-content-item-heading-info-rating-text">{{ financialSolutionBorrowingCard.ratings.review }}</div>
+          </div>
+          <div class="BorrowingCard-content-item-heading-info-text">
+              {{ financialSolutionBorrowingCard.description }}
+          </div>
+      </div>
+      <div class="BorrowingCard-content-item-heading-controls">
+        <span class="BorrowingCard-content-item-heading-controls-type"
+            [ngClass]="financialSolutionBorrowingCard.productTypeSettings.theme">
+            {{borrowingCardCategory?.label}}
+        </span>
+            <a [customLink]="financialSolutionBorrowingCard.cta.link"
+                [ngClass]="financialSolutionBorrowingCard.cta.settings.theme"
+                (click)="tealiumVisitClickEvent.emit(financialSolutionBorrowingCard.headline)"
+                class="BorrowingCard-content-item-heading-controls-button"
+                appExternalLink>
+                {{ financialSolutionBorrowingCard.cta.label }}
+            </a>
+      </div>
+  </div>
+  <div class="BorrowingCard-content-item-details">
+      <div class="BorrowingCard-content-item-details-description">
+          <div class="BorrowingCard-content-item-details-description-items">
+              <div class="BorrowingCard-content-item-details-description-items-item less-active"
+                  *ngFor="let item of columnsToDisplay(financialSolutionBorrowingCard.columns, financialSolutionBorrowingCard.noOfColumnsToDisplay)">
+                  <span class="BorrowingCard-content-item-details-description-items-item-title">{{
+                      item.column.headline }}</span>
+                  <strong
+                      class="BorrowingCard-content-item-details-description-items-item-value">{{
+                      item.column.text }}</strong>
+              </div>
+          </div>
+          <div class="BorrowingCard-content-item-details-description-note" [innerHTML]="financialSolutionBorrowingCard.expandedContentBody | safe : 'html'"></div>
+      </div>
+      <div [ngClass]="{'isLongText': isLongText}" class="BorrowingCard-content-item-details-information">
+        <div [innerHTML]="(expandedContentDisclaimer | async)?.description | safe : 'html'"></div>
+        <button (click)="isLongText = !isLongText"
+            class="BorrowingCard-content-item-details-information-show_more">
+            {{ isLongText ? financialSolutionBorrowingCard.expandCta+' +' : financialSolutionBorrowingCard.minimizeCta+' -' }}
+        </button>
+      </div>
+  </div>
+  <div class="BorrowingCard-content-item-footer">
+      <button (click)="toggleIsExpandedView()"
+        class="BorrowingCard-content-item-footer-button">
+          {{ isExpandedView ? financialSolutionBorrowingCard.minimizeCta : financialSolutionBorrowingCard.expandCta }}</button>
+  </div>
+</div>

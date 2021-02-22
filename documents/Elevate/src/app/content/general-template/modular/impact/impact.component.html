@@ -1,0 +1,9 @@
+<div class="Impact">
+  <h3 class="Impact-title">{{ impactBarHeadline }}</h3>
+  <div class="Impact-items">
+    <div class="Impact-item" *ngFor="let item of impactBarItems">
+      <strong class="Impact-item-title">{{ item?.item?.headline }}</strong>
+      <span class="Impact-item-info">{{ item?.item?.subheading }}</span>
+    </div>
+  </div>
+</div>

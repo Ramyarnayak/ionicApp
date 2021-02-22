@@ -1,0 +1,55 @@
+<div class="FnsnCard-content-item">
+    <div class="FnsnCard-content-item-heading">
+        <div class="FnsnCard-content-item-heading-logotype">
+            <img [imageId]="bankingCard.image.id"
+                class="FnsnCard-content-item-heading-logotype-image"
+                appImageLoader>
+        </div>
+        <div class="FnsnCard-content-item-heading-info">
+            <h3 class="FnsnCard-content-item-heading-info-title">{{ bankingCard.headline }}</h3>
+            <div class="FnsnCard-content-item-heading-info-rating">
+                <div class="FnsnCard-content-item-heading-info-rating-stars">
+                    <img [src]="'assets/images/ratings/'+ bankingCard.ratings.rating +'.png'"
+                        [alt]="bankingCard.ratings.rating + ' stars'"
+                        class="FnsnCard-content-item-heading-info-rating-stars-image">
+                </div>
+                <div class="FnsnCard-content-item-heading-info-rating-text">{{ bankingCard.ratings.review }}</div>
+            </div>
+            <div class="FnsnCard-content-item-heading-info-text">
+                {{ bankingCard.description }}
+            </div>
+        </div>
+        <div class="FnsnCard-content-item-heading-controls">
+            <a [class]="'FnsnCard-content-item-heading-controls-button ' + 'button--' + bankingCard.cta.settings.theme"
+                [customLink]="bankingCard.cta.link" 
+                (click)="tealiumVisitClickEvent.emit(bankingCard.headline)"
+                appExternalLink>
+                {{ bankingCard.cta.label }}
+            </a>
+        </div>
+    </div>
+    <div class="FnsnCard-content-item-details" [ngClass]="{'ShowMore' : isExpanded}">
+        <div class="FnsnCard-content-item-details-description">
+            <div class="FnsnCard-content-item-details-description-items">
+                <div *ngFor="let column of bankingCard.columns" class="FnsnCard-content-item-details-description-items-item less-active">
+                    <div class="FnsnCard-content-item-details-body2">
+                        <div class="FnsnCard-content-item-details-body2-container">
+                            <!-- TODO: Implement this as an unordered list -->
+                            <!-- <p class="FnsnCard-content-item-details-body2-bulletPoint">&bull;&nbsp;&nbsp;</p> -->
+                            <p>{{ column.column }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="{ 'FnsnCard-content-item-expandedContent--isExpanded': isExpanded }" class="FnsnCard-content-item-expandedContent">
+        <div [innerHTML]="bankingCard.expandedContentBody" class="FnsnCard-content-item-expandedContent-body"></div>
+        <div [innerHTML]="(disclaimer | async)?.description" class="FnsnCard-content-item-expandedContent-disclaimer"></div>
+    </div>
+    <div [ngClass]="{ 'FnsnCard-content-item-footer--isExpanded': isExpanded }" class="FnsnCard-content-item-footer">
+        <button (click)="toggleIsExpanded()" class="FnsnCard-content-item-footer-button">
+            {{ isExpanded ? bankingCard.minimizeCta : bankingCard.expandCta }}
+        </button>
+    </div>
+  </div>

@@ -1,0 +1,57 @@
+@import "src/app/styles/common";
+
+.Score40ResultsFinalScore {
+  @include relative-prop(padding-top, 43, 80, 134);
+  @include relative-prop(padding-bottom, 37, 37, 37);
+
+  &-title {
+    @include mobile {
+      max-width: 100%;
+    }
+    @include relative-prop(width, 167, 167, 227);
+    @include relative-prop(font-size, 12, 12, 12);
+    @include relative-prop(line-height, 13.2, 13.2, 13.2);
+    @include relative-prop(padding-bottom, 24, 24, 34);
+    color: $elevate-blue;
+    font-family: $font-family-medium;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  &-mainTitle {
+    @include mobile {
+      max-width: 100%;
+    }
+    @include s-mobile {
+      max-width: 70%;
+    }
+    @include relative-prop(width, 234, 321, 680);
+    @include relative-prop(font-size, 24, 24, 40);
+    @include relative-prop(line-height, 31.2, 31.2, 52);
+    @include relative-prop(padding-bottom, 20, 40, 60);
+    color: $elevate-blue;
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+  }
+  &-finalScore {
+    @include mobile {
+      max-width: 100%;
+    }
+    @include relative-prop(width, 237, 237, 600);
+    @include relative-prop(font-size, 74, 74, 180);
+    @include relative-prop(line-height, 74, 74, 180);
+    @include relative-prop(padding-bottom, 20, 40, 60);
+    color: white;
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+  }
+  &-subTitle {
+    @include mobile {
+      max-width: 100%;
+    }
+    @include relative-prop(width, 320, 349, 700);
+    @include relative-prop(font-size, 20, 20, 26);
+    @include relative-prop(line-height, 26, 26, 39);
+    color: white;
+    font-family: $font-family-medium;
+  }
+}

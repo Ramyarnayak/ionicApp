@@ -1,0 +1,34 @@
+<section class="CreditBOR">
+  <div class="CreditBOR-emptyBox">
+
+  </div>
+  <div class="CreditBOR-main" [ngStyle]="setBackgroundColor()">
+    <div class="CreditBOR-title-wrapper container-left">
+      <h1 class="CreditBOR-title" [innerHTML]="ourCommitment?.headline | safe: 'html'" [ngStyle]="setBackgroundColor()">
+      </h1>
+    </div>
+    <div class="CreditBOR-subheading container-left">
+      {{ourCommitment?.subheading}}
+    </div>
+    <div class="CreditBOR-horizontalScroll-container">
+
+      <app-horizontal-scroll-container [scrollThumbColor]="scrollBarThumbColor">
+        <div class="horizontal-scroll-element horizontal-scroll-element--description" [ngStyle]="setBackgroundColor()">
+          <div class="CreditBOR-hS-description">
+            {{ourCommitment?.subheading}}
+          </div>
+        </div>
+        <div *ngFor="let commitment of ourCommitment?.commitmentList; let i = index" class="horizontal-scroll-element">
+            <app-credit-bor-card [index]="i" [commitment]="commitment"></app-credit-bor-card>
+        </div>
+      </app-horizontal-scroll-container>
+
+    </div>
+  </div>
+  <img class="CreditBOR-handImg" id="CreditBOR-handImg-Paralax" alt="Hand Image" src="../../../assets/credit-bor-hand.png">
+  <img class="CreditBOR-leftCloudImg" alt="Cloud Image 1" src="../../../assets/cloud 1.png">
+  <img class="CreditBOR-midCloudImg" alt="Cloud Image 2" src="../../../assets/cloud 2.png">
+  <div class="CreditBOR-rightImageCrop">
+    <img class="CreditBOR-rightCloudImg" alt="Cloud Image 3" src="../../../assets/cloud 3.png">
+  </div>
+</section>

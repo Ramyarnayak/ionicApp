@@ -1,0 +1,19 @@
+<div class="ArticleFeedback">
+  <div class="ArticleFeedback-container">
+    <div class="ArticleFeedback-text">{{feedbackBarHeadline}}</div>
+
+    <div class="ArticleFeedback-ratings">
+
+      <div class="ArticleFeedback-buttons">
+        <button (click)="onIconClick('satisfied')" type="button">
+          <img [src]="currentState === 'satisfied' ? 'assets/icons/satisfied_face_active.svg' : 'assets/icons/satisfied_face.svg'">
+        </button>
+
+        <button (click)="onIconClick('unsatisfied')" type="button">
+          <img [src]="currentState === 'unsatisfied' ? 'assets/icons/unsatisfied_face_active.svg' : 'assets/icons/unsatisfied_face.svg'">
+        </button>
+      </div>
+  
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="OurExecutives container" [ngClass]="customerhubMtBody3?.settings.theme">
+  <div class="OurExecutives-title">{{ customerhubMtBody3?.text1 }}</div>
+  <div class="OurExecutives-description">{{ customerhubMtBody3?.text2 }}</div>
+
+  <div class="OurExecutives-list">
+    <div class="OurExecutives-card" *ngFor="let executive of (executiveList | async)?.executives">
+      <img class="OurExecutives-card-image" appImageLoader [imageId]="executive?.executive?.image?.id">
+      <div class="OurExecutives-card-name">{{ executive?.executive?.headline }}</div>
+      <div class="OurExecutives-card-designation">{{ executive?.executive?.description }}</div>
+    </div>
+  </div>
+</div>

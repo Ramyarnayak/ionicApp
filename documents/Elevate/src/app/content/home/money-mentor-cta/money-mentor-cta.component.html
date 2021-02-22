@@ -1,0 +1,16 @@
+<section class="MoneyMentorCta container-margin" [appBackgroundColor]="score40.settings.theme">
+    <div class="MoneyMentorCta-sectionOne">
+        <div class="MoneyMentorCta-title" [innerHTML]="score40.headline | safe: 'html'"></div>
+    </div>
+
+    <div class="MoneyMentorCta-sectionTwo">
+        <div class="MoneyMentorCta-subTitle">{{ score40.subheading }}</div>
+        <div class="MoneyMentorCta-buttonWrapper">
+            <a [appTealiumClickEvent]="tealiumClickEvent"
+                [customLink]="score40.navigation.link"
+                appExternalLink class="MoneyMentorCta-button">
+                <span class="MoneyMentorCta-buttonText">{{score40.navigation.label}}</span>
+            </a>
+        </div>
+    </div>
+</section>

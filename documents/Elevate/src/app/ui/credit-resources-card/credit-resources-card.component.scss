@@ -1,0 +1,49 @@
+@import "src/app/styles/common";
+
+.CreditResourcesCard {
+
+    &-image {
+        @include relative-prop(width, 252, 469, 469);
+    }
+    
+    &-category {
+        @include relative-prop(font-size, 12, 15, 15);
+        @include relative-prop(line-height, 16, 19, 19);
+
+        letter-spacing: -0.02em;
+        opacity: 0.6;
+        margin-top: 40px;
+        white-space: nowrap;
+        text-transform: uppercase;
+    }
+    
+    &-heading {
+        @include relative-prop(font-size, 20, 24, 24);
+        @include relative-prop(line-height, 26, 31, 31);
+        @include relative-prop(width, 240, 442, 442);
+        @include relative-prop(margin-top, 8, 12, 18);
+    
+        letter-spacing: -0.02em;
+    }
+    
+    &-subHeading {
+        @include relative-prop(font-size, 14, 20, 20);
+        @include relative-prop(line-height, 18, 23, 23);
+        @include relative-prop(width, 232, 401, 401);
+        @include relative-prop(margin-top, 15, 18, 24);
+    }
+    
+    &-readMoreText {
+        @include relative-prop(font-size, 12, 20, 20);
+        @include relative-prop(line-height, 16, 26, 26);
+        @include relative-prop(width, 78, 98, 98);
+    
+        text-decoration-line: underline;
+        margin-top: 25px;
+        white-space: nowrap;
+    }
+
+    &-inner {
+        @include relative-prop(padding-bottom,20,20,20);
+    }
+}

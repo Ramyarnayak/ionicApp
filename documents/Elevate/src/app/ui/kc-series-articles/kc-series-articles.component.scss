@@ -1,0 +1,59 @@
+@import "src/app/styles/common";
+
+.KCSeriesArticles {
+    @include relative-prop(padding-bottom, 60, 89, 89);
+    @include relative-prop(padding-top, 40, 80, 80);
+    background-color: $dark-blue;
+
+    width: 100%;
+
+    &-tag {
+        @include relative-prop(font-size, 12, 12, 16);
+        @include relative-prop(line-height, 13.2, 15.6, 17.6);
+        @include relative-prop(padding-bottom, 16, 16, 16);
+        @include relative-prop(padding-left, 24, 46, 80);
+        @include flexi-relative-prop(letter-spacing, 0.05em, -0.02em, 0.02em);
+
+        font-family: $font-family-medium;
+        text-transform: uppercase;
+        color: $elevate_blue;
+    }
+
+    &-headline {
+        @include relative-prop(font-size, 32, 32, 46);
+        @include relative-prop(line-height, 36.8, 35.2, 50.6);
+        @include relative-prop(padding-bottom, 16, 16, 16);
+        @include relative-prop(padding-left, 24, 46, 80);
+
+        color: $white;
+        font-family: $font-family-bold;
+    }
+
+    &-description {
+        @include relative-prop(font-size, 16, 16, 16);
+        @include relative-prop(line-height, 25.6, 25.6, 25.6);
+        @include relative-prop(padding-bottom, 32, 32, 32);
+        @include relative-prop(padding-left, 24, 46, 80);
+        @include mobile {
+            padding-right: 24px;
+        }
+
+        color: $white;
+    }
+
+    &-horizontalContainer {
+        @include relative-prop(padding-left, 0, 0, 0);
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &-horizontalContainerMobile {
+        @include relative-prop(padding-left, 24, 0, 0);
+        @include mobile {
+            display: block;
+        }
+
+        display: none;
+    }
+}

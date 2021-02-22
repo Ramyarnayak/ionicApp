@@ -1,0 +1,31 @@
+<div class="HeaderDLevel3 container">
+  <div class="HeaderDLevel3-hero">
+    <div class="HeaderDLevel3-goBack" (click)="onGoBackClick()">
+      <img class="HeaderDLevel3-goBackIcon" src="/assets/icons/left-arrow.png" alt="Back Icon"/>
+      Go back
+    </div>
+    <div class="HeaderDLevel3-heroTitle">
+      {{headerTertiaryNavigation.heroNavigation.label}}
+    </div>
+    <div class="HeaderDLevel3-heroDesc">
+      {{headerTertiaryNavigation.heroNavigation.description}}
+    </div>
+    <div class="HeaderDLevel3-heroSeeAll">
+      <a class="HeaderDLevel3-heroSeeAll-a" class="HeaderDLevel2-contentItem-a" appExternalLink [customLink]="headerTertiaryNavigation.heroNavigation.navigation.link">
+        {{headerTertiaryNavigation.heroNavigation.navigation.label}}
+      </a>
+    </div>
+  </div>
+  <div class="HeaderDLevel3-content" (mouseenter)="onMouseOver()" (mouseleave)="onMouseLeave()">
+    <div *ngFor="let nav of headerTertiaryNavigation.tertiaryNavigation; let i = index" class="HeaderDLevel3-contentItem"
+      [class]="{'HeaderDLevel3-contentItemHover': mouseOverSubMenuList == true}">
+      <a
+        class="HeaderDLevel3-contentItem-a"
+        appExternalLink
+        [customLink]="nav.navigationBlock.link">
+        <div class="HeaderDLevel3-contentTitle">{{nav.navigationBlock.label}}</div>
+        <div class="HeaderDLevel3-contentDesc">{{nav.navigationBlock.description}}</div>
+      </a>
+    </div>
+  </div>
+</div>

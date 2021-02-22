@@ -1,0 +1,163 @@
+@import "src/app/styles/common";
+:host ::ng-deep {
+  .ArticleBody-default p, .ArticleBody-default ul  {
+    @include relative-prop(margin-bottom, 25.6, 25.6, 32);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+.ArticleBody {
+
+  &-anchor {
+    position: relative;
+    top: -140px;
+  }
+
+  &-caption {
+    color: $dark-gray;
+    opacity: 0.6;
+    display: block;
+    font-style: italic;
+    font-family: $font-family-medium;
+    @include relative-prop(padding-top,12,15,15);
+    @include relative-prop(font-size,12,12,12);
+    @include relative-prop(line-height,15.6,15.6,15.6);
+  }
+
+  &-default {
+    @include relative-prop(font-size, 16, 16, 20);
+    @include relative-prop(line-height, 25.6, 25.6, 32);
+    @include relative-prop(padding-bottom, 56, 56, 72);
+    letter-spacing: -0.01em;
+    opacity: 0.9;
+
+    p {
+      @include relative-prop(margin-bottom, 25.6, 25.6, 32);
+    }
+  }
+
+  &-image {
+    border-radius: 8px;
+    box-shadow: 0px 4px 25px rgba(171, 171, 171, .2);
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  &-mediaBottomText {
+    @include flexi-relative-prop(line-height, 160%, 160%, 150%);
+    @include relative-prop(letter-spacing, null, null, -.02em);
+    @include relative-prop(margin-top, 24, 56, 40);
+    
+    color: $dark-charcoal;
+    opacity: .9;
+  }
+
+  &-textWithBottomMedia {
+    @include relative-prop(padding-bottom, 56, 56, 72);
+
+    &-text {
+      @include relative-prop(font-size, 16, 16, 20);
+      @include relative-prop(line-height, 25.6, 25.6, 32);
+      @include relative-prop(padding-bottom, 56, 56, 72);
+      letter-spacing: -0.01em;
+      opacity: 0.9;
+    }
+
+    &-imageholder {
+      width: 100%;
+    }
+  }
+
+  &-textWithTopMedia {
+    @include relative-prop(padding-bottom, 56, 56, 72);
+
+    &-imageholder {
+      @include relative-prop(padding-bottom, 56, 56, 72);
+      width: 100%;
+    }
+
+    &-text {
+      @include relative-prop(font-size, 16, 16, 20);
+      @include relative-prop(line-height, 25.6, 25.6, 32);
+      letter-spacing: -0.01em;
+      opacity: 0.9;
+    }
+  }
+
+  &-textWithLeftMedia {
+    @include mobile {
+      display: block;
+    }
+
+    @include relative-prop(padding-bottom, 56, 56, 72);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &-imageholder {
+      @include mobile {
+        width: 100%;
+      }
+
+      @include relative-prop(padding-right, 0, 56, 72);
+      width: 57%;
+    }
+
+    &-text {
+      @include mobile {
+        width: 100%;
+      }
+
+      @include relative-prop(font-size, 20, 20, 26);
+      @include relative-prop(line-height, 26, 26, 39);
+      letter-spacing: -0.01em;
+      opacity: 0.9;
+      width: 43%;
+
+      p {
+        @include relative-prop(margin-bottom, 26, 26, 39);
+      }
+    }
+  }
+
+  &-textWithRightMedia {
+    @include mobile {
+      display: block;
+    }
+
+    @include relative-prop(padding-bottom, 56, 56, 72);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    &-text {
+      @include mobile {
+        width: 100%;
+        @include relative-prop(margin-bottom,56,0,0);
+      }
+
+      @include relative-prop(font-size, 20, 20, 26);
+      @include relative-prop(line-height, 26, 26, 39);
+      @include relative-prop(padding-right, null, 56, 72);
+      width: 43%;
+      letter-spacing: -0.01em;
+      opacity: 0.9;
+
+      p {
+        @include relative-prop(margin-bottom, 26, 26, 39);
+      }
+    }
+
+    &-imageholder {
+      width: 57%;
+
+      @include mobile {
+        width: 100%;
+      }
+    }
+  }
+}

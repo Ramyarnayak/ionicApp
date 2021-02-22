@@ -1,0 +1,46 @@
+@import "src/app/styles/common";
+
+.NoOfferError {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @include mobile {
+    padding: 0
+  }
+
+  &-headline {
+    @include relative-prop(font-size, 18, 18, 18);
+    @include relative-prop(line-height, 23, 20, 20);
+    font-family: $font-family-bold;
+    color: $black;
+  }
+
+  &-description {
+    @include relative-prop(font-size, 16, 20, 20);
+    @include relative-prop(line-height, 26, 32, 32);
+    @include relative-prop(margin-top, 10, 17, 17);
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: $black;
+    opacity: 0.6;
+
+    @include mobile {
+      text-align: left;
+    }
+  }
+
+  &-cta {
+    @include relative-prop(margin-top, 32, 32, 32);
+
+    a {
+      @include relative-prop(font-size, 16, 18, 18);
+      @include relative-prop(line-height, 19, 20, 20);
+      @include flexi-relative-prop(padding, 16px 36px 17px, 16px 36px 17px, 16px 26px 14px);
+      letter-spacing: -0.02em;
+      font-family: $font-family-bold;
+      text-decoration: none;
+    }
+  }
+}

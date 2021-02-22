@@ -1,0 +1,34 @@
+<section class="FinancialSolutionsCta container-margin" [appBackgroundColor]="ourPartners.settings.theme">
+    <div class="FinancialSolutionsCta-sectionOne">
+        <div class="FinancialSolutionsCta-title" [innerHTML]="ourPartners.headline | safe: 'html'"></div>
+    </div>
+
+    <div class="FinancialSolutionsCta-sectionTwo">
+
+        <div class="FinancialSolutionsCta-subTitle">{{ ourPartners.subheading }}</div>
+
+        <div class="FinancialSolutionsCta-action">
+            <div class="FinancialSolutionsCta-dropdown">
+                <app-custom-dropdown
+                    [listItem]="ourPartnersNavigationList"
+                    keyMapper="label"
+                    [defaultSelectedItem]="selectedOption"
+                    (dropdownOptionSelected)="dropdownOptionSelected($event)"
+                    [boxStyle]="{'border': '1px solid #B8BABC'}">
+                </app-custom-dropdown>
+            </div>
+
+            <div class="FinancialSolutionsCta-cta">
+                <a [customLink]="selectedOptionExternalLink"
+                    [appTealiumClickEvent]="tealiumClickEvent"
+                    class="FinancialSolutionsCta-button"
+                    appExternalLink>
+                    <span class="FinancialSolutionsCta-buttonText">
+                        {{ourPartners.cta}}
+                    </span>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,16 @@
+<div class="QuizEnd container" *ngIf="(screenLoading | async) as ScreenLoading">
+  <div class="QuizEnd-animation">
+    <img class="QuizEnd-loaderSmall" alt="Quiz Loader Small" [attr.style]="'--duration:'+((ScreenLoading.length)*2+1)+'s'"
+      src="assets/images/quiz-loader-small.png">
+    <img class="QuizEnd-loaderBig" alt="Quiz Loader Big" [attr.style]="'--duration:'+((ScreenLoading.length)*2+1)+'s'"
+      src="assets/images/quiz-loader-big.png">
+
+    <ul class="QuizEnd-displayText">
+      <li *ngFor="let item of ScreenLoading; let i = index" [attr.style]="'--delay:'+((i)*2)+'s'" [innerHTML]="item?.copy | safe: 'html'">
+      </li>
+    </ul>
+  </div>
+  <div class="QuizEnd-disclaimer" [innerHTML]="(getDisclaimer(ScreenLoading[0]?.disclaimer?.id) | async)?.description | safe: 'html'"></div>
+
+</div>
+

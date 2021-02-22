@@ -1,0 +1,93 @@
+@import "src/app/styles/common";
+
+.HeaderDLevel2 {
+  @include mobile {
+    display: none;
+  }
+  background-color: $cream;
+  @include responsive-prop(padding-top, 0, 48);
+  @include responsive-prop(padding-bottom, 0, 80);
+  display: flex;
+  justify-content: space-around;
+  z-index: 10;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top:100%;
+
+  &-hero {
+    width: 26%;
+  }
+  &-heroImage {
+    background-color: $elevate-blue;
+    width: 98%;
+  }
+  &-title {
+    @include responsive-prop(font-size, 0, 12);
+    @include responsive-prop(margin-top, 0, 20);
+    font-family: "GTWalsheim-Bold";
+    line-height: 135%;
+    opacity: 0.6;
+  }
+  &-subTitle {
+    @include responsive-prop(font-size, 0, 20);
+    @include responsive-prop(margin-top, 0, 12);
+    font-family: "GTWalsheim-Bold";
+    line-height: 130%;
+    color: $charcoal;
+  }
+  &-link {
+    font-family: "GTWalsheim-Medium";
+    margin-top: 8px;
+    color: $mid-dark-blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  &-content {
+    width: 52%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10%;
+  }
+
+  &-contentItemHover {
+    &:not(:hover) {
+      opacity: .4;
+    }
+  }
+
+  &-contentItem {
+    animation: moveInRight .4s;
+    cursor: pointer;
+
+    &-a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &-contentTitle {
+    @include responsive-prop(font-size, 0, 20);
+    font-family: "GTWalsheim-Bold";
+    line-height: 130%;
+    padding-bottom: 8px;
+  }
+  &-contentDesc {
+    @include responsive-prop(font-size, 0, 16);
+    @include responsive-prop(padding-bottom, 0, 32);
+    font-family: "GTWalsheim-Regular";
+    line-height: 130%;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+      opacity: 0;
+      transform: translateX(40px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}

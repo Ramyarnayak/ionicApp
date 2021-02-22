@@ -1,0 +1,111 @@
+@import "src/app/styles/common";
+
+.Footer {
+  @include relative-prop(padding-top, 64, 67, 165);
+  @include relative-prop(padding-bottom, 103, 110, 74);
+  @include flexi-relative-prop(flex-direction, column, column, null);
+  color: white;
+  display: flex;
+
+  &-menu {
+    @include flexi-relative-prop(width, 100%, 100%, 75%);
+  }
+
+  &-menuListTop {
+    @include relative-prop(padding-bottom, 88, 89, 100);
+    @include mobile {
+      flex-direction: column;
+    }
+    display: flex;
+    justify-content: space-between;
+
+    &-columnOne,
+    &-columnTwo,
+    &-columnThree {
+      @include flexi-relative-prop(width, 100%, 33.33%, 33.33%);
+    }
+
+    &-itemHeading {
+      @include relative-prop(margin-bottom, 11, 11, 22);
+      @include relative-prop(padding-top, 28, 28, 32);
+      @include relative-prop(font-size, 18, 18, 24);
+      @include relative-prop(line-height, 26, 26, 31.2);
+      font-family: $font-family-bold;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+    }
+    &-itemSubHeading {
+      @include relative-prop(margin-bottom, 16, 16, 16);
+      @include relative-prop(font-size, 18, 18, 24);
+      @include relative-prop(line-height, 26, 26, 31.2);
+      letter-spacing: -0.02em;
+      color: $lighter-gray;
+      cursor: pointer;
+    }
+  }
+
+  &-menuListBottom {
+    display: flex;
+    justify-content: flex-start;
+
+    &-columnOne,
+    &-columnTwo {
+      width: 33.33%;
+      @include mobile {
+        width: 50%;
+      }
+    }
+
+    &-itemHeading {
+      @include relative-prop(margin-bottom, 12, 12, 27);
+      @include relative-prop(font-size, 16, 16, 20);
+      @include relative-prop(line-height, 20.8, 20.8, 26);
+      font-family: $font-family-bold;
+      letter-spacing: -0.02em;
+      cursor: pointer;
+    }
+    &-itemSubHeading {
+      @include relative-prop(margin-bottom, 18, 18, 16);
+      @include relative-prop(font-size, 14, 14, 20);
+      @include relative-prop(line-height, 18, 18, 23);
+      letter-spacing: -0.02em;
+      color: $lighter-gray;
+      cursor: pointer;
+    }
+  }
+
+  &-disclaimer {
+    @include relative-prop(font-size, 12, 12, 14);
+    @include relative-prop(line-height, 18, 18, 18.9);
+    @include relative-prop(padding-top, 36, 36, 80);
+    line-height: 135%;
+  }
+
+  &-disclaimer:last-child {
+    @include relative-prop(padding-top, 12, 12, 12);
+  }
+
+  &-socialmedia {
+    @include flexi-relative-prop(width, 100%, 100%, 25%);
+    @include flexi-relative-prop(justify-content, center, center, null);
+    @include flexi-relative-prop(order, -1, -1, null);
+    @include relative-prop(margin-bottom, 30, 30, null);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+
+    &-icons {
+      @include relative-prop(margin-right, 20, 20, 34);
+      @include relative-prop(margin-top, 0, 0, 32);
+      @include relative-prop(height, 36, 36, 36);
+      background-color: white;
+      border-radius: 50%;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $elevate-blue;
+      }
+
+    }
+  }
+}

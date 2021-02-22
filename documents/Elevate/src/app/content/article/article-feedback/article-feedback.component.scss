@@ -1,0 +1,55 @@
+@import "src/app/styles/common";
+
+.ArticleFeedback {
+  @include relative-prop(padding-top, 40, 70, 100);
+  @include relative-prop(padding-bottom, 40, 70, 100);
+
+  display: flex;
+  justify-content: center;
+
+  &-container {
+    @include flexi-relative-prop(display, block, block, flex);
+    @include flexi-relative-prop(border, none, none, 3px dashed #E5E5E5);
+
+    justify-content: center;
+    width: fit-content;
+    padding: 28px 40px;
+    border-radius: 16px;
+  }
+
+  &-text {
+    @include relative-prop(font-size, 20, 22, 24);
+    @include relative-prop(line-height, 26, 28.5, 31);
+    @include relative-prop(margin-right, 0, 30, 30);
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+  }
+
+  &-ratings {
+    display: flex;
+    justify-content: center;
+    @include mobile {
+      margin-top: 8px;
+    }
+  }
+
+  &-buttons {
+    button {
+      @include button-common();
+      @include focus();
+      background: transparent;
+      padding: 0;
+
+      &:first-child {
+        margin-right: 24px;
+      }
+    }
+
+    button:focus {
+      border-radius: 4px;
+    }
+  }
+}

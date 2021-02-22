@@ -1,0 +1,86 @@
+@import "src/app/styles/common";
+
+.MoneyMentorCta {
+    @include flexi-relative-prop(padding, 5%, 4%, 3.5%);
+
+    position: relative;
+    top: -57px;
+    margin-bottom: -57px;
+
+    @include mobile {
+        top: 0;
+        margin-top: -175px;
+        padding: 28px 24px 41px;
+        margin-bottom: -100px;
+    }
+
+    &-title {
+        @include relative-prop(font-size, 12, 12, 15);
+        @include relative-prop(line-height, 15.6, 13, 17);
+        @include relative-prop(padding-bottom, 9, 12, 9);
+
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $rich-black;
+    }
+
+    &-subTitle {
+        @include relative-prop(font-size, 20, 20, 32);
+        @include relative-prop(line-height, 26, 26, 42);
+
+        @include bp-up(xl) {
+            width: 64.2%;
+        }
+
+        letter-spacing: -0.02em;
+        color: $blue-charcoal;
+    }
+
+    &-sectionTwo {
+        @include bp-down(lg) {
+            flex-direction: column;
+            align-items: initial;
+        }
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-buttonWrapper {
+        @include bp-up(lg) {
+            align-items: flex-start;
+        }
+
+        display: flex;
+        justify-content: center;
+    }
+
+    &-button {
+        @include bp-down(md) {
+            width: 100%;
+        }
+
+        @include bp-down(lg) {
+            margin-top: 34px;
+        }
+
+        display: flex;
+        justify-content: center;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        background: $dark-blue;
+        border-radius: 50px;
+        padding: 17px 32px;
+    }
+
+    &-buttonText {
+        @include relative-prop(font-size, 16, 16, 18);
+        @include relative-prop(line-height, 18, 18, 20);
+
+        font-family: 'GTWalsheim-Bold';
+        color: $white;
+        letter-spacing: -0.02em;
+        white-space: nowrap;
+    }
+}

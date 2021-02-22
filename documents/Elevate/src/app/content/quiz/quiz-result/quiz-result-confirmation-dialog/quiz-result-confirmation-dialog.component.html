@@ -1,0 +1,39 @@
+<div class="QuizResultConfirmationDialog" [appBackgroundColor]="(closeResultsContent | async)?.settings?.theme">
+
+  <div class="QuizResultConfirmationDialog-header">{{ (closeResultsContent | async)?.headline }}</div>
+
+  <div class="QuizResultConfirmationDialog-description">{{ (closeResultsContent | async)?.subheading }}</div>
+
+  <div class="QuizResultConfirmationDialog-userInputBox">
+    <div>
+      <input class="QuizResultConfirmationDialog-email" name="email" type="email" placeholder="Email Address"
+        [(ngModel)]="userEmail" #email="ngModel" required [pattern]="emailValidatorRegExp" autocomplete="email"
+        (focus)="tealiumClickEventInput()">
+      <span class="QuizResultConfirmationDialog-email-helpText" [hidden]="!(email.touched && email.invalid)">
+        <small>Please enter a valid email.</small>
+      </span>
+    </div>
+
+    <div class="QuizResultConfirmationDialog-checkboxField">
+      <div (click)="toggleOptOutState()">
+        <div class="QuizResultConfirmationDialog-checkbox" role="checkbox" tabindex=0>
+          <img [hidden]="!optOutState" src="assets/icons/awesome-check-icon.svg" alt="aa">
+        </div>
+      </div>
+      <div class="QuizResultConfirmationDialog-checkboxLabel">{{ (closeResultsContent | async)?.optOutText }}</div>
+    </div>
+  </div>
+
+  <div class="QuizResultConfirmationDialog-actions">
+    <button class="QuizResultConfirmationDialog-actions-leave QuizResultConfirmationDialog-actions-button button--secondary-gray"
+      (click)="closeDialog()" cdkFocusInitial [appTealiumClickEvent]="tealiumClickEventLeave">
+      {{ (closeResultsContent | async)?.leaveCta }}
+    </button>
+    <button class="QuizResultConfirmationDialog-actions-save QuizResultConfirmationDialog-actions-button button--secondary-midBlueDarkTint" type="submit"
+      [disabled]="email.invalid || loading" (click)="onSubmit(email.valid)"
+      [appTealiumClickEvent]="tealiumClickEventSave">
+      {{ (closeResultsContent | async)?.saveCta }}
+    </button>
+  </div>
+
+</div>

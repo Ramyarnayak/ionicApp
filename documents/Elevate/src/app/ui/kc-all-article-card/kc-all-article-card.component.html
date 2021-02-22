@@ -1,0 +1,13 @@
+<div class="KCAllArticleCard">
+    <div class="KCAllArticleCard-visual">
+        <img [imageId]="post?.thumbnailImage?.id" class="KCAllArticleCard-visual-image" appImageLoader>
+    </div>
+    <strong class="KCAllArticleCard-type">{{ post?.category?.title }}</strong>
+    <h4 class="KCAllArticleCard-title">{{ post?.title }}</h4>
+    <a [customLink]="post?.navigation?.link"
+        (click)="navigationClick.emit(post?.title)"
+        class="KCAllArticleCard-link"
+        appExternalLink>
+        {{ post?.navigation?.label }}
+    </a>
+</div>

@@ -1,0 +1,613 @@
+@import "src/app/styles/common";
+
+:host {
+    width: 100%;
+}
+
+.FnsnCard-content-item {
+    background: $white;
+    box-shadow: 0px 0px 22px rgba(171, 171, 171, 0.22);
+    border-radius: 8px;
+    position: relative;
+    @include relative-prop(padding-top,24,30,30);
+    @include relative-prop(padding-right,24,30,30);
+    @include relative-prop(padding-bottom,26,33,33);
+    @include relative-prop(padding-left,21,32,32);
+    @include relative-prop(margin-bottom,20,20,20);
+
+    &-heading {
+        @include relative-prop(padding-bottom, 15, 37, 37);
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        @include mobile {
+            position: relative;
+            flex-wrap: wrap;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        &-logotype {
+            @include relative-prop(width,84,100,141);
+            @include relative-prop(margin-right,0,25,31);
+            @include relative-prop(margin-bottom,20,0,0);
+            @include relative-prop(border-radius,12,12,12);
+            overflow: hidden;
+
+            &-image {
+                display: block;
+                width: 100%;
+                height: auto;
+            }
+        }
+        &-info {
+            @include relative-prop(padding-top,0,21,16);
+            @include relative-prop(margin-right,0,16,44);
+
+            @include mobile {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            flex: 1;
+
+            &-title {
+                @include relative-prop(font-size,24,24,24);
+                @include relative-prop(line-height,31.2,31.2,31.2);
+                @include relative-prop(margin-bottom,16,18,18);
+                font-family: $font-family-bold;
+                font-weight: bold;
+
+                @include mobile {
+                    order: 2;
+                }
+            }
+            &-rating {
+                @include relative-prop(margin-bottom,17,17,17);
+                display: flex;
+                align-items: center;
+
+                @include mobile {
+                    order: 1;
+                }
+
+                &-stars {
+                    @include relative-prop(width,86,112,112);
+                    @include relative-prop(margin-right,16,8,8);
+
+                    &-image {
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+                &-text {
+                    @include relative-prop(font-size,14,18,18);
+                    @include relative-prop(line-height,19,23,23);
+                    opacity: 0.5;
+                    font-family: $font-family-medium;
+                    letter-spacing: -0.015em;
+                }
+            }
+            &-text {
+                @include relative-prop(font-size,16,20,20);
+                @include relative-prop(line-height,25.6,32,32);
+                opacity: 0.6;
+
+                @include mobile {
+                    order: 3;
+                }
+            }
+        }
+        &-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            @include mobile {
+                @include relative-prop(padding-top,16,16,16);
+                width: 100%;
+                align-items: center;
+            }
+
+            &-type {
+                @include relative-prop(font-size,10,10,10);
+                @include relative-prop(line-height,11,11,11);
+                @include relative-prop(height,20,20,20);
+                @include relative-prop(padding-right,12,12,12);
+                @include relative-prop(padding-left,12,12,12);
+                @include relative-prop(margin-bottom,31,31,31);
+                @include relative-prop(border-radius,11,11,11);
+                text-transform: uppercase;
+                display: flex;
+                align-items: center;
+                white-space: nowrap;
+
+                @include mobile {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+            &-button {
+                @include relative-prop(width,null,149,149);
+                @include relative-prop(height,52,52,52);
+                @include relative-prop(font-size,16,18,18);
+                @include relative-prop(border-radius,54,54,54);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: $font-family-bold;
+                text-align: center;
+                text-decoration: none;
+
+                @include mobile {
+                    width: 100%;
+                    max-width: 200px;
+                }
+            }
+        }
+    }
+    &-details {
+        @include mobile {
+            @include relative-prop(margin-bottom, 0, 15, 15);
+            border-top: 1px solid $light-gray;
+            // border-radius: 8px;
+            // background-color: $lighter-gray;
+        }
+        
+        &-body2 {
+            @include relative-prop(font-size, 12, 12, 12);
+            @include relative-prop(line-height, 14.4, 14.4, 14.4);
+            @include relative-prop(padding-right, 47, 47, 47);
+            @include relative-prop(padding-left, 47, 47, 47);
+            
+            color: $black;
+            opacity: .6;
+            text-align: center;
+
+            @include mobile {
+                @include relative-prop(font-size, 14, 14, 14);
+                @include relative-prop(line-height, 18.2, 18.2, 18.2);
+                
+                //background-color: $lighter-gray;
+                //border-radius: 8px;
+                opacity: .6;
+                padding: 0 17px 0 0;
+                text-align: left;
+            }
+
+            &-container {
+                display: flex;
+            }
+
+            &-bulletPoint {
+                 display: none;
+
+                @include mobile {
+                   display: block;
+                }
+            }
+        }
+
+        &-description {
+            @include mobile {
+                @include relative-prop(padding-top,30,30,30);
+                @include relative-prop(padding-bottom,20,20,20);
+
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            &-items {
+                border-top: 1px solid $light-gray;
+                border-bottom: 1px solid $light-gray;
+                display: flex;
+                overflow: hidden;
+
+                @include mobile {
+                    width: 100%;
+                    border-top: 0;
+                    border-bottom: 0;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    border-bottom: 0;
+                }
+
+                &-item {
+                    display: none;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    flex: 1;
+                    margin: 0 -1px 0 0;
+
+                    @include mobile {
+                        margin: 0;
+                        @include relative-prop(margin-bottom,8,16,16);
+                        width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-start;
+                    }
+                    
+                    &.less-active {
+                        @include relative-prop(padding-top,0,24,24);
+                        @include relative-prop(padding-bottom,0,24,24);
+                        border-right: 1px solid $light-gray;
+                        display: flex;
+
+                        @include mobile {
+                            border: 0;
+                        }
+                    }
+                    &-title {
+                        @include relative-prop(font-size,12,12,12);
+                        @include relative-prop(line-height,14.4,14.4,14.4);
+                        @include relative-prop(margin-bottom,0,11,11);
+                        letter-spacing: -0.01em;
+                        opacity: 0.6;
+                        display: block;
+                        text-align: center;
+
+                        @include mobile {
+                            text-align: left;
+                            width: 50%;
+                        }
+                    }
+                    &-value {
+                        @include relative-prop(font-size,14,16,16);
+                        @include relative-prop(line-height,18.2,20,20);
+                        letter-spacing: -0.02em;
+                        font-family: $font-family-bold;
+
+                        @include mobile {
+                            width: 50%;
+                        }
+                    }
+                    
+                }
+            }
+            &-note {
+                display: none;
+            }
+            
+        }
+        &-information {
+            @include relative-prop(font-size,12,12,12);
+            @include relative-prop(line-height,18,18,18);
+            @include relative-prop(padding-bottom,30,30,30);
+            color: $light-gray-dark-tint;
+            display: none;
+        }
+        &.ShowMore {
+            border-top: 1px solid $light-gray;
+            .FnsnCard-content-item-details-body2 {
+
+                padding-left: 0;
+            }
+            .FnsnCard-content-item-details-description {
+                @include relative-prop(padding-top,30,30,30);
+                @include relative-prop(padding-bottom,0,30,30);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @mixin tablet-only {
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                }
+
+                &-items {
+                    border-top: 0;
+                    border-bottom: 0;
+                    display: flex;
+                    flex-direction: column;
+
+                    @include mobile {
+                        @include relative-prop(padding-bottom,30,30,30);
+                        @include relative-prop(margin-bottom,26,26,26);
+                        border-bottom: 1px solid $light-gray;
+                    }
+
+                    &-item {
+                        margin: 0;
+                        @include relative-prop(margin-bottom,16,16,16);
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-start;
+                        flex: 1 1 auto;
+                        
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                        &.less-active {
+                            @include relative-prop(padding-top,0,0,0);
+                            @include relative-prop(padding-bottom,0,0,0);
+                            border-right: 0;
+                            display: flex;
+                        }
+                        &-title {
+                            @include relative-prop(font-size,12,12,12);
+                            @include relative-prop(line-height,20,20,20);
+                            @include relative-prop(margin-bottom,0,0,0);
+                            @include relative-prop(margin-top,-1,-1,-1);
+                            @include relative-prop(width,null,158,191);
+                            letter-spacing: -0.01em;
+                            opacity: 0.6;
+                            font-family: $font-family-medium;
+                            display: block;
+                            text-align: left;
+
+                            @include mobile {
+                                width: 50%;
+                            }
+                        }
+                        &-value {
+                            @include relative-prop(font-size,16,16,16);
+                            @include relative-prop(line-height,21,21,21);
+                            letter-spacing: -0.02em;
+                            font-family: $font-family-bold;
+                            display: block;
+                        }
+                    }
+                }
+                &-note {
+                    @include relative-prop(padding-top,20,18,20);
+                    @include relative-prop(padding-bottom,20,18,20);
+                    @include relative-prop(padding-right,24,14,24);
+                    @include relative-prop(padding-left,29,14,29);
+                    @include relative-prop(font-size,16,16,16);
+                    @include relative-prop(line-height,24,24,24);
+                    @include relative-prop(width,null,323,416);
+                    display: block;
+                    background: rgba($lighter-gray,0.5);
+                    border-radius: 8px;
+
+                    ul {
+                        opacity: 0.6;
+                    }
+
+                    @include mobile {
+                        width: 100%;
+
+                        ul {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-expandedContent {
+        height: 0;
+        overflow: hidden;
+
+        &--isExpanded {
+            @include flexi-relative-prop(border-bottom, null, 1px solid $light-gray, 1px solid $light-gray);
+            height: auto;
+            //margin-top: 32px;
+
+            @include mobile {
+                margin-top: 0;
+            }
+        }
+
+        &-body {
+            @include relative-prop(margin-bottom, 20, 20, 40);
+            @include relative-prop(font-size, 12, 12, 16);
+            @include relative-prop(line-height, 25.6, 25.6, 32);
+
+            background-color: $lighter-gray;
+            border-radius: 8px;
+            padding: 19px 17px 20px;
+        }
+
+        &-disclaimer {
+            color: $light-gray-dark-tint;
+            font-size: 12px;
+            letter-spacing: -.15px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &-footer {
+        @include relative-prop(padding-top,23,23,23);
+        display: flex;
+        justify-content: center;
+
+        @include mobile {
+            border-top: 1px solid $light-gray;
+        }
+
+        &--isExpanded {
+            .FnsnCard-content-item-footer-button::after {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+
+        &-button {
+            @include relative-prop(font-size,12,12,12);
+            @include relative-prop(padding-right,19,29,29);
+            font-family: $font-family-regular;
+            border:0;
+            background: none;
+            text-decoration: underline;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+
+            &:hover {
+                text-decoration: none;
+            }
+            &:after {
+                @include relative-prop(width,13,20,20);
+                @include relative-prop(height,11,20,20);
+                @include relative-prop(margin-top,-1,0,0);
+                background: url('/assets/icons/arrow-down.svg') 0 0 no-repeat;
+                background-size: 100% 100%;
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: rotate 300ms linear;
+            }
+        }
+    }
+    &.expanded {
+        .FnsnCard-content-item-footer {
+            border-top: 1px solid $light-gray;
+
+            &-button {
+                &:after {
+                    transform: translateY(-50%) rotate(180deg);
+                }
+            }
+        }
+        .FnsnCard-content-item-details {
+            border-top: 1px solid $light-gray;
+
+            &-description {
+                @include relative-prop(padding-top,20,20,20);
+                @include relative-prop(padding-bottom,20,20,20);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                @mixin tablet-only {
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+                }
+
+                &-items {
+                    border-top: 0;
+                    border-bottom: 0;
+                    display: flex;
+                    flex-direction: column;
+
+                    @include mobile {
+                        @include relative-prop(padding-bottom,30,30,30);
+                        @include relative-prop(margin-bottom,26,26,26);
+                        border-bottom: 1px solid $light-gray;
+                    }
+
+                    &-item {
+                        margin: 0;
+                        @include relative-prop(margin-bottom,16,16,16);
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: flex-start;
+                        flex: 1 1 auto;
+                        
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                        &.less-active {
+                            @include relative-prop(padding-top,0,0,0);
+                            @include relative-prop(padding-bottom,0,0,0);
+                            border-right: 0;
+                            display: flex;
+                        }
+                        &-title {
+                            @include relative-prop(font-size,12,12,12);
+                            @include relative-prop(line-height,20,20,20);
+                            @include relative-prop(margin-bottom,0,0,0);
+                            @include relative-prop(margin-top,-1,-1,-1);
+                            @include relative-prop(width,null,158,191);
+                            letter-spacing: -0.01em;
+                            opacity: 0.6;
+                            font-family: $font-family-medium;
+                            display: block;
+                            text-align: left;
+
+                            @include mobile {
+                                width: 50%;
+                            }
+                        }
+                        &-value {
+                            @include relative-prop(font-size,16,16,16);
+                            @include relative-prop(line-height,21,21,21);
+                            letter-spacing: -0.02em;
+                            font-family: $font-family-bold;
+                            display: block;
+                        }
+                    }
+                }
+                &-note {
+                    @include relative-prop(padding-top,20,18,20);
+                    @include relative-prop(padding-bottom,20,18,20);
+                    @include relative-prop(padding-right,24,14,24);
+                    @include relative-prop(padding-left,29,14,29);
+                    @include relative-prop(font-size,16,16,16);
+                    @include relative-prop(line-height,24,24,24);
+                    @include relative-prop(width,null,323,416);
+                    display: block;
+                    background: rgba($lighter-gray,0.5);
+                    border-radius: 8px;
+
+                    ul {
+                        opacity: 0.6;
+                    }
+
+                    @include mobile {
+                        width: 100%;
+
+                        ul {
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+            &-information {
+                display: block;
+
+                &-show_more {
+                    display: none;
+                }
+
+                @include mobile {
+                    &.isLongText {
+                        position: relative;
+                        @include relative-prop(height,126,126,126);
+                        @include relative-prop(margin-bottom,23,23,23);
+                        overflow: hidden;
+
+                        &:after {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            content: "";
+                            @include relative-prop(height,80,80,80);
+                            /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&0+0,1+81 */
+                            background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 81%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+                            background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 81%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+                            background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 81%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+                            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+                        }
+
+                        .FnsnCard-content-item-details-information-show_more {
+                            display: block;
+                            position: absolute;
+                            z-index: 2;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            @include relative-prop(font-size,12,12,12);
+                            @include relative-prop(bottom,4,4,4);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.noStateSelected {
+        background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, #F7F7F7 100%);
+    }
+}

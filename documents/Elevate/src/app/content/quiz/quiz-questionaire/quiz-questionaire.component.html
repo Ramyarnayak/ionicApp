@@ -1,0 +1,57 @@
+<app-progress-bar [pages]="getTotalQuestionCount(quizQuestion | async)" [currentPage]="getCurrentQuestion() + 1"></app-progress-bar>
+<div class="QuizQuestionaire" id="QuizQuestionaireHolder"  [ngClass]="{'QuizQuestionaire--leaveAnimation' : startPageLeaveAnimation}">
+  <div class="QuizQuestionaire-left" [ngClass]="{'QuizQuestionaire-left--leaveAnimation' : startLeaveAnimation, 'QuizQuestionaire-left--incomeAnimation' : startInterAnimation}">
+    <div class="QuizQuestionaire-left-scroll">
+      <div #questionRef class="QuizQuestionaire-question" appTargetBlank
+      [innerHTML]="(getQuestion(quizQuestion | async).question)">
+      </div>
+      <div class="QuizQuestionaire-tipTop" *ngIf="getQuestion(quizQuestion | async).tooltip">
+        <app-quiz-tip [tooltip]="(getQuestion(quizQuestion | async).tooltip)"></app-quiz-tip>
+      </div>
+      <div class="QuizQuestionaire-options">
+        <ng-container
+          *ngFor="let item of getQuestion(quizQuestion | async).options; let i = index">
+          <button
+            *ngIf="(getOptionDetailById(item.option?.id) | async) as option"
+            class="QuizQuestionaire-options-item"
+            (click)="setOptionSelected(option)"
+            [class]="{'active': isActive(option)}"
+            [appTealiumClickEvent]="getTealiumClickEvent(getQuestion(quizQuestion | async).quizBreakdownTabName, 'select', option.label)">
+            {{option.label}}
+            <img class="QuizQuestionaire-options-item--tick" [class]="{'active--tick': isActive(option)}"
+            src="assets/icons/options-tick.svg" />
+          </button>
+        </ng-container>
+      </div>
+    </div>
+    <div class="QuizQuestionaire-submitButtons-wrapper" [ngClass]="{ 'tipShown' : quizTipShow }">
+      <div class="QuizQuestionaire-submitButtons">
+        <button
+          class="QuizQuestionaire-submitButtons-back"
+          (click)="onBackClick()"
+          [appTealiumClickEvent]="getTealiumClickEvent(getQuestion(quizQuestion | async).quizBreakdownTabName, 'back')">
+          {{ (getQuestion(quizQuestion | async).goBackCta) }}
+        </button>
+        <button
+          class="QuizQuestionaire-submitButtons-next"
+          appThrottleClick (throttleClick)="onNextClick()" [throttleTime]="700"
+          [disabled]="isNextDisabled"
+          [appTealiumClickEvent]="getTealiumClickEvent(getQuestion(quizQuestion | async).quizBreakdownTabName, 'next')">
+          {{ (getQuestion(quizQuestion | async).nextCta) }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="QuizQuestionaire-tip" id="QuizQuestionaireNote" *ngIf="getQuestion(quizQuestion | async).tooltip">
+    <app-quiz-tip [tooltip]="(getQuestion(quizQuestion | async).tooltip)"></app-quiz-tip>
+  </div>
+
+  <img class="QuizQuestionaire-mainBalloon" @fade [ngStyle]="{ 'margin-top': getImagePosition(1) }" alt="main balloon" src="assets/images/quiz-intro-balloon-1.png" />
+  <div class="QuizQuestionaire-clouds-layer-1" @fade [ngStyle]="{ 'background-position': getImagePosition(2) }"></div>
+  <div class="QuizQuestionaire-clouds-layer-2" @fade [ngStyle]="{ 'background-position': getImagePosition(3) }"></div>
+  <div class="QuizQuestionaire-clouds-layer-3" @fade [ngStyle]="{ 'background-position': getImagePosition(4) }"></div>
+  <div class="QuizQuestionaire-clouds-layer-4" @fade [ngStyle]="{ 'background-position': getImagePosition(5) }"></div>
+
+</div>
+

@@ -1,0 +1,47 @@
+@import '../../styles/common';
+
+:host {
+    @include flexi-relative-prop(display, block, none, none);
+
+    background-color: $elevate-blue;
+    font-family: $font-family-regular;
+    max-height: 150px;
+    opacity: 1;
+    transition: max-height 800ms ease-out, opacity 800ms ease-out;
+
+    &.hide {
+        max-height: 0;
+        opacity: 0;
+    }
+
+    &.light-theme {
+        background-color: $white;
+
+        .HeaderMobile-logo {
+            background-image: url('/assets/elevate-logo-blue.png');
+        }
+    }
+}
+
+.HeaderMobile {
+    align-items: center;
+    display: flex;
+    height: $header-mobile-height;
+    justify-content: space-between;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    &-logo {
+        background-image: url('/assets/elevate-logo.png');
+        background-size: cover;
+        height: 28px;
+        width: 100px;
+    }
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}

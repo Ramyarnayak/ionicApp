@@ -1,0 +1,46 @@
+@import 'src/app/styles/common';
+
+.PageNotFound {
+    @include relative-prop(padding-top, 34, 34, 71);
+
+    align-items: center;
+    background-color: $elevate-blue;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-left: 24px;
+    padding-right: 24px;
+
+    &-button {
+        font-family: $font-family-bold;
+        line-height: 19px;
+        padding: 16px 95px 17px;
+    }
+
+    &-description {
+        @include relative-prop(font-size, 24, 24, 40);
+        @include relative-prop(margin-bottom, 32, 32, 25);
+        @include relative-prop(max-width, 325, 325, 500);
+        
+        font-family: $font-family-bold;
+        letter-spacing: -.02em;
+        line-height: 130%;
+        text-align: center;
+    }
+
+    &-error {
+        @include flexi-relative-prop(letter-spacing, .05em, .05em, .02em);
+        @include relative-prop(font-size, 12, 12, null);
+
+        color: $white;
+        line-height: 110%;
+        margin-bottom: 15px;
+        text-transform: uppercase;
+    }
+
+    &-illustration {
+        @include relative-prop(margin-bottom, 60, 60, 51);
+        
+        max-width: 100%;
+    }
+}

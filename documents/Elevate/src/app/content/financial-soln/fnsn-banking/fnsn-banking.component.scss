@@ -1,0 +1,451 @@
+@import "../../../styles/common.scss";
+
+:host ::ng-deep {
+  .FnSnBanking {
+      .AppCustomSelect-itemText {
+          @include relative-prop(font-size, 16, 16, 16);
+          @include relative-prop(line-height, 20.8, 20.8, 20.8);
+      }
+  }
+  .FnSnBanking-inpageDisclaimer {
+    p {
+      @include relative-prop(margin-bottom, 18, 18, 18);
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .FnSnBanking-sidebar-filter-form-select.noStateSelected {
+      input {
+          opacity: 0.6;
+      }
+  }
+}
+
+.button--load-more {
+  @include flexi-relative-prop(width, 61%, 61%, 47%);
+  @include relative-prop(font-size, 18, 18, 16);
+  font-family: $font-family-bold;
+  margin-top: 80px;
+  padding: 16px 0 17px;
+}
+
+.FnSnBanking {
+  @include relative-prop(padding-bottom, 31, 83, 83);
+
+  &-main {
+    @include flexi-relative-prop(display, null, null, flex);
+    @include relative-prop(padding-top, 64, 64, 100);
+  }
+
+  &-sidebar {
+    @include relative-prop(width, null, null, 304);
+    @include relative-prop(margin-right, 0, 50, 111);
+    flex: 0 0 auto;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    @include tablet-only{
+      width: 100%;
+    }
+
+    &-filter {
+      @include relative-prop(width, 276, 276, null);
+
+      @include s-mobile {
+        @include relative-prop(width, null, null, null);
+        @include relative-prop(padding-bottom, 0, 0, 30);
+        @include relative-prop(margin-bottom, 35, 35, 42);
+        width: 100%;
+        border: 0;
+      }
+
+      &-noStateSelected {
+        @include relative-prop(margin-bottom, 32, 32, 32);
+        @include relative-prop(font-size, 18, 18, 18);
+        @include relative-prop(line-height, 23, 23, 23);
+        letter-spacing: -0.02em;
+        color: $black;
+      }
+
+      &-form {
+        &-row {
+          @include relative-prop(margin-bottom, 40, 68, 60);
+
+          @include tablet-only {
+            @include relative-prop(margin-bottom, 45, 40, 60);
+          }
+        }
+
+        &-input_row {
+          @include relative-prop(margin-bottom, 30, 30, 30);
+          display: flex;
+          align-items: center;
+
+          &-label {
+            @include relative-prop(font-size, 18, 18, 18);
+            @include relative-prop(margin-right, 18, 18, 18);
+            font-family: $font-family-medium;
+          }
+        }
+
+        &-checkbox_filters_desktop {
+          display: block;
+
+          @include mobile {
+            display: none;
+          }
+
+          @include tablet-only {
+            display: none;
+          }
+        }
+
+        &-checkbox_filters_mobile {
+          display: none;
+
+          @include mobile {
+            display: block;
+          }
+
+          @include tablet-only {
+            display: block;
+          }
+
+          &-overlay {
+            display: block;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            background-color: $black;
+            top: 0;
+            left: 0;
+            z-index: 12;
+            opacity: 0.15;
+          }
+
+          &-container {
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            width: 100%;
+            background-color: $white;
+            z-index: 13;
+            padding: 19px 24px;
+          }
+        }
+
+        &-range_row {
+          @include relative-prop(margin-bottom, 67, 67, 67);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          @include tablet-only {
+            @include relative-prop(margin-bottom, 0, 0, 67);
+          }
+
+          @include mobile {
+            @include relative-prop(margin-bottom, 0, 0, 67);
+          }
+
+          &-label_left {
+            @include relative-prop(font-size, 14, 14, 14);
+            @include relative-prop(margin-right, 8, 8, 8);
+            opacity: 0.5;
+          }
+
+          &-label_right {
+            @include relative-prop(font-size, 14, 14, 14);
+            @include relative-prop(margin-left, 8, 8, 8);
+            opacity: 0.5;
+          }
+        }
+
+        &-select {
+          width: 100%;
+          height: 52px;
+        }
+
+        &-input {
+          @include relative-prop(width, 118, 118, 118);
+          @include relative-prop(font-size, 24, 24, 24);
+          @include relative-prop(height, 38, 38, 38);
+          @include relative-prop(padding-top, 6, 6, 6);
+          @include relative-prop(border-radius, 24, 24, 24);
+          border: 0;
+          font-family: $font-family-bold;
+          background: $dark-blue;
+          color: $white;
+          text-align: center;
+          outline: none;
+        }
+
+        &-range {
+          flex: 1 1 auto;
+          -webkit-appearance: none;
+          width: 100%;
+          @include relative-prop(height, 3, 3, 3);
+          border-radius: 5px;
+          background: rgba($dark-blue, 0.5);
+          outline: none;
+
+          &::-webkit-slider-thumb {
+            @include relative-prop(width, 21, 21, 21);
+            @include relative-prop(height, 21, 21, 21);
+            -webkit-appearance: none;
+            appearance: none;
+            border-radius: 50%;
+            background: $dark-blue;
+            cursor: pointer;
+            outline: none;
+          }
+
+          &::-moz-range-thumb {
+            @include relative-prop(width, 21, 21, 21);
+            @include relative-prop(height, 21, 21, 21);
+            border-radius: 50%;
+            background: $dark-blue;
+            cursor: pointer;
+          }
+        }
+
+        &-checkbox_row {
+          @include tablet-only {
+            @include relative-prop(padding-left, 48, 48, 48);
+            @include relative-prop(padding-right, 48, 48, 48);
+            @include relative-prop(padding-top, 19, 19, 19);
+          }
+
+          @include mobile {
+            @include relative-prop(padding-left, 8, 8, 8);
+            @include relative-prop(padding-right, 8, 8, 8);
+            @include relative-prop(padding-top, 19, 19, 19);
+          }
+
+          &-label {
+            @include relative-prop(font-size, 18, 18, 18);
+            @include relative-prop(margin-right, 18, 18, 18);
+            @include relative-prop(margin-bottom, 23, 23, 23);
+            font-family: $font-family-medium;
+            display: block;
+
+            @include mobile {
+              display: none;
+            }
+
+            @include tablet-only {
+              display: none;
+            }
+          }
+
+          &-mobile_heading {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+
+            @include tablet-only {
+              display: flex;
+            }
+
+            @include mobile {
+              display: flex;
+            }
+
+            &-button {
+              color: $mid-blue;
+              border: 0;
+              background: none;
+              padding: 0;
+              margin: 0;
+              -webkit-appearance: none;
+              font-family: $font-family-medium;
+              font-weight: $font-weight-medium;
+              @include relative-prop(font-size, 16, 16, 16);
+              @include relative-prop(line-height, 25.6, 25.6, 25.6);
+              cursor: pointer;
+            }
+
+            &-title {
+              font-family: $font-family-bold;
+              font-weight: $font-weight-bold;
+              @include relative-prop(font-size, 16, 16, 16);
+
+              + button {
+                font-family: $font-family-bold;
+                font-weight: $font-weight-bold;
+              }
+            }
+          }
+
+          &-reset_button {
+            display: block;
+            @include relative-prop(font-size, 14, 14, 14);
+            @include relative-prop(line-height, 16, 16, 16);
+            @include relative-prop(margin-top, 40, 40, 40);
+            background: none;
+            border: 0;
+            -webkit-appearance: none;
+            color: $mid-dark-blue;
+            padding: 0;
+            text-decoration: underline;
+            outline: none;
+            cursor: pointer;
+
+            @include tablet-only {
+              display: none;
+            }
+
+            @include mobile {
+              display: none;
+            }
+          }
+
+          &-checkbox {
+            @include relative-prop(margin-bottom, 18, 18, 18);
+
+            &-input {
+              display: none;
+            }
+
+            &-label {
+              @include relative-prop(font-size, 16, 16, 16);
+              @include relative-prop(line-height, 24, 24, 24);
+              position: relative;
+              display: inline-block;
+              vertical-align: middle;
+
+              span {
+                @include relative-prop(padding-left, 32, 32, 32);
+                position: relative;
+                display: inline-block;
+
+                &:before {
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  border: 2px solid $dark-blue;
+                  @include relative-prop(width, 18, 18, 18);
+                  @include relative-prop(height, 18, 18, 18);
+                  @include relative-prop(border-width, 2, 2, 2);
+                  @include relative-prop(border-radius, 2, 2, 2);
+                  border-radius: 2px;
+                  content: "";
+                  background-color: $white;
+                }
+              }
+            }
+
+            &-input:checked + span {
+              &:before {
+                background: $white url("/assets/icons/checkbox-selected.svg")
+                  50% 50% no-repeat;
+                background-size: 100% 100%;
+                border: 0;
+              }
+            }
+          }
+        }
+      }
+
+      &-mobile_button {
+        display: none;
+        @include relative-prop(bottom, 16, 16, 16);
+        @include relative-prop(font-size, 14, 14, 14);
+        background: none;
+        border: 0;
+        -webkit-appearance: none;
+        color: $dark-charcoal;
+        position: absolute;
+        right: 0;
+        text-decoration: underline;
+        outline: none;
+      }
+
+      @include tablet-only {
+        &-mobile_button {
+          display: block;
+        }
+      }
+
+      @include mobile {
+        &-mobile_button {
+          display: block;
+        }
+      }
+    }
+  }
+
+  &-headline {
+    @include relative-prop(font-size, 42, 42, 40);
+    @include relative-prop(line-height, 52, 52, 52);
+    @include relative-prop(margin-bottom, 16, 16, 32);
+
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+  }
+
+  &-description {
+    @include relative-prop(font-size, 14, 14, 16);
+    @include relative-prop(line-height, 24, 24, 24);
+    @include relative-prop(margin-bottom, 40, 40, 42);
+    @include relative-prop(padding-bottom, 0, 0, 30);
+
+    border-bottom: 1px solid rgba($black, 0.2);
+
+    @include mobile {
+      border: none;
+    }
+
+    @include tablet-only{
+      border: none;
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto;
+
+    @include tablet-only {
+      width: 100%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    &--noStateSelected {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+
+  &-inpageDisclaimer {
+    @include relative-prop(padding-top, 82, 26, 44);
+    @include flexi-relative-prop(width, 100%, 60%, 60%);
+    @include relative-prop(font-size, 12, 12, 14);
+    @include relative-prop(line-height, 16.2, 16.2, 18.9);
+    @include relative-prop(margin-bottom, 98, 78, 59);
+  }
+
+  &-scrollToTop {
+    @include relative-prop(font-size, 16, 16, 16);
+    @include relative-prop(line-height, 20.8, 20.8, 20.8);
+    font-family: $font-family-bold;
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+  }
+}

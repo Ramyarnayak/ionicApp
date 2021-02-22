@@ -1,0 +1,3 @@
+<div class="Quote" [ngClass]="(customerhubMtQuoteBarContent | async)?.settings?.theme">
+  <blockquote class="Quote-text" [innerHTML]="(customerhubMtQuoteBarContent | async)?.text | safe: 'html'"></blockquote>
+</div>

@@ -1,0 +1,30 @@
+<div class="AppCustomSelect" (appClickOutside)="open = false">
+    <div class="AppCustomSelect-inner">
+        <div class="AppCustomSelect-selectedItem-container" (click)="open = !open" [hidden]="open">
+            <input
+                class="AppCustomSelect-selectedItem AppCustomSelect-itemText"
+                [value]="selectedItem?.label"
+                readonly
+                [ngStyle]="boxStyle"
+                autocomplete="off"
+                [placeholder]="placeholder"
+                (keydown)="onKeyDown($event)">
+        </div>
+        <div class="AppCustomSelect-list" [hidden]="!open" (click)="open = false">
+            <label
+                class="AppCustomSelect-listItem AppCustomSelect-itemText"
+                *ngIf="selectedItem">
+                {{ selectedItem?.label }}
+                <img src="assets/icons/dropup-arrow.svg">
+            </label>
+            <div class="AppCustomSelect-overflow">
+                <label
+                    class="AppCustomSelect-listItem AppCustomSelect-itemText"
+                    *ngFor="let item of unSelectedItems"
+                    (click)="onClickItem(item)">
+                    {{ item?.label }}
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

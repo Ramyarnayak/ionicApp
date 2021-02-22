@@ -1,0 +1,154 @@
+@import "../../../styles/common.scss";
+
+.QuizTip {
+  @include relative-prop(width, null, 281, 378);
+
+  @include mobile {
+    border-radius: 0;
+    display: flex;
+    justify-content: left;
+    width: auto;
+  }
+
+  &-image {
+    @include relative-prop(left, null, -35, -35);
+    @include relative-prop(top, null, -20, -20);
+    @include relative-prop(width, 56, 66, 82);
+    position: absolute;
+    cursor: pointer;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &-imageMobile {
+    display: none;
+    cursor: pointer;
+
+    @include mobile {
+      display: inline-flex;
+      left: 24px;
+      width: 16px;
+      height: 15.3px;
+    }
+  }
+
+  &-title {
+    @include relative-prop(padding-top, 32, 32, 20);
+    @include relative-prop(padding-right, 0, 40, 40);
+    @include relative-prop(padding-bottom, 32, 32, 20);
+    @include relative-prop(padding-left, 0, 34, 70);
+    background-color: $mid-light-blue;
+    border-radius: 16px;
+    cursor: pointer;
+
+    @include mobile {
+      background-color: $transparent-white;
+      border-radius: 0;
+      display: flex;
+      align-items: center
+    }
+  }
+
+  &-titleText {
+    @include relative-prop(font-size, 12, 12, 20);
+    @include relative-prop(line-height, 15.6, 15.6, 26);
+    @include relative-prop(width, null, 244, 268);
+
+    color: $elevate_blue;
+    font-family: $font-family-bold;
+
+    @include mobile {
+      font-family: $font-family-regular;
+      width: auto;
+      padding-left: 6px;
+    }
+  }
+
+  &-emailTip {
+    @include mobile {
+      color: $white;
+      font-family: $font-family-bold;
+    }
+  }
+
+  &-questionaireTip {
+    @include mobile {
+      color: $elevate_blue;
+    }
+  }
+
+  &-close {
+    @include relative-prop(width, 25, 25, 25);
+    @include relative-prop(font, 16, 16, 16);
+    @include relative-prop(line-height, 21.6, 21.6, 21.6);
+    @include relative-prop(top, 20, 20, 20);
+    @include relative-prop(right, 24, 24, 30);
+
+    position: absolute;
+    text-align: right;
+    cursor: pointer;
+  }
+
+  &-overlay {
+    display: none;
+
+    @include mobile {
+      display: block;
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      background-color: $black;
+      top: 0;
+      left: 0;
+      z-index: 12;
+      opacity: 0.15;
+    }
+  }
+
+  &-description {
+    @include relative-prop(font-size, 14, 14, 14);
+    @include relative-prop(line-height, 18.2, 18.2, 18.2);
+    @include relative-prop(padding-right, 89, 16, 75);
+    @include relative-prop(padding-top, 30, 30, 30);
+    @include relative-prop(padding-bottom, 75, 30, 30);
+    @include relative-prop(padding-left, 24, 16, 33);
+
+    background-color: $white;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    box-shadow: 0px 15px 35px rgba(171, 171, 171, 0.15);
+    color: $black;
+    position: relative;
+    z-index: 12;
+
+    @include mobile {
+      bottom: 0;
+      left: 0;
+      position: absolute;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      width: 100%;
+    }
+  }
+
+  &-borderRadiusBottomNone {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &-descriptionContainer {
+    @include relative-prop(margin-bottom, 10, 15, 15);
+  }
+
+  &-descriptionContainer:last-child {
+    @include relative-prop(margin-bottom, 0, 0, 0);
+  }
+
+  &-descriptionTitle {
+    font-family: $font-family-bold;
+  }
+}

@@ -1,0 +1,61 @@
+@import "src/app/styles/common";
+
+.HeaderDSearch {
+  @include responsive-prop(padding-top, 0, 46);
+  @include responsive-prop(padding-bottom, 0, 47);
+  background-color: $cream;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  left: 0;
+  top:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-input {
+    @include responsive-prop(height, 0, 88);
+    @include responsive-prop(padding-left, 0, 93);
+    @include responsive-prop(padding-right, 0, 93);
+    @include responsive-prop(font-size, 0, 20);
+    line-height: 160%;
+    letter-spacing: -0.01em;
+    background-color: white;
+    border-radius: 100px;
+    border: 0;
+    width: 100%;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-icon {
+    @include responsive-prop(left, 0, 174);
+    @include responsive-prop(width, 0, 33);
+    @include responsive-prop(height, 0, 31);
+    position: absolute;
+  }
+
+  &-inputFocused {
+    display: none;
+  }
+
+  &-button {
+    @include responsive-prop(font-size, 0, 16);
+    @include responsive-prop(line-height, 0, 20.8);
+    @include responsive-prop(width, 0, 150);
+    @include responsive-prop(height, 0, 52);
+    font-family: $font-family-bold;
+    text-align: center;
+    background: $dark-blue;
+    border-radius: 54px;
+    width: 10%;
+    margin-left: 29px;
+    color: white;
+    border: 0;
+    cursor: pointer;
+  }
+
+
+}

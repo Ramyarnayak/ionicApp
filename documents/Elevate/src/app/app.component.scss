@@ -1,0 +1,32 @@
+@import "../app/styles/common.scss";
+
+.App {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100vh;
+  max-height: -webkit-fill-available;
+
+  &-header {
+    position: sticky;
+    top: 0;
+    z-index: $header-z-index;
+    background-color: white;
+
+    &--static {
+      position: relative;
+      z-index: $header-z-index;
+      background-color: $elevate-blue;
+    }
+
+    &--hide {
+      display: none;
+    }
+  }
+
+  &-footer {
+    &--hide {
+      display: none;
+    }
+  }
+}

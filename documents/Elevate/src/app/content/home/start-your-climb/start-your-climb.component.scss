@@ -1,0 +1,133 @@
+@import "src/app/styles/common";
+
+.StartYourClimb {
+  position: relative;
+
+  &-emptyBox {
+    @include relative-prop(height, 260, 208, 208);
+  }
+
+  &-main {
+    @include relative-prop(padding-bottom, 145, 160, 160);
+    background-color: $mid-dark-blue;
+
+    @include mobile {
+      padding-top: 154px;
+    }
+  }
+
+  &-title {
+    @include relative-prop(font-size, 42, 42, 96);
+    @include relative-prop(line-height, 46.2, 46.2, 107.5);
+    @include relative-prop(padding-top, 25, 106, 125);
+    @include relative-prop(padding-bottom, 60, 78, 78);
+    @include flexi-relative-prop(width, 90%, 44%, 46%);
+
+    font-family: $font-family-bold;
+    letter-spacing: -2%;
+    color: $white;
+    z-index: 1;
+    position: relative;
+    background-color: $mid-dark-blue;
+  }
+
+  &-tiles {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 8;
+      background-color: $mid-dark-blue;
+
+      @include mobile {
+        display: block;
+      }
+  }
+
+  &-Images {
+    @include relative-prop(left, 45, null, 865);
+    @include relative-prop(top, 200, 320, 120);
+
+    display: inline-block;
+    position: absolute;
+
+    @include tablet-only {
+      left: calc(665/1024 * 100vw);
+    }
+
+    &-arrows {
+      @include relative-prop(width, null, 245, 491);
+      clip-path: inset(0 0 calc(80/1600 * 100vw) 0);
+
+
+      @include mobile {
+        min-width: 285px;
+      }
+    }
+
+    &-cloudone {
+      @include relative-prop(width, null, 75, 118);
+      @include relative-prop(top, null, -180, 150);
+      @include relative-prop(left, null, 0, -100);
+
+      @include mobile {
+        min-width: 75px;
+        top: 0;
+      }
+
+      position: absolute;
+    }
+
+    &-cloudtwo {
+      @include relative-prop(width, null, 73, 148);
+      @include relative-prop(top, -150, -320, -200);
+      @include relative-prop(left, 115, 100, 100);
+
+      @include mobile {
+        min-width: 94px;
+      }
+
+      position: absolute;
+    }
+
+    &-cloudthree {
+      @include relative-prop(width, null, 70, 148);
+      @include relative-prop(top, 50, -80, 200);
+      @include relative-prop(right, null, 15, 15);
+
+      @include mobile {
+        min-width: 90px;
+      }
+
+      position: absolute;
+    }
+
+    &-cloudfour {
+      @include relative-prop(width, null, 131, 131);
+      @include relative-prop(top, null, -200, -200);
+      @include relative-prop(right, null, -200, -200);
+
+      @include mobile {
+        display: none;
+      }
+
+      @include tablet-only {
+        display: none;
+      }
+
+      position: absolute;
+    }
+  }
+
+
+  &-disclaimer {
+    @include relative-prop(font-size, 12, 12, 14);
+    @include relative-prop(line-height, 16.2, 16.2, 18.9);
+    @include relative-prop(padding-top, 14, 110, 110);
+
+    @include bp-up(xl) {
+      width: 72%;
+    }
+
+    color: $white;
+  }
+}

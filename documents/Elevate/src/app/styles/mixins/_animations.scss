@@ -1,0 +1,46 @@
+// Mixin to set the perspective
+// of parent container for
+// relative scrolling
+// @param {String} $perspective [null] - perspective
+// @example
+//   @include parallax-parent()
+// @example
+//   @include parallax-parent(400px)
+@mixin parallax-parent($perspective: null) {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100vh;
+    transform-style: preserve-3d;
+    perspective: 500px;
+    -webkit-perspective: 500px;
+    
+    @if ($perspective) {
+        perspective: $perspective;
+        -webkit-perspective: $perspective;
+    }
+}
+
+// Mixin to set the tranform property
+// for relative scrolling
+// @param {String} $z - translateZ
+// @param {String} $x [null] - translateX
+// @param {String} $y [null] - translateY
+// @param {Number} $scale [null] - scale
+// @example
+//  @include parallax-element(80px, null, 60px, 0.9);
+@mixin parallax-element($z, $x: null, $y: null, $scale: null) {
+
+    @if not $x {
+        $x: 0px;
+    }
+
+    @if not $y {
+        $y: 0px;
+    }
+
+    @if not $scale {
+        $scale: 1;
+    }
+
+    transform: translateZ($z) translateX($x) translateY($y) scale(#{$scale});
+}

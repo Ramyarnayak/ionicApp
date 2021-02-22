@@ -1,0 +1,21 @@
+<div [class]="{'QuizCloseModal-wrapper': !!hide }">
+  <div class="QuizCloseModal">
+    <div class="QuizCloseModal-foreground">
+      <div class="QuizCloseModal-title">
+        {{ (quizCloseModal | async)?.headline}}
+      </div>
+      <div class="QuizCloseModal-subtitle">
+        {{(quizCloseModal | async)?.subheading}}
+      </div>
+      <div class="QuizCloseModal-buttons">
+        <div class="QuizCloseModal-buttonLeave button--secondary-gray" (click)="emitAnswer(true)" [appTealiumClickEvent]="getTealiumClickEvent('leave', null)">
+          {{(quizCloseModal | async)?.leaveCta}}
+        </div>
+        <div class="QuizCloseModal-buttonCancel button--secondary-midBlueDarkTint" (click)="emitAnswer(false)" [appTealiumClickEvent]="getTealiumClickEvent('leave', 'cancel')">
+          {{(quizCloseModal | async)?.stayCta}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="QuizCloseModal-background"></div>
+</div>

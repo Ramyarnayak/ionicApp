@@ -1,0 +1,32 @@
+<div class="KCAllArticles" [ngClass]="knowledgeCenterLongArticles?.settings?.theme">
+    <h3 *ngIf="rowIndex === 1" class="KCAllArticles-title">{{ knowledgeCenterLongArticles?.headline }}</h3>
+    <div *ngIf="rowIndex === 1 && knowledgeCenterLongArticles?.articles.length" class="KCAllArticles-cards">
+        <ng-container *ngFor="let post of knowledgeCenterLongArticles?.articles.slice(articleStartIndex, articleEndIndex); let i = index">
+            <app-kc-all-article-card [post]="post?.article"
+                (navigationClick)="navigationClick.emit({ index: ((rowIndex - 1) * rowLength) + i + 1, title: $event })"
+                class="KCAllArticles-item">
+            </app-kc-all-article-card>
+        </ng-container>
+    </div>
+
+    <div *ngIf="rowIndex === 2 && knowledgeCenterLongArticles?.articles.length > rowLength" class="KCAllArticles-cards">
+        <ng-container *ngFor="let post of knowledgeCenterLongArticles?.articles.slice(articleStartIndex, articleEndIndex); let i = index">
+            <app-kc-all-article-card [post]="post?.article"
+                (navigationClick)="navigationClick.emit({ index: ((rowIndex - 1) * rowLength) + i + 1, title: $event })"
+                class="KCAllArticles-item">
+            </app-kc-all-article-card>
+        </ng-container>
+    </div>
+
+    <div *ngIf="rowIndex === 3 && knowledgeCenterLongArticles?.articles.length > (rowLength * 2)" class="KCAllArticles-cards">
+        <ng-container *ngFor="let post of knowledgeCenterLongArticles?.articles.slice(articleStartIndex, articleEndIndex); let i = index">
+            <app-kc-all-article-card [post]="post?.article"
+                (navigationClick)="navigationClick.emit({ index: ((rowIndex - 1) * rowLength) + i + 1, title: $event })"
+                class="KCAllArticles-item">
+            </app-kc-all-article-card>
+        </ng-container>
+    </div>
+    <div *ngIf="knowledgeCenterLongArticles?.articles.length > 16 && knowledgeCenterLongArticles?.articles.length > articleEndIndex" class="KCAllArticles-more">
+        <button class="KCAllArticles-more-button" (click)="loadMore()">{{ knowledgeCenterLongArticles?.loadMoreCta }}</button>
+    </div>
+</div>

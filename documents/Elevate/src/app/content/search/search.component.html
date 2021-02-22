@@ -1,0 +1,108 @@
+<div class="Search container">
+  <div class="Search-Content">
+    <form class="Search-Content-search-form">
+      <div>
+        <legend class="Search-Content-search-form-found">{{ countFound }} results found for</legend>
+        <div class="Search-Content-search-form-row">
+          <div class="Search-Content-search-form-input">
+            <input type="search" name="search" class="Search-Content-search-form-input-text" [(ngModel)]="searchString">
+          </div>
+          <button class="Search-Content-search-form-button" (click)="getSearchResult()" [disabled]="!searchString">Search</button>
+        </div>
+        <button class="Search-Content-search-form-mobile-filter" (click)="toggleFilterSheet()">Filter</button>
+      </div>
+    </form>
+    <div class="Search-Content-results">
+      <div [hidden]="!isLoading">
+        <ng-container *ngTemplateOutlet="loader"></ng-container>
+      </div>
+      <div class="Search-Content-results-item" [hidden]="isLoading" *ngFor="let result of (searchResults | async) | slice: startIndex : endIndex; trackBy: trackByRecordId" (click)="onCardClick(result)">
+        <strong class="Search-Content-results-item-type" *ngIf="result?.category">{{ result.category.title }}</strong>
+        <h3 class="Search-Content-results-item-title" *ngIf="result?.title" appTextHighlight [content]="result.title" [searchTerm]="searchString"></h3>
+        <div class="Search-Content-results-item-text" *ngIf="result?.description" appTextHighlight [content]="result.description" [searchTerm]="searchString"></div>
+        <div class="Search-Content-results-item-image" *ngIf="result?.thumbnailImage?.id"><img appImageLoader [imageId]="result?.thumbnailImage?.id"></div>
+      </div>
+    </div>
+  </div>
+  <div class="Search-Sidebar" *ngIf="(searchPageContent | async)">
+    <form class="Search-Sidebar-filter-form">
+      <div>
+        <div class="Search-Sidebar-filter-form-group">
+          <legend class="Search-Sidebar-filter-form-title">Filters:</legend>
+          <ng-container [ngTemplateOutlet]="filterTemplate"></ng-container>
+        </div>
+      </div>
+    </form>
+    <form class="Search-Sidebar-filter-form-filters_mobile" *ngIf="toggleFilter">
+      <div class="Search-Sidebar-filter-form-filters_mobile-overlay" (click)="toggleFilter = false"></div>
+      <div class="Search-Sidebar-filter-form-filters_mobile-container">
+          <div class="Search-Sidebar-filter-form-filters_mobile-heading">
+              <button class="Search-Sidebar-filter-form-filters_mobile-heading-button" (click)="resetCategoryFilter()">
+                  Reset
+              </button>
+              <span class="Search-Sidebar-filter-form-filters_mobile-heading-title">
+                Filters
+              </span>
+              <button (click)="toggleFilterSheet()"
+                  class="Search-Sidebar-filter-form-filters_mobile-heading-button">
+                  Done
+              </button>
+          </div>
+          <div class="Search-Sidebar-filter-form-filters_mobile-group">
+            <ng-container [ngTemplateOutlet]="filterTemplate"></ng-container>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div *ngIf="countFound > 0 " class="Search-pagination">
+  <div class="Search-leftArrow" (click)="gotoPrevPage()"
+  [class]="{'Search-opacity': currentPage === 1}"></div>
+
+  <div class="Search-firstPage Search-margin"
+    *ngIf="currentPage >= 3 || (totalPage == 4 && currentPage == 3)" (click)="setCurrentPage(1)">1</div>
+
+  <div class="Search-dots Search-margin" *ngIf="currentPage>=4 && totalPage>4">...</div>
+
+  <div class="Search-prevPage Search-margin"
+  [class]="{'Search-active': currentPage === prevPageNumber()}"
+  (click)="setCurrentPage(prevPageNumber())">{{prevPageNumber()}}</div>
+  <div class="Search-currentPage Search-margin"
+  [class]="{'Search-active': currentPage === currentPageNumber()}"
+  (click)="setCurrentPage(currentPageNumber())">{{currentPageNumber()}}</div>
+  <div class="Search-nextPage Search-margin"
+  [class]="{'Search-active': currentPage === nextPageNumber()}"
+  (click)="setCurrentPage(nextPageNumber())">{{nextPageNumber()}}</div>
+
+  <div class="Search-dots Search-margin" *ngIf="totalPage>4 && currentPage<(totalPage-2)">...</div>
+
+  <div class="Search-lastPage Search-margin" (click)="setCurrentPage(totalPage)"
+  *ngIf="totalPage>3 && totalPage>currentPage+1">{{totalPage}}</div>
+
+  <div class="Search-rightArrow" (click)="gotoNextPage()"
+  [class]="{'Search-opacity': currentPage === totalPage}"></div>
+</div>
+
+<ng-template #filterTemplate>
+  <ng-container *ngFor="let category of categoryFilterList">
+    <div class="Search-Sidebar-filter-form-checkbox">
+      <label class="Search-Sidebar-filter-form-checkbox-label">
+        <input
+          class="Search-Sidebar-filter-form-checkbox-input"
+          type="checkbox"
+          [value]="category.value"
+          [(ngModel)]="category.checked"
+          (change)="getSearchResult(true)">
+        <span>{{ category.label }}</span>
+      </label>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #loader>
+  <div class="Search-loader">
+    <div class="Search-loaderImage">
+      <img class="Inline-image" src="assets/images/Elevate_Loader.gif" alt="loading...">
+    </div>
+  </div>
+</ng-template>

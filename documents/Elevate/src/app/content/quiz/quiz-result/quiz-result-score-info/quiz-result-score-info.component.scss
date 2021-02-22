@@ -1,0 +1,328 @@
+@import "src/app/styles/common";
+
+:host ::ng-deep {
+    a {
+        color: $black;
+    }
+
+    ul {
+        padding: 0 0 0 20px;
+    }
+
+    .QuizResultScoreInfo-question-list {
+        ul {
+            li {
+                @include relative-prop(margin-bottom,20.8,20.8,32);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.QuizResultScoreInfo {
+    @include relative-prop(margin-top,-105,40,80);
+    @include relative-prop(margin-bottom, 81, 100, 130);
+    &-container-margin {
+        @include relative-prop(margin-left, 24, 52, 143);
+        @include relative-prop(margin-right, 24, 52, 143);
+    }
+    &-title {
+        @include relative-prop(font-size,32,32,46);
+        @include relative-prop(margin-bottom,30,30,30);
+        line-height: 1.1;
+        font-family: $font-family-bold;
+        font-weight: bold;
+    }
+    &-text {
+        @include relative-prop(max-width,386,447,527);
+        @include relative-prop(font-size,16,16,20);
+        @include relative-prop(margin-bottom,50,50,60);
+        font-weight: 500;
+
+        p {
+            margin: 0;
+        }
+    }
+    &-navigation {
+        display: flex;
+        -webkit-overflow-scrolling: touch;
+        @include relative-prop(margin-right, -24, -52, -143);
+        height: 40px;
+        overflow: hidden;
+
+        &-holder {
+            overflow-x: auto;
+            height: 100px;
+            display: flex;
+            flex: 1;
+            align-items: flex-start;
+            -webkit-overflow-scrolling: touch;
+        }
+        &-list {
+            position: relative;
+            display: flex;
+            flex-wrap: nowrap;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            @include relative-prop(padding-right, 24, 52, 143);
+
+            &:after {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 4px;
+                background: $light-gray-light-tint;
+                content: "";
+                @include relative-prop(right, 24, 52, 143);
+            }
+
+            li {
+                color: $black;
+                @include relative-prop(margin-right,26,40,40);
+                padding: 0 3px 0;
+                height: 30px;
+                white-space: nowrap;
+                position: relative;
+                z-index: 1;
+                flex: 0 0 auto;
+
+                &:focus-within,
+                &.active {
+                    button {
+                        opacity: 1;
+                    }
+                    &:after {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        height: 4px;
+                        background: $elevate-blue;
+                        content: "";
+                    }
+                }
+
+                @include desktop {
+                    &:hover {
+                        button {
+                            opacity: 1;
+                        }
+                        &:after {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            height: 4px;
+                            background: $elevate-blue;
+                            content: "";
+                        }
+                    }
+                }
+
+                &.hidden {
+                    display: none;
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                button {
+                    background-color: transparent;
+                    border: none;
+                    color: $black;
+                    cursor: pointer;
+                    font-family: $font-family-bold;
+                    font-size: 14px;
+                    opacity: 0.5;
+                    outline: none;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &-question {
+        @include relative-prop(padding-top,40,60,62);
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        &-note {
+            background-color: $lighter-gray;
+            @include relative-prop(padding-top,20,16,20);
+            @include relative-prop(padding-right,20,43,20);
+            @include relative-prop(padding-bottom,16,16,20);
+            @include relative-prop(padding-left,20,24,20);
+            @include relative-prop(margin-bottom,40,40,40);
+            @include relative-prop(font-size,14,14,16);
+            @include relative-prop(line-height,18.9,18.9,20.8);
+
+            &-title {
+                @include relative-prop(font-size,12,12,15);
+                @include relative-prop(margin-bottom,12,12,16);
+                color: $light-gray-dark-tint;
+                text-transform: uppercase;
+            }
+        }
+        &-side {
+            @include relative-prop(padding-right,0,26,144);
+            @include mobile {
+                margin-bottom: 32px;
+            }
+        }
+        &-graph {
+            display: flex;
+            justify-content: flex-end;
+            @include relative-prop(width,null,null,640);
+            flex: 0 0 auto;
+
+            @include mobile {
+                width: 100%;
+                justify-content: center;
+            }
+
+            img {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        &-title {
+            font-family: $font-family-bold;
+            font-weight: 700;
+            @include relative-prop(font-size,28,28,46);
+            @include relative-prop(line-height,32.2,32.2,50.6);
+            @include relative-prop(margin-bottom,30,30,18);
+        }
+        &-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            @include relative-prop(font-size,16,16,20);
+            @include relative-prop(line-height,20.8,20.8,32);
+            @include relative-prop(margin-bottom,20.8,20.8,32);
+
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                @include relative-prop(font-size,16,16,20);
+                @include relative-prop(line-height,20.8,20.8,32);
+            }
+
+            li {
+                position: relative;
+                @include relative-prop(padding-left,9,9,15);
+                @include relative-prop(margin-bottom,20.8,20.8,32);
+
+                &:before {
+                    position: absolute;
+                    @include relative-prop(width,3,3,5);
+                    @include relative-prop(height,3,3,5);
+                    @include relative-prop(top,10,10,12);
+                    background-color: $black;
+                    border-radius: 50%;
+                    left: 0;
+                    content: "";
+                }
+            }
+        }
+    }
+    &-learnMore {
+        @include relative-prop(font-size,14,14,14);
+        @include relative-prop(line-height,18.2,18.2,18.2);
+
+        
+        &-title {
+            position: relative;
+            @include relative-prop(padding-top,53,30,33);
+            @include relative-prop(margin-bottom,30,60,30);
+            font-family: $font-family-bold;
+
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-top: 1px solid $light-gray-light-tint;
+                content: "";
+                @include relative-prop(width,398,414,445);
+    
+                @include mobile {
+                    display: none;
+                }
+            }
+            span {
+                display: block;
+            }
+            a {
+                color: $black;
+            }
+        }
+        
+        .container-left {
+            padding-left: 0;
+        }
+        &-item {
+            display: flex;
+            @include relative-prop(width,null,320,413);
+            @include relative-prop(margin-right,0,32,32);
+
+            @include mobile {
+                width: 100%;
+            }
+        }
+        &-image {
+            @include relative-prop(width,126,148,126);
+            @include relative-prop(height,108,80,108);
+            @include relative-prop(margin-right,24,31,31);
+            flex: 0 0 auto;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+        &-text {
+            &-type {
+                display: block;
+                @include relative-prop(font-size,14,14,14);
+                @include relative-prop(line-height,18.9,18.9,18.9);
+                @include relative-prop(margin-bottom,7,3,3);
+                opacity: 0.7;
+            }
+            &-title {
+                @include relative-prop(font-size,20,20,24);
+                @include relative-prop(line-height,26,26,31.2);
+                @include relative-prop(margin-bottom,16,16,8);
+            }
+            &-cta {
+                @include relative-prop(font-size, 12, 12, 12);
+                @include relative-prop(line-height, 16, 16, 16);
+                color: $mid-dark-blue;
+            }
+        }
+        
+        &--vertical {
+            .horizontal-scroll-element {
+                margin-bottom: 32px;
+
+                &:last-of-type {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    &-emailCaptured {
+        @include mobile {
+            margin-top: 25px;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+@import "src/app/styles/common";
+
+.GlobalLoader {
+    z-index: $loader-z-index;
+    background-color: $white;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    overflow: hidden;
+
+    &-container {
+        @include relative-prop(height, 50, 50, 100);
+        @include relative-prop(width, 50, 50, 100);
+        @include relative-prop(margin-left, -25, -25, -50);
+        @include relative-prop(margin-top, -25, -25, -50);
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+    }
+
+    &-image {
+        width: inherit;
+    }
+}

@@ -1,0 +1,29 @@
+<div
+  #scrollingContainer
+  class="scrolling-wrapper-flexbox" [ngClass]="paddingLeftClass"
+  (scroll)="scrollHandler($event)"
+>
+  <ng-content></ng-content>
+</div>
+<div *ngIf="isVisibleScrollbar" [ngClass]="paddingLeftClass">
+  <div class="ScrollBar">
+    <div #scrollBar class="ScrollBar-outer">
+      <div
+        [style.margin-left.%]="marginLeftOfProgressBar"
+        [style.border-color]="scrollBarBorderColor"
+        class="ScrollBar-inner"
+      ></div>
+    </div>
+  </div>
+  <div class="NextPrevButtons" *ngIf="showScrollButtons && isVisibleScrollbar && scrollButtonColor === 'elevate_blue'">
+    <button class="NextPrevButtons-previous"><img (click)="previous()" src="assets/icons/previous-elevate-blue.svg" alt="Previous"></button>
+    <button class="NextPrevButtons-next"><img (click)="next()" src="assets/icons/next-elevate-blue.svg" alt="Next"></button>
+  </div>
+
+  <div class="NextPrevButtons" *ngIf="showScrollButtons && isVisibleScrollbar && scrollButtonColor === 'grey'">
+    <button class="NextPrevButtons-previous"><img (click)="previous()" src="assets/icons/previous-grey.svg" alt="Previous"></button>
+    <button class="NextPrevButtons-next"><img (click)="next()" src="assets/icons/next-grey.svg" alt="Next"></button>
+  </div>
+</div>
+
+

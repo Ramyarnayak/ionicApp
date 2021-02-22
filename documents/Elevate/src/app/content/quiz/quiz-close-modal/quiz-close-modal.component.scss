@@ -1,0 +1,111 @@
+@import "src/app/styles/common.scss";
+
+.QuizCloseModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 45;
+  overflow: auto;
+
+  &-wrapper {
+    display: none;
+  }
+
+  &-foreground {
+    @include relative-prop(padding-top, 46, 46, 51);
+    @include relative-prop(padding-right, 23, 50, 61);
+    @include relative-prop(padding-bottom, 35, 50, 63);
+    @include relative-prop(padding-left, 35, 50, 62);
+    @include flexi-relative-prop(min-width, 90%, 41%, 41%);
+    padding: 51px 61px 63px 62px;
+    border-radius: 16px;
+    background-color: white;
+  }
+
+  &-title {
+    @include mobile {
+      text-align: left;
+      width: 68%;
+    }
+    @include relative-prop(font-size, 20, 38, 38);
+    @include relative-prop(line-height, 26, 49.4, 49.4);
+    @include relative-prop(padding-bottom, 21, 21, 24);
+    letter-spacing: -0.02em;
+    font-family: $font-family-medium;
+    text-align: center;
+  }
+
+  &-subtitle {
+    @include mobile {
+      text-align: left;
+      width: 68%;
+    }
+    @include relative-prop(font-size, 16, 16, 16);
+    @include relative-prop(line-height, 25.6, 20.8, 20.8);
+    @include relative-prop(padding-bottom, 40, 45, 58);
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+
+  &-buttons {
+    @include mobile {
+      align-items: left;
+      justify-content: left;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-buttonLeave {
+    @include relative-prop(margin-right, 20, 26, 26);
+    @include relative-prop(height, 41, 41, 52);
+    @include relative-prop(font-size, 14, 18, 18);
+    @include relative-prop(line-height, 17, 22, 22);
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+    padding-right: 35px;
+    padding-left: 35px;
+    border-radius: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &-buttonCancel {
+    @include relative-prop(height, 41, 41, 52);
+    @include relative-prop(font-size, 14, 18, 18);
+    @include relative-prop(line-height, 17, 22, 22);
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+    padding-right: 35px;
+    padding-left: 35px;
+    border-radius: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.QuizCloseModal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background-color: black;
+  opacity: 0.84;
+  z-index: 25;
+}

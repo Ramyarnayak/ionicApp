@@ -1,0 +1,82 @@
+@import "src/app/styles/common";
+
+.HeaderDLevel1 {
+  @include responsive-prop(height, 0, $header-desktop-height-num);
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  background-color: white;
+
+  @include mobile {
+    display: none;
+  }
+
+  &-elevateLogo {
+    @include responsive-prop(height, 0, 47);
+    cursor: pointer;
+    outline: none;
+    justify-self: start;
+  }
+
+  &-menuBar {
+    font-family: "GTWalsheim-Bold";
+    @include responsive-prop(font-size, 0, 20);
+    @include responsive-prop(line-height, 0, 26);
+    display: flex;
+    align-items: center;
+    color: black;
+    justify-self: end;
+  }
+}
+
+.HeaderDLevel1-menuItems {
+  &:not(:first-child) {
+    @include relative-prop(padding-left, 0, 22, 43);
+  }
+}
+
+.HeaderDLevel1-item {
+  @include responsive-prop(height, 0, $header-desktop-height-num);
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+
+  &-a {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &:hover {
+    @include tablet-only {
+      border-bottom: 5px solid $elevate-blue;
+      border-top: 5px solid white;
+    }
+    border-bottom: 8px solid $elevate-blue;
+    border-top: 8px solid white;
+  }
+}
+
+.HeaderDLevel1-item-hover {
+    @include tablet-only {
+      border-bottom: 5px solid $elevate-blue;
+      border-top: 5px solid white;
+    }
+    border-bottom: 8px solid $elevate-blue;
+    border-top: 8px solid white;
+}
+
+
+.HeaderDLevel1-close {
+  @include relative-prop(margin-left, 0, 20, 50);
+  @include responsive-prop(height, 0, 25);
+  @include responsive-prop(padding-left, 0, 5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  filter: brightness(0%);
+}
+

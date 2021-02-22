@@ -1,0 +1,13 @@
+<div class="Score40ResultsHero" [ngClass]="{ 'Score40ResultsHero-emailCaptured': isEmailCaptured }">
+  <div class="Score40ResultsHero-animation"></div> <!-- add this element after page load -->
+  <app-score40-results-final-score [quizResultsHero]="quizResultsHero"></app-score40-results-final-score>
+  <app-score40-message-cards [total]="total" [cardMapping]="cardMapping" [score40resultscard]="score40resultscard"></app-score40-message-cards>
+  <div class="Score40ResultsHero-tip" [ngClass]="{ 'Score40ResultsHero-tip_animate-icon': isTipIconAnimate, 'Score40ResultsHero-tip_animate-text': isTipTextAnimate }">
+      <div class="Score40ResultsHero-tip_icon">
+        <img src="/assets/icons/qiuz-result-hero-icon.svg" class="Score40ResultsHero-tip_icon-image" alt="hero-icon">
+      </div>
+      <div class="Score40ResultsHero-tip_text">
+          <p>You’re doing great!</p>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+@import "src/app/styles/common";
+
+.CreditBOR {
+  position: relative;
+
+  &-emptyBox {
+    @include relative-prop(height, 198, 129, 208);
+    background-color: white;
+  }
+
+  &-main {
+    @include relative-prop(padding-bottom, 196, 138, 160);
+  }
+
+  &-title-wrapper {
+    @include relative-prop(padding-top, 140, 140, 110);
+    @include flexi-relative-prop(width, 95%, 47%, 50%);
+    font-family: $font-family-bold;
+    letter-spacing: -2%;
+  }
+
+  &-title {
+    @include relative-prop(padding-top, 14, 15, 15);
+    @include relative-prop(padding-bottom, 0, 0, 32);
+    @include relative-prop(font-size, 42, 42, 96);
+    @include relative-prop(line-height, 46.2, 46.2, 105.6);
+    z-index: 1;
+    position: relative;
+    overflow-wrap: break-word;
+  }
+
+  &-subheading {
+    @include relative-prop(padding-top, 16, 29, 0);
+    @include relative-prop(padding-bottom, 29, 56, 0);
+    @include relative-prop(font-size, 16, 16, 0);
+    @include relative-prop(line-height, 20.8, 20.8, 0);
+    @include flexi-relative-prop(width, 90%, 47%, 0);
+    z-index: 1;
+    position: relative;
+  }
+
+  &-hS-description {
+    @include relative-prop(font-size, 16, 32, 32);
+    @include relative-prop(line-height, 20.8, 41.6, 41.6);
+    font-family: $font-family-medium;
+  }
+
+  &-rightImageCrop {
+    @include relative-prop(right, null, 0, 122);
+    @include mobile {
+      left: 334px;
+    }
+    @media only screen and (max-width: 474px) {
+      width: 40px;
+      right: 0;
+      left: unset;
+		}
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+  }
+  &-rightCloudImg {
+    @include relative-prop(width, 102, 117, 163);
+    @include relative-prop(height, 68, 78, 109);
+  }
+
+  &-handImg {
+    @include mobile {
+      left: 160px;
+    }
+    @include relative-prop(right, null, 120, 331);
+    @include relative-prop(width, 138, 158, 220);
+    @include relative-prop(height, 311, 356, 496);
+    position: absolute;
+    top: 200px;
+  }
+
+  &-midCloudImg {
+    @include mobile {
+      left: 147px;
+    }
+    @include relative-prop(right, null, 130, 420);
+    @include relative-prop(width, 102, 117, 164);
+    @include relative-prop(top, 154, 246, 246);
+    position: absolute;
+  }
+
+  &-leftCloudImg {
+    @include mobile {
+      left: 11px;
+    }
+    @include relative-prop(right, null, 280, 592);
+    @include relative-prop(width, 130, 150, 207);
+    @include relative-prop(top, 87, 73, 110);
+    position: absolute;
+  }
+}
+
+.horizontal-scroll-element {
+  @include relative-prop(width, 318, 318, 318);
+  z-index: 1;
+  position: relative;
+  @include relative-prop(padding-left, 33, 33, 33);
+  &:not(:last-child) {
+    border-right: 1px solid black;
+  }
+  &:nth-child(1) {
+    border-right: 0;
+    padding-left: 0;
+  }
+  &:nth-child(2) {
+    padding-left: 0;
+    @include relative-prop(width, 285, 285, 285);
+  }
+}
+
+.horizontal-scroll-element--description {
+  @include flexi-relative-prop(display, none, none, unset);
+  @include relative-prop(width, 0, 0, 465);
+  @include relative-prop(padding-right, 0, 0, 50);
+  padding-left: 0;
+  border-right: 0;
+}

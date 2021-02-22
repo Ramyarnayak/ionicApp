@@ -1,0 +1,42 @@
+<div *ngIf="showNavMobile"
+    class="NavMobile"
+    @showHideNavMobile>
+    <div class="NavMobile-search container-left container-right">
+
+        <img class="NavMobile-searchIcon"
+        src="assets/icons/mobile-search.png"
+        [class]="{ 'NavMobile-searchIcon--disable': !!showSearchInput }"
+        (click)="showSearch()">
+        <input type="search" ng-model="searchBox" placeholder="search"
+        [class]="{ 'NavMobile-searchInput--enable': !!showSearchInput }"
+        class="NavMobile-searchInput" (blur)="updateSearchString(search.value)"
+        (keyup.enter)="performSearchOnEnter($event.target.value)">
+        <img class="NavMobile-searchIcon2"
+        src="assets/icons/search-icon.png"
+        [class]="{ 'NavMobile-searchInput--enable': !!showSearchInput }">
+
+        <button (click)="onHideNavMobile()" type="button">
+            <img src="/assets/icons/close.svg">
+        </button>
+    </div>
+    <div class="NavMobile-container container">
+        <div class="NavMobile-body">
+            <div [ngClass]="{ 'NavMobile-list--hidden': showNavMobileTertiary }" class="NavMobile-list">
+                <app-header-mobile-nav-list [headerNavigationItemList]="headerNavigationItems | async"
+                    (closeNav)="onHideNavMobile()"
+                    (showNavMobileTertiary)="onShowNavMobileTertiary($event)">
+                </app-header-mobile-nav-list>
+                <app-header-mobile-nav-list [headerNavigationItemList]="bottomNavigation | async"
+                    [showLastItemBottomBorder]="false"
+                    (closeNav)="onHideNavMobile()"
+                    (showNavMobileTertiary)="onShowNavMobileTertiary($event)">
+                </app-header-mobile-nav-list>
+            </div>
+            <app-header-mobile-nav-tertiary *ngIf="showNavMobileTertiary"
+                [tertiaryNavigationList]="tertiaryNavigationList"
+                (closeTertiaryNav)="onHideTertiaryNavMobile()"
+                @showHideNavMobile>
+            </app-header-mobile-nav-tertiary>
+        </div>
+    </div>
+</div>

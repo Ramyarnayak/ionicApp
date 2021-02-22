@@ -1,0 +1,39 @@
+<section class="CreditResources" [appBackgroundColor]="(knowledgeCenter | async)?.settings?.theme">
+    <div class="CreditResources-inner">
+        <div class="CreditResources-small container-left">
+            <ng-container *ngTemplateOutlet="creditResourcesHeaderTemplate"></ng-container>
+        </div>
+
+        <app-horizontal-scroll-container [scrollThumbColor]="scrollBarThumbColor" class="container-left">
+
+            <div class="CreditResources-large">
+                <ng-container *ngTemplateOutlet="creditResourcesHeaderTemplate"></ng-container>
+            </div>
+
+            <div class="horizontal-scroll-element" *ngFor="let post of (knowledgeCenter | async)?.posts; let i = index">
+                <app-credit-resources-card [postNumber]="i+1" [isScore40Results]="isScore40Results" [reference]="post"></app-credit-resources-card>
+            </div>
+
+            <div class="CreditResources-showMeMore horizontal-scroll-element">
+                <div class="CreditResources-showMeMoreText"
+                    [innerHTML]="(knowledgeCenter | async)?.navigation?.label | safe: 'html'"></div>
+                <div class="CreditResources-showMeMoreButton">
+                    <a appExternalLink
+                        [customLink]="(knowledgeCenter | async)?.navigation?.link"
+                        [appTealiumClickEvent]="getTealiumClickEvent('showmemore', 'option' + ((knowledgeCenter | async)?.posts.length + 1))">
+                        <img class="CreditResources-showMeMoreImage" src="assets/images/show-all.svg"
+                            alt="show me more">
+                    </a>
+                </div>
+            </div>
+
+        </app-horizontal-scroll-container>
+    </div>
+</section>
+
+<ng-template #creditResourcesHeaderTemplate>
+    <div class="CreditResources-header">
+        <h1 class="CreditResources-title" [innerHTML]="(knowledgeCenter | async)?.headline | safe: 'html'"></h1>
+        <div class="CreditResources-subHeading">{{ (knowledgeCenter | async)?.subheading }}</div>
+    </div>
+</ng-template>

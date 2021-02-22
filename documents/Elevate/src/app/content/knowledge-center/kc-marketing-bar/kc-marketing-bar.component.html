@@ -1,0 +1,14 @@
+<div class="KnowledgeCenterMarketingBar" [ngClass]="marketingBar?.settings.theme">
+    <div class="KnowledgeCenterMarketingBar-titleContainer">
+        <div class="KnowledgeCenterMarketingBar-overline">{{ marketingBar?.headline1 }}</div>
+        <div class="KnowledgeCenterMarketingBar-title">{{ marketingBar?.headline2 }}</div>
+    </div>
+    <div class="KnowledgeCenterMarketingBar-ctaContainer">
+        <button [customLink]="marketingBar?.navigation.link"
+            (click)="navigationClick.emit()"
+            class="KnowledgeCenterMarketingBar-cta button--dark-blue"
+            appExternalLink>
+            {{ marketingBar?.navigation.label }}
+        </button>
+    </div>
+</div>

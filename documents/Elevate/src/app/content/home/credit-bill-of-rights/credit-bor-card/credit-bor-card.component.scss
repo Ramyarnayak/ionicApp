@@ -1,0 +1,30 @@
+@import "src/app/styles/common";
+
+.CreditBORCard {
+  @include relative-prop(width, 285, 285, 285);
+
+  &-order {
+    font-family: $font-family-bold;
+    width: 50px;
+    @include relative-prop(font-size, 80, 80, 80);
+    @include relative-prop(line-height, 88, 88, 88);
+    @include relative-prop(height, 88, 88, 88);
+    letter-spacing: -2%;
+    color: $dark-blue;
+  }
+
+  &-title {
+    width: 50%;
+    @include relative-prop(font-size, 24, 24, 24);
+    @include relative-prop(line-height, 26.4, 26.4, 26.4);
+    padding-bottom: 10px;
+    letter-spacing: -2%;
+  }
+
+  &-desc {
+    width: 89%;
+    @include relative-prop(font-size, 16, 16, 16);
+    @include relative-prop(line-height, 20.8, 20.8, 20.8);
+    padding-bottom: 5px;
+  }
+}

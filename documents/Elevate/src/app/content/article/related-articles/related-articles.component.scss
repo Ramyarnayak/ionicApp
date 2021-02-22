@@ -1,0 +1,80 @@
+@import "src/app/styles/common";
+
+.RelatedArticles {
+
+  @include relative-prop(padding-top, 64, 82, 100);
+  @include relative-prop(padding-bottom, 90, 95, 100);
+
+  &-title {
+    @include relative-prop(font-size, 20, 22, 24);
+    @include relative-prop(line-height, 26, 28.5, 31);
+    letter-spacing: -0.02em;
+  }
+
+  &-list {
+    display: grid;
+    @include flexi-relative-prop(grid-template-columns, repeat(2, 1fr), repeat(4, 1fr), repeat(4, 1fr));
+    @include relative-prop(column-gap, 24, 28, 32);
+    @include relative-prop(row-gap, 80, 82, 84);
+    @include relative-prop(padding-top, 24, 27.5, 31);
+  }
+
+  &-card {
+    @include relative-prop(width, null, 151, 304);
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &-image {
+      @include relative-prop(width, 151, 151, 304);
+      @include relative-prop(height, null, 120, 200);
+      object-fit: cover;
+
+      @include mobile {
+        width: 100%;
+        height: calc(120/375 * 100vw);
+      }
+    }
+
+    &-heading {
+      @include relative-prop(font-size, 12, 14, 16);
+      @include relative-prop(line-height, 13, 15.5, 18);
+      @include relative-prop(padding-top, 30, 31, 32);
+      opacity: 0.6;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    &-description {
+      @include relative-prop(font-size, 20, 22, 24);
+      @include relative-prop(line-height, 26, 28.5, 31);
+      @include relative-prop(padding-top, 14, 15.5, 17);
+      letter-spacing: -0.02em;
+    }
+
+    &-cta {
+      @include relative-prop(padding-top, 14, 15.5, 17);
+
+      a {
+        @include relative-prop(font-size, 12, 12, 12);
+        @include relative-prop(line-height, 16, 16, 16);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &-loadMore {
+    @include relative-prop(padding-top, 60, 80, 100);
+    display: flex;
+    justify-content: center;
+
+    button {
+      @include relative-prop(font-size, 18, 18, 18);
+      @include relative-prop(line-height, 23, 23, 23);
+      @include flexi-relative-prop(width, 53%, 25%, 16%);
+      padding: 16px 0 17px;
+      letter-spacing: -0.02em;
+    }
+  }
+}

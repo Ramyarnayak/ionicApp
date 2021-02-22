@@ -1,0 +1,47 @@
+@import "src/app/styles/common";
+
+:host {
+  position: absolute;
+  width: 100%;
+}
+
+.HeaderMobileTertiaryNav {
+
+  &-back {
+    @include relative-prop(margin-top, 23, 23, 0);
+    @include relative-prop(margin-bottom, 32, 32, 0);
+    
+    background: none;
+    border: none;
+    padding: 0;
+    
+    img {
+      height: 18px;
+    }
+  }
+
+  &-link {
+    color: $black;
+    text-decoration: none;
+  }
+
+  &-seeAll {
+    text-decoration: underline;
+  }
+
+  &-submenu {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+
+    &-item {
+      @include relative-prop(font-size, 14, 14, 0);
+      @include flexi-relative-prop(line-height, 135%, 135%, 0);
+      @include relative-prop(margin-bottom, 32, 32, 0);
+      
+      width: 50%;
+      text-align: left;
+    }
+  }
+}
+

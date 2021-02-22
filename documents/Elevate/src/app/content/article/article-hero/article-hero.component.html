@@ -1,0 +1,50 @@
+<div class="Article-Hero">
+    <div class="Article-Hero-frame">
+        <div class="Article-Hero-titleBlock container-left">
+            <strong class="Article-Hero-titleBlock-type">{{ post?.category.title }}</strong>
+            <h1 class="Article-Hero-titleBlock-title">{{ post?.title }}</h1>
+            <div class="Article-Hero-seriesHeadline">
+                <div *ngIf="articleHero?.seriesHeadline1" class="Article-Hero-seriesHeadline-1">
+                    {{ articleHero?.seriesHeadline1 }}
+                </div>
+                <div *ngIf="articleHero?.seriesHeadline2" [ngClass]="articleHero?.seriesHeadline2Settings.theme" class="Article-Hero-seriesHeadline-2">
+                    {{ articleHero?.seriesHeadline2 }}
+                </div>
+            </div>
+            <div class="Article-Hero-titleBlock-datetime">
+                <span class="Article-Hero-titleBlock-datetime-date">{{ articleHero?.date }}</span>
+                <span class="Article-Hero-titleBlock-datetime-visit">{{ articleHero?.readTime }}</span>
+            </div>
+            <div class="Article-Hero-titleBlock-social">
+                <a [appTealiumClickEvent]="getTealiumClickEventSocial('facebook')"
+                    [facebook]="{ u: href }"    
+                    class="facebook"
+                    appShareUrl>
+                    <img src="/assets/icons/article-facebook-icon.svg">
+                </a>
+                <a [appTealiumClickEvent]="getTealiumClickEventSocial('twitter')"
+                    [twitter]="{ url: href, text: post?.title }"    
+                    class="twitter"
+                    appShareUrl>
+                    <img src="/assets/icons/article-twitter-icon.svg">
+                </a>
+                <a [appTealiumClickEvent]="getTealiumClickEventSocial('pinterest')"
+                    [pinterest]="{ url: href, media: (articleHeroImage | async)?.attachments[0] }"    
+                    class="pinterest"
+                    appShareUrl>
+                    <img src="/assets/icons/article-pinterest-icon.svg">
+                </a>
+                <a [appTealiumClickEvent]="getTealiumClickEventSocial('reddit')"
+                    [reddit]="{ url: href, title: post?.title }"
+                    class="reddit"
+                    appShareUrl>
+                    <img src="/assets/icons/article-reddit-icon.svg">
+                </a>
+            </div>
+        </div>
+        <div class="Article-Hero-visual">
+            <img [imageId]="articleHero?.image.id" class="Article-Hero-visual-image" appImageLoader>
+            <div class="Article-Hero-visual-alt container-right">{{ articleHero?.caption }}</div>
+        </div>
+    </div>
+</div>

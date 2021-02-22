@@ -1,0 +1,18 @@
+<section class="StartYourClimbTile">
+    <div class="StartYourClimbTile-heading">
+        {{ data?.headline }}
+    </div>
+    <div class="StartYourClimbTile-description">
+        {{data?.description}}
+    </div>
+    <div class="StartYourClimbTile-cta">
+        <a  [customLink]="data?.navigation?.link"
+            [appTealiumClickEvent]="getTealiumClickEvent(data?.navigation.label)"
+            class="StartYourClimbTile-button"
+            appExternalLink>
+            <span class="StartYourClimbTile-buttonText">
+                {{data?.navigation.label}}
+            </span>
+        </a>
+    </div>
+</section>

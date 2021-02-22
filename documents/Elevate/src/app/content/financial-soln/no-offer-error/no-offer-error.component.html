@@ -1,0 +1,11 @@
+<div class="NoOfferError container">
+  <div class="NoOfferError-headline">{{ noOfferError.headline }}</div>
+  <div class="NoOfferError-description">{{ noOfferError.description }}</div>
+  <div class="NoOfferError-cta">
+    <a (click)="tealiumClickEvent.emit();"
+      [attr.class]="'button--' + noOfferError.cta.settings.theme" type="button"
+      [attr.href]="noOfferError.cta.link.externalLink || noOfferError.cta.link.externalLink" target="_blank">
+      {{ noOfferError.cta.label }}
+    </a>
+  </div>
+</div>

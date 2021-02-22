@@ -1,0 +1,37 @@
+<div class="FnSnHero container" [appBackgroundColor]="fnsnHero?.settings.theme">
+  <div class="FnSnHero-title">
+    {{fnsnHero?.headline1}}
+  </div>
+  <div class="FnSnHero-mainTitle" [innerHtml]="fnsnHero?.headline2">
+  </div>
+  <div class="FnSnHero-description">
+    {{fnsnHero?.description}}
+  </div>
+  <div [appTealiumClickEvent]="getTealiumClickEvent('disclosures')"
+    [customLink]="{ 'internalLink': '#disclosure'}"
+    class="FnSnHero-disclosuresLink"
+    appExternalLink>
+      {{fnsnHero?.hyperlink.label}}
+  </div>
+
+  <div class="FnSnHero-buttonsList">
+    <button [appTealiumClickEvent]="getTealiumClickEvent(fnsnHero?.ctaList[0].cta.label)"
+      [customLink]="fnsnHero?.ctaList[0].cta.link"
+      class="FnSnHero-buttonsList-button FnSnHero-buttonsList-borrowing"
+      appExternalLink>
+      {{fnsnHero?.ctaList[0].cta.label}}
+      </button>
+    <button [appTealiumClickEvent]="getTealiumClickEvent(fnsnHero?.ctaList[1].cta.label)"
+      [customLink]="fnsnHero?.ctaList[1].cta.link"
+      class="FnSnHero-buttonsList-button FnSnHero-buttonsList-moneyManagement"
+      appExternalLink>
+      {{fnsnHero?.ctaList[1].cta.label}}
+    </button>
+    <button *ngIf="fnsnHero?.ctaList[2]" appExternalLink
+      [customLink]="fnsnHero?.ctaList[2].cta.link"
+      [appTealiumClickEvent]="getTealiumClickEvent(fnsnHero?.ctaList[2].cta.label)"
+      class="FnSnHero-buttonsList-button FnSnHero-buttonsList-banking">
+      {{fnsnHero?.ctaList[2]?.cta.label}}
+    </button>
+  </div>
+</div>

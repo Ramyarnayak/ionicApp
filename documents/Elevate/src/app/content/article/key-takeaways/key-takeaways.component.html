@@ -1,0 +1,11 @@
+<div class="KeyTakeaways article-container">
+  <div class="KeyTakeaways-heading">{{keyTakeaways?.headline}}</div>
+  <div class="KeyTakeaways-list">
+    <div class="KeyTakeaways-item" *ngFor="let item of keyTakeaways?.items; let i = index">
+      <div class="KeyTakeaways-itemBody">
+        <div class="KeyTakeaways-itemIndex">{{ i + 1 }}</div>
+        <div>{{ item.item }}</div>
+      </div>
+    </div>
+  </div>
+</div>

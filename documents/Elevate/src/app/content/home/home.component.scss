@@ -1,0 +1,23 @@
+@import "src/app/styles/common";
+
+.Home {
+  position: relative;
+
+  &-header {
+    background-color: white;
+    visibility: hidden;
+    z-index: $header-z-index;
+    opacity: 0;
+    transition: opacity 1s;
+
+    &--visible {
+      position: sticky;
+      position: -webkit-sticky;
+      top: 0;
+      left: 0;
+      visibility: visible;
+      opacity: 1;
+      transition: opacity 2s;
+    }
+  }
+}

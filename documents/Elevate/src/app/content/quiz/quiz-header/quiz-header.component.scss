@@ -1,0 +1,28 @@
+@import "../../../styles/common.scss";
+
+:host.hide-close-button {
+  .QuizHeader-close {
+    display: none;
+  }
+}
+
+.QuizHeader {
+  @include relative-prop(height, $header-mobile-height-num, $header-mobile-height-num, $header-desktop-height-num);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 12;
+
+  &-elevateLogo {
+    @include relative-prop(height, 21, 30, 47);
+  }
+
+  &-close {
+    @include relative-prop(height, 21, 23, 25);
+    filter: brightness(0%);
+  }
+}

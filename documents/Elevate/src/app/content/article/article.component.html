@@ -1,0 +1,31 @@
+<app-article-hero [articleHero]="(article | async)?.articleHero" [post]="post | async"></app-article-hero>
+
+<app-article-summary-and-toc [post]="post | async"
+  [tableOfContents]="(article | async)?.tableOfContents">
+</app-article-summary-and-toc>
+
+<app-article-body [articleBody]="(article | async)?.articleBody"></app-article-body>
+
+<ng-container *ngIf="(article | async) as articleContent">
+    <div class="container la-container">
+        <app-kc-series-articles [knowledgeCenterSeriesArticles]="articleContent.seriesArticles" (navigationClick)="sendTealiumClickEventSeriesArticle($event)"></app-kc-series-articles>
+    </div>
+
+    <app-key-takeaways
+        *ngIf="articleContent?.keyTakeaways?.items?.length > 0"
+        [keyTakeaways]="articleContent.keyTakeaways">
+    </app-key-takeaways>
+</ng-container>
+
+<app-article-feedback [feedbackBarHeadline]="(article | async)?.feedbackBar.headline" (feedbackClick)="sendTealiumClickEventFeedback($event)"></app-article-feedback>
+
+<app-capture-email-card [captureEmailCardContent]="(article | async)?.emailBar"
+    [eventLabelOptOut]="(post | async)?.title"
+    [eventLabelSend]="(post | async)?.title"
+    emailCapturePurpose="article"
+    eventCategory="customerhub-knowledgecenter"
+    eventName="article"
+    eventSuffixForm="emailaddress"
+    eventSuffixSend="notifyme">
+</app-capture-email-card>
+<app-related-articles [relatedArticleData]="(article | async)?.relatedArticles"></app-related-articles>

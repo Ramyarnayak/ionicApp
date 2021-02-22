@@ -1,0 +1,106 @@
+@import "src/app/styles/common";
+
+.HeaderDLevel3 {
+  @include mobile {
+    display: none;
+  }
+  background-color: $cream;
+  @include responsive-prop(padding-top, 0, 48);
+  @include responsive-prop(padding-bottom, 0, 80);
+  display: flex;
+  justify-content: space-around;
+  z-index: 10;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top:100%;
+
+  &-hero {
+    width: 31%;
+    border-right: 2px solid $light-gray;
+    padding-right: 5%;
+    animation: moveInRight .4s;
+  }
+
+  &-goBack {
+    @include responsive-prop(padding-bottom, 0, 40);
+    @include responsive-prop(font-size, 0, 16);
+    font-family: "GTWalsheim-Medium";
+    line-height: 130%;
+    cursor: pointer;
+  }
+
+  &-goBackIcon {
+    margin-right: 16px;
+  }
+
+  &-heroTitle {
+    @include responsive-prop(padding-bottom, 0, 18);
+    @include responsive-prop(font-size, 0, 32);
+    font-family: "GTWalsheim-Bold";
+    line-height: 130%;
+  }
+
+  &-heroDesc {
+    @include responsive-prop(padding-bottom, 0, 38);
+    @include responsive-prop(font-size, 0, 16);
+    font-family: "GTWalsheim-Regular";
+    line-height: 130%;
+  }
+
+  &-heroSeeAll {
+    @include responsive-prop(font-size, 0, 16);
+    font-family: "GTWalsheim-Medium";
+    line-height: 130%;
+    text-decoration-line: underline;
+    cursor: pointer;
+  }
+
+  &-content {
+    @include responsive-prop(margin-bottom, 0, -32);
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10%;
+  }
+
+  &-contentItemHover {
+    &:not(:hover) {
+      opacity: .4;
+    }
+  }
+
+  &-contentItem {
+    animation: moveInRight .4s;
+    cursor: pointer;
+
+    &-a {
+      color: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &-contentTitle {
+    @include responsive-prop(padding-bottom, 0, 8);
+    @include responsive-prop(font-size, 0, 20);
+    font-family: "GTWalsheim-Bold";
+    line-height: 130%;
+  }
+  &-contentDesc {
+    @include responsive-prop(padding-bottom, 0, 32);
+    @include responsive-prop(font-size, 0, 16);
+    font-family: "GTWalsheim-Regular";
+    line-height: 130%;
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+      opacity: 0;
+      transform: translateX(40px);
+  }
+  100% {
+      opacity: 1;
+      transform: translateX(0);
+  }
+}

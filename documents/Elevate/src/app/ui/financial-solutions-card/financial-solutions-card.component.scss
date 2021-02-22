@@ -1,0 +1,138 @@
+@import "src/app/styles/common";
+
+.FSCard {
+  @include flexi-relative-prop(display, null, null, flex);
+  @include relative-prop(margin-top, 5, 5, 5);
+  @include relative-prop(margin-right, 20, 20, 20);
+  @include relative-prop(margin-bottom, 5, 5, 5);
+
+  border-radius: 16px;
+  background-color: $white;
+  cursor: pointer;
+  height: 96%;
+
+  &-imageBox {
+    @include relative-prop(padding-top, 44, 44, 44);
+    @include relative-prop(padding-left, 0, 0, 32);
+
+    @include mobile {
+      text-align: center;
+    }
+
+    @include tablet-only {
+      text-align: center;
+    }
+  }
+
+  &-image {
+    @include relative-prop(width, 80, null, 114);
+  }
+  
+  &-text {
+    @include flexi-relative-prop(flex, null, 2, 2);
+    @include relative-prop(padding-top, 16, 16, 40);
+    @include relative-prop(padding-bottom, 16, 16, 40);
+    @include relative-prop(padding-right, 16, 16, 40);
+    @include relative-prop(padding-left, 16, 16, 40);
+
+    @include mobile {
+      text-align: center;
+    }
+    @include tablet-only {
+      text-align: center;
+    }
+  }
+  
+  &-title {
+    @include relative-prop(font-size, 20, 24, 24);
+    @include relative-prop(line-height, 26, 31.2, 31.2);
+    
+    @include relative-prop(margin-top, 5, 5, 5);
+    @include relative-prop(margin-bottom, 5, 11, 11);
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+  }
+  
+  &-description {
+    @include relative-prop(font-size, 16, 20, 20);
+    @include relative-prop(line-height, 25.6, 32, 32);
+    @include relative-prop(margin-top, 5, 5, 5);
+    @include relative-prop(margin-bottom, 5, 5, 5);
+
+    margin-left: 0;
+    margin-right: 0;
+  }  
+}
+
+.FSShowAllCard {
+  @include flexi-relative-prop(display, null, null, flex);
+  @include relative-prop(margin-top, 5, 5, 5);
+  @include relative-prop(margin-right, 50, 50, 50);
+  @include relative-prop(margin-bottom, 5, 5, 5);
+
+  border-radius: 16px;
+  background-color: $white;
+  cursor: pointer;
+  height: 96%;
+
+  &-imageBox {
+    @include relative-prop(padding-top, 44, 44, 44);
+    @include relative-prop(padding-left, 0, 0, 32);
+
+    @include mobile {
+      text-align: center;
+    }
+
+    @include tablet-only {
+      text-align: center;
+    }
+  }
+
+  &-image {
+    @include relative-prop(width, 80, null, 114);
+  }
+  
+  &-text {
+    @include relative-prop(padding-top, 16, 16, 40);
+    @include relative-prop(padding-bottom, 16, 16, 40);
+    @include relative-prop(padding-right, 16, 16, 40);
+    @include relative-prop(padding-left, 16, 16, 40);
+
+    @include mobile {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    @include tablet-only {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  
+  &-title {
+    @include relative-prop(line-height, 26, 26, 46.8);
+    @include relative-prop(font-size, 20, 20, 20);
+    @include relative-prop(margin-top, 60, 40, 5);
+    @include relative-prop(margin-bottom, 5, 5, 5);
+
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  &-description {
+    @include relative-prop(margin-top, 5, 5, 5);
+    @include relative-prop(margin-bottom, 5, 5, 5);
+
+    margin-left: 0;
+    margin-right: 0;
+    content: " ";
+  }
+}

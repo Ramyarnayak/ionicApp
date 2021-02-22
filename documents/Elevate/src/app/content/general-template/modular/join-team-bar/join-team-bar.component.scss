@@ -1,0 +1,65 @@
+@import "src/app/styles/common";
+
+.JoinTeamBar {
+  @include mobile {
+    display: block;
+  }
+  background-color: $elevate-blue;
+  @include relative-prop(padding-top, 50, 55, 55);
+  @include relative-prop(padding-bottom, 34, 55, 55);
+  display: flex;
+  justify-content: space-between;
+
+  &-left {
+    @include relative-prop(padding-top, 0, 0, 65);
+  }
+
+  &-title {
+    @include relative-prop(padding-bottom, 20, 20, 30);
+    @include relative-prop(font-size, 32, 32, 46);
+    @include relative-prop(line-height, 36.8, 36.8, 50.6);
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+    line-height: 115%;
+    color: $black;
+  }
+
+  &-desc {
+    @include mobile {
+      width: 100%;
+    }
+    @include relative-prop(padding-bottom, 48, 42, 45);
+    @include relative-prop(font-size, 16, 20, 20);
+    @include relative-prop(line-height, 15.6, 32, 32);
+    @include relative-prop(width, null, 326, 527);
+    letter-spacing: -0.01em;
+    color: $black;
+  }
+
+  &-button {
+    @include mobile {
+      margin-bottom: 55px;
+    }
+    @include relative-prop(font-size, 16, 16, 18);
+    @include relative-prop(line-height, 20.8, 20.8, 22);
+    @include relative-prop(height, 52, 52, 52);
+    font-family: $font-family-bold;
+    color: $dark-blue;
+    letter-spacing: -0.01em;
+    background-color: white;
+    border: 1px solid white;
+    padding-left: 22px;
+    padding-right: 22px;
+    border-radius: 54px;
+  }
+
+  &-img {
+    @include mobile {
+      width: 100%;
+      margin-left: 0;
+    }
+    @include relative-prop(width, null, 325, 656);
+    @include relative-prop(margin-left, null, 24, 129);
+  }
+
+}

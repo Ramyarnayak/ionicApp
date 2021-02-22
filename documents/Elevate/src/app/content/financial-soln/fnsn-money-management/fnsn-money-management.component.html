@@ -1,0 +1,37 @@
+<div class="app-header-offset"></div>
+<div [attr.class]="'FnSnMoneyManagement container ' + moneyManagement?.settings?.theme" id="FnSnMoneyManagement">
+    <div class="FnSnMoneyManagement-header">
+        <h2 class="FnSnMoneyManagement-headline">{{ moneyManagement?.headline }}</h2>
+        <p class="FnSnMoneyManagement-description">{{ moneyManagement?.description }}</p>
+    </div>
+    <div class="FnSnMoneyManagement-body">
+        <div *ngFor="let card of moneyManagement?.moneyManagementCardItems; let i = index; trackBy: trackById" class="FnSnMoneyManagement-card">
+            <div class="FnSnMoneyManagement-card-logo">
+                <img [imageId]="card.logo.id" appImageLoader>
+            </div>
+            <div class="FnSnMoneyManagement-card-body">
+                <h3 class="FnSnMoneyManagement-card-headline--desktop">{{ card.headline}}</h3>
+                <div *ngIf="card.ratings.rating || card.ratings.review" class="FnSnMoneyManagement-card-ratings">
+                    <span class="FnSnMoneyManagement-card-ratings-rating">
+                        <img [attr.src]="'/assets/images/ratings/' + card.ratings.rating + '.png'">
+                    </span>
+                    <span class="FnSnMoneyManagement-card-ratings-review">{{ card.ratings.review }}</span>
+                </div>
+                <h3 class="FnSnMoneyManagement-card-headline--mobile">{{ card.headline}}</h3>
+                <p [innerHTML]="card.body1 | safe: 'html'" class="FnSnMoneyManagement-card-body1"></p>
+                <div [innerHTML]="card.body2 | safe: 'html'" class="FnSnMoneyManagement-card-body2"></div>
+            </div>
+            <div class="FnSnMoneyManagement-card-cta">
+                <a [attr.class]="'button--' + card.cta.settings.theme" type="button"
+                    [attr.href]="card.cta.link.externalLink || card.cta.link.externalLink"
+                    (click)="sendTealiumClickEvent(i+1, card.headline)"
+                    target="_blank">
+                    {{ card.cta.label }}
+                </a>
+            </div>
+        </div>
+        <div *ngIf="isMoreCards" class="FnSnMoneyManagement-loadMore">
+            <button (click)="incrementPage()" class="button--load-more">Load More</button>
+        </div>
+    </div>
+</div>

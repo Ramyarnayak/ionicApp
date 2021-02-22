@@ -1,0 +1,28 @@
+<ng-container [ngSwitch]="showAll">
+    <ng-container *ngIf="(financialSolution | async) as FinancialSolutionCard">
+        <div *ngSwitchCase="false"
+            [appTealiumClickEvent]="getTealiumClickEvent(FinancialSolutionCard?.title)"
+            (click)="onCardClick(FinancialSolutionCard?.link?.externalLink)"
+            class="FSCard">
+            <div class="FSCard-imageBox">
+                <img class="FSCard-image" appImageLoader [imageId]="FinancialSolutionCard?.icon?.id">
+            </div>
+            <div class="FSCard-text">
+                <h4 class="FSCard-title" [innerHTML]="FinancialSolutionCard?.title | safe: 'html'"></h4>
+                <p class="FSCard-description">{{ FinancialSolutionCard?.description }}</p>
+            </div>
+        </div>
+    </ng-container>
+    <div *ngSwitchCase="true"
+        [appTealiumClickEvent]="getTealiumClickEvent(navigation?.label)"
+        (click)="onCardClick(navigation?.link?.externalLink)"
+        class="FSShowAllCard">
+        <div class="FSShowAllCard-imageBox">
+            <img class="FSShowAllCard-image" src="../../../assets/images/show-all.svg" alt="Financial Solution Show All Icon">
+        </div>
+        <div class="FSShowAllCard-text">
+            <h4 class="FSShowAllCard-title">{{navigation?.label}}</h4>
+            <p class="FSShowAllCard-description"></p>
+        </div>
+    </div>
+</ng-container>

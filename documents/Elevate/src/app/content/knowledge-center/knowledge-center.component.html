@@ -1,0 +1,47 @@
+<div class="KnowledgeCenter">
+    <div [ngClass]="(knowledgeCenterHero | async)?.settings.theme" class="KnowledgeCenter-Hero container">
+        <div class="KnowledgeCenter-Hero-sticky">
+            <h1 [innerHTML]="(knowledgeCenterHero | async)?.headline | safe: 'html'"></h1>
+            <p>{{ (knowledgeCenterHero | async)?.description }}</p>
+        </div>
+        <div class="KnowledgeCenter-Hero-list">
+            <div *ngFor="let card of (knowledgeCenterHeroCards | async)" class="KnowledgeCenter-Hero-list-item">
+                <h3>{{ card.headline }}</h3>
+                <p>{{ card.description }}</p>
+                <a [appTealiumClickEvent]="getTealiumClickEventHeroList(card)"
+                    [ngClass]="'button--' + card.cta.settings.theme"
+                    [routerLink]="['/knowledge-center' + card.cta.link.internalLink]"
+                    class="button">
+                    {{ card.cta.label }}
+                </a>
+            </div>
+        </div>
+    </div>
+    <div [ngClass]="(knowledgeCenterFeaturedArticles | async)?.settings.theme" class="KnowledgeCenter-Content container">
+        <h2 class="KnowledgeCenter-Content-title">{{ (knowledgeCenterFeaturedArticles | async)?.headline }}</h2>
+        <div class="KnowledgeCenter-Content-articles">
+            <div *ngFor="let post of (knowledgeCenterFeaturedArticlesPaged | async)?.posts; let i = index" class="KnowledgeCenter-Content-articles-item">
+                <div class="KnowledgeCenter-Content-articles-item-visual">
+                    <img [imageId]="post.thumbnailImage.id" class="KnowledgeCenter-Content-articles-item-visual-image" appImageLoader>
+                </div>
+                <strong class="KnowledgeCenter-Content-articles-item-type">{{ post?.category.title }}</strong>
+                <h4 class="KnowledgeCenter-Content-articles-item-title">{{ post?.title }}</h4>
+                <a [appTealiumClickEvent]="getTealiumClickEventArticles(i+1, post)"
+                    [customLink]="post.navigation.link"
+                    class="KnowledgeCenter-Content-articles-item-link"
+                    appExternalLink>
+                    {{ post.navigation.label }}
+                </a>
+            </div>
+        </div>
+        <div class="KnowledgeCenter-Content-articles-more">
+            <button *ngIf="isMoreFeaturedArticles"
+                [appTealiumClickEvent]="tealiumClickEventLoadMore"
+                (click)="incrementPage()"
+                class="KnowledgeCenter-Content-articles-more-button button button--load-more">
+                {{ (knowledgeCenterPage | async)?.loadMoreCta }}
+            </button>
+        </div>
+        <div [innerHTML]="(disclaimer | async)?.description | safe: 'html'" class="KnowledgeCenter-Content-disclaimer"></div>
+    </div>
+</div>

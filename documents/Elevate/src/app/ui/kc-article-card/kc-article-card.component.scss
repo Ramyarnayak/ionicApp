@@ -1,0 +1,58 @@
+@import "src/app/styles/common";
+
+.KCArticleCard {
+
+    @include relative-prop(margin-right, 24, 44, 60);
+    @include relative-prop(width, null, 221, 304);
+    @include mobile {
+        display: flex;
+        margin-bottom: 24px;
+        width: 100%;
+        padding-right: 24px;
+    }
+
+    &-textContainer {
+        @include mobile {
+            padding-left: 21px;
+        }
+    }
+
+    &-image {
+        @include relative-prop(width, 120, 221, 304);
+        @include relative-prop(height, null, 232, 232);
+        @include relative-prop(padding-bottom, 0, 32, 32);
+        object-fit: cover;
+        @include mobile {
+            height: 80px;
+        }
+    }
+
+    &-overline {
+        @include relative-prop(font-size, 12, 16, 16);
+        @include relative-prop(line-height, 13.2, 17.6, 17.6);
+        @include relative-prop(padding-bottom, 11, 17, 17);
+
+        text-transform: uppercase;
+        opacity: 0.6;
+        color: $white;
+    }
+
+    &-title {
+        @include relative-prop(font-size, 20, 24, 24);
+        @include relative-prop(line-height, 26, 31.2, 31.2);
+        @include relative-prop(padding-bottom, 0, 17, 17);
+
+        color: $white;
+    }
+
+    &-link {
+        @include relative-prop(font-size, 12, 12, 12);
+        @include relative-prop(line-height, 15.6, 15.6, 15.6);
+        @include mobile {
+            display: none;
+        }
+
+        text-decoration: underline;
+        color: $elevate-blue;
+    }
+}

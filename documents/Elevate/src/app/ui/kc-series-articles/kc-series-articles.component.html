@@ -1,0 +1,16 @@
+<div class="KCSeriesArticles" [ngClass]="knowledgeCenterSeriesArticles?.settings.theme">
+    <div class="KCSeriesArticles-tag">{{ knowledgeCenterSeriesArticles?.headline1 }}</div>
+    <h2 class="KCSeriesArticles-headline">{{ knowledgeCenterSeriesArticles?.headline2 }}</h2>
+    <div class="KCSeriesArticles-description">{{ knowledgeCenterSeriesArticles?.description }}</div>
+    <app-horizontal-scroll-container [showScrollButtons]="true" [paddingLeftClass]="'container-left-sm'" [scrollThumbColor]="'#33CCFF'" class="KCSeriesArticles-horizontalContainer">
+        <div *ngFor="let post of knowledgeCenterSeriesArticles?.articles; let i = index;">
+            <app-kc-article-card [post]="post.article" (navigationClick)="navigationClick.emit({ index: i+1, title: $event })"></app-kc-article-card>
+        </div>
+    </app-horizontal-scroll-container>
+
+    <div class="KCSeriesArticles-horizontalContainerMobile">
+        <div *ngFor="let post of knowledgeCenterSeriesArticles?.articles; let i = index">
+            <app-kc-article-card [post]="post.article" (navigationClick)="navigationClick.emit({ index: i+1, title: $event })"></app-kc-article-card>
+        </div>
+    </div>
+</div>

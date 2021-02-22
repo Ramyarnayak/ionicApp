@@ -1,0 +1,28 @@
+<section class="HomeAbout" [appBackgroundColor]="ourStory.settings.theme">
+    <div class="HomeAbout-inner">
+        <div class="HomeAbout-info container">
+            <h1 class="HomeAbout-title" [innerHTML]="ourStory.headline | safe: 'html'"></h1>
+            <div class="HomeAbout-description">{{ ourStory.description }}</div>
+            <div class="HomeAbout-ourStory">
+                <a [appTealiumClickEvent]="tealiumClickEvent"
+                    [customLink]="ourStory.navigation.link"
+                    appExternalLink class="HomeAbout-ourStoryButton">
+                    {{ourStory.navigation.label}}
+                </a>
+            </div>
+        </div>
+
+        <div class="HomeAbout-mediaInfo">
+            <video *ngIf="isVideoTypeMedia; else imageTypeMedia" controls>
+                <source src="" type="">
+            </video>
+        </div>
+    </div>
+</section>
+
+<ng-template #imageTypeMedia>
+    <div class="HomeAbout-mediaContainer">
+        <img class="HomeAbout-mediaImage" id="HomeAbout-mediaImage-Paralax" appImageLoader [imageId]="ourStory?.media.image.id">
+        <img class="HomeAbout-cloudImg" src="assets/cloud 1.png" alt="Cloud Image 1">
+    </div>
+</ng-template>

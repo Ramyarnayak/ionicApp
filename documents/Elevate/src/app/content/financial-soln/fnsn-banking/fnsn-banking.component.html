@@ -1,0 +1,51 @@
+<div class="app-header-offset"></div>
+<div [class]="'FnSnBanking container ' + banking?.settings.theme" id="FnSnBanking">
+  <div class="FnSnBanking-main">
+    <div class="FnSnBanking-sidebar">
+      <div class="FnSnBanking-headline">{{ banking?.headline }}</div>
+      <div class="FnSnBanking-description">{{ banking?.description }}</div>
+      <div class="FnSnBanking-sidebar-filter">
+        <form action="#" class="FnSnBanking-sidebar-filter-form">
+          <div class="FnSnBanking-sidebar-filter-form-row">
+            <div class="FnSnBanking-sidebar-filter-noStateSelected" *ngIf="noStateSelected">{{
+              banking?.noStateSelectionHeadline }}</div>
+            <div class="FnSnBanking-sidebar-filter-form-select" [ngClass]="{ 'noStateSelected' : noStateSelected}">
+              <app-custom-dropdown
+                *ngIf="stateListToDisplay as list"
+                [listItem]="list"
+                (dropdownOptionSelected)="onDropdownOptionSelected($event)"
+                [defaultSelectedItem]="selectedState">
+              </app-custom-dropdown>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div [ngClass]="{ 'FnSnBanking-content--noStateSelected': this.noStateSelected }" class="FnSnBanking-content">
+      <app-no-offer-error *ngIf="!bankingCards?.length && noOfferError"
+        [noOfferError]="noOfferError"
+        (tealiumClickEvent)="onErrorTealiumClickEvent()">
+      </app-no-offer-error>
+      <app-fnsn-banking-card *ngFor="let bankingCard of bankingCards; let i = index"
+        [bankingCard]="bankingCard"
+        (tealiumShowLessClickEvent)="sendTealiumBankingCardClickEvent(i+1, $event, 'showless')"
+        (tealiumShowMoreClickEvent)="sendTealiumBankingCardClickEvent(i+1, $event, 'showmore')"
+        (tealiumVisitClickEvent)="sendTealiumBankingCardClickEvent(i+1, $event, 'visit')">
+      </app-fnsn-banking-card>
+      <button *ngIf="isMoreCards"
+        (click)="incrementPage()"
+        class="button--load-more"
+        type="button">
+        {{ banking?.loadMoreCta }}
+      </button>
+    </div>
+  </div>
+  <div id="disclosure" class="FnSnBanking-inpageDisclaimer"
+    [innerHTML]="(expandedContentDisclaimer | async)?.description | safe: 'html'">
+  </div>
+  <a [appTealiumClickEvent]="tealiumScrollToTopClickEvent"
+    (click)="onScrollToTopClick()"
+    class="FnSnBanking-scrollToTop">
+    {{fnsnPage?.scrollToTopCta}}
+  </a>
+</div>

@@ -1,0 +1,13 @@
+<div class="JoinTeamBar container" [ngClass]="jointeambar?.settings.theme">
+  <div class="JoinTeamBar-left">
+    <div class="JoinTeamBar-title">{{jointeambar?.headline}}</div>
+    <div class="JoinTeamBar-desc">{{jointeambar?.description}}</div>
+    <button class="JoinTeamBar-button"
+    [appTealiumClickEvent]="tealiumClickEventSend"
+    [customLink]="jointeambar?.cta.link?.externallink" appExternalLink>
+      {{jointeambar?.cta.label}}
+    </button>
+  </div>
+  <img class="JoinTeamBar-img"
+  appImageLoader [imageId]="jointeambar?.image?.id" />
+</div>

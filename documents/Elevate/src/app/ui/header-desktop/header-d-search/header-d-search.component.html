@@ -1,0 +1,14 @@
+<div class="HeaderDSearch container">
+
+  <input type="search" ng-model="searchBox" placeholder="search"
+  class="HeaderDSearch-input" #search
+  (focus)="onSearchInputFocus()" (blur)="updateSearchString(search.value)"
+  (keyup.enter)="performSearchOnEnter($event.target.value)">
+
+  <button class="HeaderDSearch-button"
+  [class]="{ 'HeaderDSearch-inputFocused': !searchInputClicked }"
+  (click)="performSearch()">Search</button>
+
+  <img alt="search icon" src="assets/icons/search-icon.png" class="HeaderDSearch-icon"/>
+</div>
+

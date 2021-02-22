@@ -1,0 +1,18 @@
+<div class="Beliefs container" [ngClass]="(customerhubMtbody2Content | async)?.settings?.theme">
+  <div class="Beliefs-columns">
+    <div class="Beliefs-columns-column">
+      <h3 class="Beliefs-title">{{ (customerhubMtbody2Content | async)?.headline }}</h3>
+      <div class="Beliefs-text">
+        <p>{{ (customerhubMtbody2Content | async)?.description1 }}</p>
+      </div>
+    </div>
+    <div class="Beliefs-columns-column">
+      <div class="Beliefs-list" [innerHTML]="(customerhubMtbody2Content | async)?.description2 | safe : 'html'"></div>
+    </div>
+  </div>
+  
+  <app-impact
+    [impactBarHeadline]="(customerhubMtbody2Content | async)?.impactBarHeadline"
+    [impactBarItems]="(customerhubMtbody2Content | async)?.impactBarItems">
+  </app-impact>
+</div>

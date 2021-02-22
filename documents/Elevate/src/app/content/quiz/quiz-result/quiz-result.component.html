@@ -1,0 +1,18 @@
+<app-score40-results-hero [isEmailCaptured]="isEmailCapturedInitial" [score40resultscard]="quizResult?.score40resultscard" [cardMapping]="cardMapping" [total]="total" [quizResultsHero]="quizResult?.score40resultshero[0]"></app-score40-results-hero>
+
+<div class="QuizResult-emailCard">
+  <app-capture-email-card
+    [captureEmailCardContent]="quizResult?.score40emailresults[0]"
+    [total]="total"
+    [consolidatedCode]="cardMapping?.indicator"
+    eventCategory="customerhub-score40"
+    eventName="results"
+    emailCapturePurpose="quiz">
+  </app-capture-email-card>
+</div>
+
+<app-quiz-result-score-info [isEmailCaptured]="isEmailCapturedInitial"></app-quiz-result-score-info>
+
+<app-credit-resources *ngIf="quizResult?.score40resultspage as score40resultspage"  [isScore40Results]="true" [knowledgeCenterId]="score40resultspage[0].knowledgeCenter.id"></app-credit-resources>
+
+<app-financial-solutions *ngIf="quizResult?.score40resultspage as score40resultspage" [financialSolutionsId]="score40resultspage[0].financialSolutions.id" [isScore40Results]="true"></app-financial-solutions>

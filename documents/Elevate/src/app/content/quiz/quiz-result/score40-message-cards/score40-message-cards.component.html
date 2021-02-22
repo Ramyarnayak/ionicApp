@@ -1,0 +1,57 @@
+<div class="MessageCards container">
+  <div
+    class="MessageCards-container"
+    *ngFor="let result of (cardMapping)?.cards; let _index = index"
+    [ngClass]="{
+      'is-collapsed': !selectedIndex || selectedIndex !== _index,
+      'is-inactive': !selectedIndex || selectedIndex !== _index,
+      'is-expanded': selectedIndex === _index
+    }"
+  >
+    <div class="MessageCards-card">
+      <div class="MessageCards-points">
+        <div class="MessageCards-uptoText">
+          <img class="MessageCards-uptoImage" src="assets/icons/points-upto.svg" alt="Points Upto Icon" />
+          {{ (getCardData(result?.card.id))?.headline1 }}
+        </div>
+        <div class="MessageCards-pointText">
+          {{ (getCardData(result?.card.id))?.headline2 }}<span class="MessageCards-postfix">points</span>
+        </div>
+      </div>
+      <div class="MessageCards-description">
+        <h4>{{ (getCardData(result?.card.id))?.description | ellipsis:50 }}</h4>
+        <div class="MessageCards-detailButtonContainer">
+          <button (click)="showHideExpandableSection(_index); sendTealiumDetailsClickEvent(_index, false, getCardData(result?.card.id))" class="MessageCards-detailButton">
+            {{ (getCardData(result?.card.id))?.cta }}
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="MessageCards-expander" *ngIf="selectedIndex === _index">
+      <div class="MessageCards-expandable">
+        <button (click)="closeExpandableSection(); sendTealiumDetailsClickEvent(_index, true, getCardData(result?.card.id))" class="MessageCards-closeButton">
+          <img class="MessageCards-closeIcon" src="assets/icons/close-icon.svg" alt="Close Icon">
+        </button>
+        <h2 class="MessageCards-heading">
+          {{ (getCardData(result?.card.id))?.resultsCollections?.description }}
+        </h2>
+        <h4 class="MessageCards-notesHeading">
+          {{ (getCardData(result?.card.id))?.resultsCollections?.notesHeadline }}
+        </h4>
+        <div class="MessageCards-notes">
+          <div
+            class="MessageCards-notesSection"
+            *ngFor="let note of (getCardData(result?.card.id))?.resultsCollections?.notes; let noteIndex = index;"
+          >
+            <h5 class="MessageCards-notesTitle">
+              {{ noteIndex + 1 }}. {{ (getNoteData(note?.note?.id) | async)?.headline }}
+            </h5>
+            <div class="MessageCards-notesDescription">
+              {{ (getNoteData(note?.note?.id) | async)?.description }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

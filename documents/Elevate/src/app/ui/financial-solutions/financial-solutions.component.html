@@ -1,0 +1,36 @@
+<section class="FinancialSolutions">
+  <h2 *ngIf="!isScore40Results" class="FinancialSolutions-titleOne" [innerHTML]="homesubhero?.headline | safe: 'html'"></h2>
+  <div *ngIf="!isScore40Results" class="FinancialSolutions-descriptionOne">{{ homesubhero?.description }}</div>
+  <div *ngIf="!isScore40Results" class="FinancialSolutions-emptyBox">
+
+  </div>
+  <div class="FinancialSolutions-main" [ngClass]="{'score40Results': isScore40Results}"  [appBackgroundColor]="(financialsolutions | async)?.settings?.theme">
+    <h1 class="FinancialSolutions-titleTwo container-left"  [appBackgroundColor]="(financialsolutions | async)?.settings?.theme" [innerHTML]="(financialsolutions | async)?.headline | safe: 'html'"></h1>
+    <div *ngIf="!isScore40Results" class="FinancialSolutions-description container">{{ (financialsolutions | async)?.subheading }}</div>
+    <app-horizontal-scroll-container [scrollThumbColor]="scrollBarThumbColor">
+
+      <div *ngIf="!isScore40Results" class="horizontal-scroll-element FinancialSolutions-subheading">{{ (financialsolutions | async)?.subheading }}</div>
+
+      <div class="horizontal-scroll-element" *ngFor="let item of (financialsolutions | async)?.solutionList">
+        <app-financial-solutions-card [isScore40Results]="isScore40Results" [reference]="item"></app-financial-solutions-card>
+      </div>
+      <div class="horizontal-scroll-element show-all">
+        <app-financial-solutions-card [isScore40Results]="isScore40Results" [showAll]="true" [navigation]="(financialsolutions | async)?.navigation"></app-financial-solutions-card>
+      </div>
+    </app-horizontal-scroll-container>
+    <div *ngIf="isScore40Results" class="container">
+      <div class="FinancialSolutions-disclaimer" *ngIf="(financialsolutions | async)?.disclaimer?.id as fs" [innerHTML]="(getDisclaimer(fs) | async)?.description | safe : 'html'"></div>
+    </div>
+  </div>
+  <div *ngIf="!isScore40Results" class="FinancialSolutions-Images">
+    <div class="FinancialSolutions-Images-HandImageContainer" id="FinancialSolutions-Images-HandImageContainer-Paralax">
+      <img class="FinancialSolutions-Images-handImg" src="../../../assets/financial-solutions-hand.png" alt="Hand Image">
+      <div class="FinancialSolutions-Images-handText">
+        Rise above it.
+      </div>
+    </div>
+    <img class="FinancialSolutions-Images-leftCloudImg" alt="Cloud Image 1" src="../../../assets/cloud 1.png">
+    <img class="FinancialSolutions-Images-midCloudImg" alt="Cloud Image 2" src="../../../assets/cloud 2.png">
+    <img class="FinancialSolutions-Images-rightCloudImg" alt="Cloud Image 3" src="../../../assets/images/fs-right-cloud.png">
+  </div>
+</section>

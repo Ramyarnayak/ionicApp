@@ -1,0 +1,67 @@
+@import "src/app/styles/common";
+
+.KCAllArticles {
+
+    &-title {
+        @include relative-prop(font-size, 24, 24, 40);
+        @include relative-prop(line-height, 31.2, 31.2, 52);
+        @include relative-prop(padding-bottom, 38, 32 ,50);
+        @include relative-prop(margin-top, 64, 48, 100);
+
+        color: $black;
+        font-weight: $font-family-bold;
+    }
+
+    &-cards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -16px;
+
+        @include mobile {
+            margin: 0 -12px;
+        }
+    }
+
+    &-item {
+        @include relative-prop(margin-bottom, 46, 44, 44);
+        flex: 0 0 auto;
+        width: 25%;
+        padding: 0 16px;
+
+        @include tablet-only {
+            width: 25%;
+            padding: 0 12px;
+        }
+        @include mobile {
+            padding: 0;
+            flex: 1 1 43%;
+            width: 50%;
+            margin: 0 12px 64px;
+        }
+    }
+
+    &-more {
+        @include relative-prop(padding-top,26,26,26);
+        @include relative-prop(padding-bottom,80,80,80);
+        display: flex;
+        justify-content: center;
+
+        &-button {
+            @include relative-prop(border-radius,54,54,54);
+            @include relative-prop(height,52,52,52);
+            @include relative-prop(min-width,199,256,256);
+            @include relative-prop(font-size,18,18,18);
+            @include relative-prop(line-height,50,50,50);
+            cursor: pointer;
+            color: $light-gray;
+            border: 1px solid $light-gray;
+            font-family: $font-family-bold;
+            background: $white;
+
+            &:hover {
+                color: $mid-dark-blue;
+                border-color: $mid-dark-blue;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+<app-quiz-header *ngIf="(currentQuizState | async) !== resultsState"
+    [ngClass]="{ 'hide-close-button': (currentQuizState | async) === quizEndState }">
+</app-quiz-header>
+<app-quiz-result-header *ngIf="(currentQuizState | async) === resultsState" class="AppQuizResultHeader"></app-quiz-result-header>
+<!-- <router-outlet></router-outlet> -->
+
+<div #quiz></div>
+<div #closeModal></div>

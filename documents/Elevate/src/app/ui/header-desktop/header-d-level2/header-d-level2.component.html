@@ -1,0 +1,29 @@
+<div class="HeaderDLevel2 container">
+  <div class="HeaderDLevel2-hero">
+    <img class="HeaderDLevel2-heroImage" appImageLoader [imageId]="headerSecondaryNavigation?.headerHero?.image?.id" alt="Nav Hero Image">
+    <div class="HeaderDLevel2-title">
+      {{headerSecondaryNavigation?.headerHero.title}}
+    </div>
+    <div class="HeaderDLevel2-subTitle">
+      {{headerSecondaryNavigation?.headerHero.heading}}
+    </div>
+    <div class="HeaderDLevel2-link">
+      <a appExternalLink [customLink]="headerSecondaryNavigation?.headerHero.navigation.link">
+        {{headerSecondaryNavigation?.headerHero.navigation.label}}
+      </a>
+    </div>
+  </div>
+  <div class="HeaderDLevel2-content" (mouseenter)="onMouseOver()" (mouseleave)="onMouseLeave()">
+    <div
+      *ngFor="let nav of headerSecondaryNavigation?.secondaryNavigation; let i = index"
+      class="HeaderDLevel2-contentItem"
+      [class]="{'HeaderDLevel2-contentItemHover': mouseOverSubMenuList == true}"
+      (click)="onClickSubMenu(i)"
+      [appTealiumClickEvent]="getTealiumClickEvent(headerSecondaryNavigation?.title, nav.navigation?.label)">
+      <a class="HeaderDLevel2-contentItem-a" appExternalLink [customLink]="nav.navigation.link">
+        <div class="HeaderDLevel2-contentTitle">{{nav.navigation.label}}</div>
+        <div class="HeaderDLevel2-contentDesc">{{nav.navigation.description}}</div>
+      </a>
+    </div>
+  </div>
+</div>

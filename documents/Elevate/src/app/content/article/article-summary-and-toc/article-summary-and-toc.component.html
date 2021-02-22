@@ -1,0 +1,9 @@
+<div class="ArticleSummaryAndToc article-container-left"
+  [ngClass]="!!tableOfContents ? 'container-right' : 'article-container-right'">
+  <div class="ArticleSummaryAndToc-summary" [innerHTML]="post?.summary"></div>
+  <div *ngIf="tableOfContents"
+    [innerHTML]="tableOfContents"
+    class="ArticleSummaryAndToc-toc"
+    #tableOfContentsRef>
+  </div>
+</div>

@@ -1,0 +1,89 @@
+@import "src/app/styles/common";
+
+:host ::ng-deep {
+  .Beliefs-list ol {
+    margin-bottom: 0; 
+    @include relative-prop(font-size,16,16,20);
+    @include relative-prop(line-height,25.6,25.6,32);
+    @include relative-prop(padding-left,20,14,33);
+
+    @include mobile {
+      margin-top: 0;
+    }
+
+    li {
+      @include relative-prop(margin-bottom,16,16,24);
+      @include relative-prop(padding-left,4,4,16);
+
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}
+
+.Beliefs {
+  @include relative-prop(padding-top,67,63,100);
+
+  &-columns {
+    display: flex;
+
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    &-column {
+      flex: 0 0 auto;
+
+      @include relative-prop(width,null,278,547);
+      @include relative-prop(margin-right,0,71,145);
+
+      &:last-child {
+        margin: 0;
+        flex: 1 1 auto;
+        @include relative-prop(width,null,324,547);
+
+        @include mobile {
+          width: 100%;
+        }
+      }
+
+      @include mobile {
+        width: 100%;
+        margin-bottom: 27px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  &-title {
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+
+    @include relative-prop(font-size,42,42,40);
+    @include relative-prop(line-height,46.2,46.2,52);
+    @include relative-prop(margin-bottom,16,16,31);
+  }
+
+  &-text {
+    color: $dark-charcoal;
+
+    @include relative-prop(font-size,16,16,20);
+    @include relative-prop(line-height,25.6,25.6,32);
+  }
+
+  &-list {
+    margin-bottom: 0; 
+    @include relative-prop(font-size,16,16,20);
+    @include relative-prop(line-height,25.6,25.6,32);
+
+    @include mobile {
+      margin-top: 0;
+      margin-bottom: 32px;
+    }
+  }
+}

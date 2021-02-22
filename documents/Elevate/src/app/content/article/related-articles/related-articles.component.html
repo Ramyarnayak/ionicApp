@@ -1,0 +1,30 @@
+<div class="RelatedArticles container">
+  <div class="RelatedArticles-title">{{relatedArticleData?.headline}}</div>
+
+  <div class="RelatedArticles-list">
+    <div class="RelatedArticles-card" *ngFor="let article of articles; let i = index; trackBy: trackById">
+      <ng-container *ngIf="(getPostById(article.article.id) | async) as post">
+        <img class="RelatedArticles-card-image" appImageLoader [imageId]="post.thumbnailImage?.id">
+        <div class="RelatedArticles-card-heading">{{post.category?.title}}</div>
+        <div class="RelatedArticles-card-description">{{post.title}}</div>
+        <div class="RelatedArticles-card-cta">
+          <a [appTealiumClickEvent]="getTealiumClickEventRelatedArticle(i+1, post.title)"
+            [class]="'button--' + post.navigation.settings.theme"  
+            [customLink]="post.navigation.link"
+            appExternalLink>
+            {{post.navigation?.label }}
+          </a>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="RelatedArticles-loadMore" *ngIf="showLoadMore">
+    <button [appTealiumClickEvent]="tealiumClickEventLoadMore"
+      (click)="onLoadMore()"  
+      class="button--load-more"
+      type="button">
+      {{relatedArticleData?.loadMoreCta}}
+    </button>
+  </div>
+</div>

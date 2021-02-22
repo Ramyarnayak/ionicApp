@@ -1,0 +1,61 @@
+@import 'src/app/styles/common';
+
+:host ::ng-deep {
+    .ContentBasic-body {
+        @include relative-prop(font-size,16,16,16);
+        @include relative-prop(line-height, 21, 24, 24);
+        font-family: $font-family-regular;
+        color: $dark-charcoal;
+
+        h2{
+            @include relative-prop(font-size, 32, 46, 46);
+            @include relative-prop(line-height, 37, 51, 51);
+
+            font-family: $font-family-regular;
+            font-weight: 700;
+            letter-spacing: -.02em;
+        }
+
+        h3 {
+            font-family: $font-family-regular;
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 52px;
+            letter-spacing: -.02em;
+        }
+
+        p {
+            @include relative-prop(font-size, 18, null, null);
+            @include relative-prop(line-height, 21, 24, 24);
+            @include relative-prop(margin-bottom, 21, 24, 24);
+            @include flexi-relative-prop(letter-spacing, 0, -.02em,-.02em);
+            font-family: $font-family-regular;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+.ContentBasic {
+    @include relative-prop(padding-top, 40, 60, 70);
+    @include relative-prop(padding-bottom, 101, 100, 100);
+
+    &-headline {
+        @include relative-prop(font-size, 42, 72, 96);
+
+        color: $dark-blue;
+        font-family: $font-family-bold;
+        line-height: 110%;
+        letter-spacing: -.02em;
+        margin-bottom: 30px;
+    }
+
+    &-underline {
+        @include relative-prop(width, 98, 144, 144);
+        @include relative-prop(margin-bottom, 80, 72, 72);
+
+        border-bottom: 8px solid $dark-blue;
+    }
+}

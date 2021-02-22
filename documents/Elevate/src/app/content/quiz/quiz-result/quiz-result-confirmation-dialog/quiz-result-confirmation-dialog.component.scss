@@ -1,0 +1,108 @@
+@import "src/app/styles/common";
+
+.QuizResultConfirmationDialog {
+    overflow-y: auto;
+    color: $black;
+    @include relative-prop(padding-top, 31, 42, 67);
+    @include relative-prop(padding-bottom, 31, 42, 67);
+    @include relative-prop(padding-left, 27, 52, 91);
+    @include relative-prop(padding-right, 27, 52, 88);
+
+    &-header {
+        @include relative-prop(font-size, 20, 24, 38);
+        @include relative-prop(line-height, 26, 31, 49);
+        letter-spacing: -0.02em;
+    }
+
+    &-description {
+        @include relative-prop(font-size, 14, 16, 16);
+        @include relative-prop(line-height, 19, 21, 21);
+        @include relative-prop(margin-top, 15, 20, 29);
+        letter-spacing: -0.02em;
+    }
+
+    &-userInputBox {
+        @include relative-prop(margin-top, 18, 28, 37);
+        @include relative-prop(border-radius, 8, 12, 16);
+        @include relative-prop(padding, 15, 21, 29);
+        background: $lighter-gray;
+        padding: 23px;
+    }
+
+    &-email {
+        height: 52px;
+        width: 100%;
+        border-radius: 8px;
+        padding: 21px;
+        font-size: 18px;
+        line-height: 23px;
+        letter-spacing: -0.02em;
+        text-overflow: ellipsis;
+        border: none;
+        outline: none;
+        box-shadow: none;
+
+        &-helpText {
+            color: $danger;
+        }
+    }
+
+    &-email.ng-invalid.ng-touched {
+        border: 1px solid $danger;
+    }
+
+    &-email::placeholder {
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    &-checkboxField {
+        display: flex;
+        align-items: flex-start;
+        @include relative-prop(margin-top, 18, 18, 27);
+    }
+
+    &-checkbox {
+        cursor: pointer;
+        height: 19px;
+        width: 19px;
+        border: 1px solid #B4B6B8;
+        border-radius: 2px;
+        background-color: transparent;
+        outline: none;
+    }
+
+    &-checkboxLabel {
+        @include relative-prop(font-size, 10, 14, 14);
+        @include relative-prop(line-height, 14, 19, 19);
+        padding-left: 7px;
+        color: $dark-charcoal;
+        opacity: 0.65;
+    }
+
+    &-actions {
+        @include relative-prop(margin-top, 52, 33, 33);
+        @include relative-prop(margin-bottom, 52, 33, 33);
+        @include bp-down(md) {
+            margin-bottom: 33px;
+        }
+
+        display: flex;
+        justify-content: space-between;
+
+        &-button {
+            @include relative-prop(height, 41, 41, 52);
+            @include relative-prop(font-size, 14, 14, 18);
+            @include relative-prop(line-height, 17, 17, 22);
+            font-family: $font-family-bold;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-leave {
+            margin-right: 16px;
+        }
+    }
+}

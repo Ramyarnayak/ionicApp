@@ -1,0 +1,65 @@
+<div [attr.class]="(quizBreakdown | async)?.settings.theme + ' QuizResultScoreInfo' + (isEmailCaptured ? ' QuizResultScoreInfo-emailCaptured' : '')">
+    <div class="QuizResultScoreInfo-container-margin">
+        <h2 [innerHTML]="(quizBreakdown | async)?.headline | safe: 'html'" class="QuizResultScoreInfo-title"></h2>
+        <div class="QuizResultScoreInfo-text">
+            <p>{{ (quizBreakdown | async)?.subheading }}</p>
+        </div>
+        <div class="QuizResultScoreInfo-navigation">
+            <div class="QuizResultScoreInfo-navigation-holder">
+                <ul class="QuizResultScoreInfo-navigation-list">
+                    <li *ngFor="let option of optionsSelectedArray; let i = index" [ngClass]="{ active: i === activeTabIndex, hidden: !option.answer.quizBreakdownTab }">
+                        <button (click)="setActiveTabIndex(i)"
+                            type="button">
+                            {{ i + 1 }}: {{ option.question.quizBreakdownTabName }}
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="QuizResultScoreInfo-question">
+            <div class="QuizResultScoreInfo-question-side">
+                <div class="QuizResultScoreInfo-question-note">
+                    <h4 class="QuizResultScoreInfo-question-note-title">Question</h4>
+                    <p [innerHTML]="(activeTab | async)?.question.question"></p>
+                </div>
+                <h2 class="QuizResultScoreInfo-question-title">{{ (activeTab | async)?.answer.quizBreakdownTab.headline }}</h2>
+                <p [innerHTML]="(activeTab | async)?.answer.quizBreakdownTab.description | safe: 'html'" class="QuizResultScoreInfo-question-list"></p>
+            </div>
+            <div class="QuizResultScoreInfo-question-graph">
+                <picture>
+                    <img [imageId]="(activeTab | async)?.answer.quizBreakdownTab.media.image.id" appImageLoader>
+                </picture>
+            </div>
+        </div>
+    </div>
+    <div class="QuizResultScoreInfo-learnMore">
+        <div class="QuizResultScoreInfo-learnMore-title container-margin">
+            <span [innerHTML]="(quizBreakdown | async)?.carouselHeadline | safe: 'html'"></span>
+        </div>
+        <app-horizontal-scroll-container *ngIf="!(isMobile | async)" [scrollThumbColor]="scrollBarThumbColor">
+            <ng-container *ngTemplateOutlet="carousel"></ng-container>
+        </app-horizontal-scroll-container>
+        <div *ngIf="isMobile | async" class="QuizResultScoreInfo-learnMore--vertical container">
+            <ng-container *ngTemplateOutlet="carousel"></ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #carousel>
+    <div *ngFor="let carouselItem of (activeTab | async)?.answer.resultsCarouselItems; let i = index" class="horizontal-scroll-element">
+        <div class="QuizResultScoreInfo-learnMore-item">
+            <div *ngIf="carouselItem?.thumbnailImage" class="QuizResultScoreInfo-learnMore-image">
+                <img [imageId]="carouselItem?.thumbnailImage.id" appImageLoader>
+            </div>
+            <div class="QuizResultScoreInfo-learnMore-text">
+                <span class="QuizResultScoreInfo-learnMore-text-type">{{ carouselItem?.category.title }}</span>
+                <h4 class="QuizResultScoreInfo-learnMore-text-title">{{ carouselItem?.title }}</h4>
+                <a class="QuizResultScoreInfo-learnMore-text-cta" [appTealiumClickEvent]="getTealiumCarouselClickEvent(i, carouselItem?.title)"
+                    [href]="carouselItem?.navigation.link.internalLink || carouselItem?.navigation.link.externalLink"
+                    target="_blank">
+                    {{ carouselItem?.navigation.label }}
+                </a>
+            </div>
+        </div>
+    </div>
+</ng-template>

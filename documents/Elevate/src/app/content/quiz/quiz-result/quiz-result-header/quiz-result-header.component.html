@@ -1,0 +1,15 @@
+<div class="QuizResultHeader container">
+    <button [appTealiumClickEvent]="tealiumClickEventRestart"
+        (click)="restartQuiz()"
+        class="QuizResultHeader-restart"
+        type="button">
+        {{ (quizResultsHero | async)?.restartCta.label }}
+    </button>
+    <img class="QuizResultHeader-elevateLogo" alt="Elevate Logo" routerLink="/" routerLinkActive="active"
+        src="assets/elevate-logo-blue.png">
+    <a [appTealiumClickEvent]="tealiumClickEventDone"
+        class="QuizHeader-closeButton"
+        routerLink="/">
+        <img class="QuizResultHeader-close" alt="Close" src="assets/icons/quiz-close.svg">
+    </a>
+</div>

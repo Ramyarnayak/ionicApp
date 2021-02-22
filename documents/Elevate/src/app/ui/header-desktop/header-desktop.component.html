@@ -1,0 +1,18 @@
+<div class="HeaderDesktop" (mouseleave)="onCloseClicked()">
+
+  <div class="HeaderDefault container">
+    <img class="HeaderDefault-elevateLogo" alt="Elevate Logo"
+    routerLink="/" routerLinkActive="active"
+    [src]="setElevateLogoType()">
+    <img [appTealiumClickEvent]="tealiumClickEvent"
+      (click)="openHeader()"
+      alt="Menu"
+      class="HeaderDefault-menu"
+      src="assets/icons/hamburger.svg">
+  </div>
+  <div class="HeaderLevel1Container"
+    [class]="{ 'HeaderLevel1Container-fullWidth': !!headerLevel1Flag }">
+    <app-header-d-level1 (closeClicked)= "onCloseClicked()" [header]="headerNavigationItems | async"></app-header-d-level1>
+  </div>
+
+</div>

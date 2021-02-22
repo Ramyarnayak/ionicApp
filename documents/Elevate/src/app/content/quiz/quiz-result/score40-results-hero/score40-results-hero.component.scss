@@ -1,0 +1,114 @@
+@import "src/app/styles/common";
+
+.Score40ResultsHero {
+    @include relative-prop(padding-bottom, 165, 191, 152);
+    background-color: $dark-blue;
+    position: relative;
+
+    &-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        pointer-events: none;
+
+        &:after {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 50%;
+            @include relative-prop(top,-20,-20,-20);
+            @include relative-prop(margin-left,-362,-725,-1087);
+            background: url('/assets/images/quiz-result-hero-background.svg') 50% 0 no-repeat;
+            background-size: 100% 100%;
+            @include relative-prop(width,725,1450,2175);
+            @include relative-prop(height,467,934,1402);
+            animation: quiz-hero-background 4500ms ease-in-out 1.5s;
+            opacity: 0;
+        }
+    }
+    &-tip {
+        position: absolute;
+        @include relative-prop(top,84,187,256);
+        @include relative-prop(right,0,148,274);
+
+        &_icon {
+            opacity: 0;
+            z-index: 2;
+            position: absolute;
+            @include relative-prop(top,-60,-62,-80);
+            @include relative-prop(right,-14,-62,-80);
+            background-color: $elevate-blue;
+            border-radius: 50%;
+            border: 8px solid $dark-blue;
+            @include relative-prop(height,69,124,160);
+            @include relative-prop(width,69,124,160);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 600ms linear;
+
+            &-image {
+                @include relative-prop(height,25,60,64);
+                @include relative-prop(width,24,63,68);
+            }
+        }
+        &_text {
+            opacity: 0;
+            background-color: $mid-lighter-blue;
+            @include relative-prop(border-radius, 24, 24, 24);
+            @include relative-prop(padding-top, 15, 30, 40);
+            @include relative-prop(padding-right, 12, 38, 51);
+            @include relative-prop(padding-bottom, 15, 32, 32);
+            @include relative-prop(padding-left, 24, 38, 51);
+            color: $yellow;
+            font-family: $font-family-regular;
+            @include relative-prop(font-size, 16, 30, 48);
+            line-height: 1.1;
+            @include relative-prop(width,95,220,290);
+            transition: opacity 600ms linear;
+
+            @include mobile {
+                border-radius: 24px 0 0 24px;
+            }
+            p {
+                margin: 0;
+            }
+        }
+        &_animate-icon {
+            .Score40ResultsHero-tip_icon {
+                opacity: 1;
+            }
+        }
+        &_animate-text {
+            .Score40ResultsHero-tip_text {
+                opacity: 1;
+            }
+        }
+    }
+    &-emailCaptured {
+        @include relative-prop(padding-bottom, 0, 30, 30);
+    }
+}
+@keyframes quiz-hero-background {
+    from {
+        opacity: 0;
+        transform: scale(.1) rotate(-5deg);
+        animation-timing-function: ease-in;
+    }
+    7% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        animation-timing-function: linear;
+    }
+    30% {
+        transform: scale(1.01) rotate(1deg);
+        animation-timing-function: ease-in;
+    }
+    to {
+        opacity: 0;
+        transform: scale(.8) translateY(50vh) rotate(4deg);
+    }
+}

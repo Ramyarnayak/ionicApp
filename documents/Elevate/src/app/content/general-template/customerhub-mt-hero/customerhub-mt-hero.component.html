@@ -1,0 +1,22 @@
+<div class="ModularTemplate-Hero container">
+    <div class="ModularTemplate-Hero-title">
+        <h1 class="ModularTemplate-Hero-title-text">{{ customerhubModularTemplate?.heroHeadline }}</h1>        
+    </div>
+    <img class="ModularTemplate-Hero-image" [imageId]="customerhubModularTemplate?.heroImage?.id" appImageLoader>
+</div>
+<div class="ModularTemplate-HeroBody container" [ngClass]="(getModularTemplateBody1(customerhubModularTemplate?.body1?.id) | async)?.settings?.theme">
+    <div class="ModularTemplate-HeroBody-heading">
+        <h3 class="ModularTemplate-HeroBody-heading-title">{{ (getModularTemplateBody1(customerhubModularTemplate?.body1?.id) | async)?.headline }}</h3>
+        <div class="ModularTemplate-HeroBody-heading-text">
+            {{ (getModularTemplateBody1(customerhubModularTemplate?.body1?.id) | async)?.description }}
+        </div>
+    </div>
+    <div class="ModularTemplate-HeroBody-columns">
+        <div class="ModularTemplate-HeroBody-columns-column" *ngFor="let card of (getModularTemplateBody1(customerhubModularTemplate?.body1?.id) | async)?.cards">
+            <h4 class="ModularTemplate-HeroBody-columns-column-title">{{ card?.card?.headline }}</h4>
+            <div class="ModularTemplate-HeroBody-columns-column-text">
+                <p>{{ card?.card?.description }}</p>
+            </div>
+        </div>
+    </div>
+</div>

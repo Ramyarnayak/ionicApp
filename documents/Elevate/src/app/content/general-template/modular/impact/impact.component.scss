@@ -1,0 +1,82 @@
+@import "src/app/styles/common";
+
+.Impact {
+  display: flex;
+  align-items: center;
+  color: $dark-charcoal;
+
+  @include relative-prop(padding-top,32,52,100);
+  @include relative-prop(padding-bottom,44,64,100);
+
+  @include tablet-only {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  @include mobile {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &-title {
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+    flex: 0 0 auto;
+    white-space: nowrap;
+
+    @include relative-prop(padding-right,0,0,92);
+    @include relative-prop(font-size,24,24,40);
+    @include relative-prop(line-height,31.2,31.2,52);
+    @include relative-prop(margin-bottom,20,20,0);
+  }
+
+  &-items {
+    display: flex;
+    border-left: 2px solid rgba($dark-charcoal,0.65);
+
+    @include relative-prop(padding-left,0,0,112);
+
+    @include tablet-only {
+      width: 100%;
+      justify-content: space-between;
+      border: 0;
+    }
+    @include mobile {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      border: 0;
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+
+    @include relative-prop(width,152,152,200);
+    @include relative-prop(margin-right,0,16,24);
+    @include relative-prop(margin-bottom,20,0,0);
+
+    @include tablet-only {
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-title {
+      display: block;
+      margin: 0;
+      font-family: $font-family-bold;
+
+      @include relative-prop(font-size,38,38,48);
+      @include relative-prop(line-height,49.4,49.4,48);
+      @include relative-prop(margin-bottom,12,12,16);
+    }
+
+    &-info {
+      @include relative-prop(font-size,16,16,18);
+      @include relative-prop(line-height,20.8,20.8,23.4);
+    }
+  }
+
+}

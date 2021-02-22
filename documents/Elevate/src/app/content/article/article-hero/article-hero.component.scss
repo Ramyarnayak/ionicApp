@@ -1,0 +1,282 @@
+@import "src/app/styles/common";
+
+.Article-Hero {
+    @include relative-prop(padding-bottom,0,0,45);
+    @include relative-prop(margin-bottom,30,56,56);
+
+    &-frame {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        @include relative-prop(min-height,0,0,589);
+
+        @include tablet-only {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        @include mobile {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+    }
+
+    &-seriesHeadline {
+        &-1 {
+            @include flexi-relative-prop(letter-spacing, .02em, .02em, -.01em);
+            @include flexi-relative-prop(line-height, 130%, 130%, 120%);
+            color: $light-gray-dark-tint;
+            font-size: 12px;
+            margin-bottom: 6px;
+        }
+
+        &-2 {
+            @include flexi-relative-prop(letter-spacing, .02em, .02em, -.01em);
+            @include flexi-relative-prop(line-height, 130%, 130%, 120%);
+            @include flexi-relative-prop(margin-bottom, 20px, 20px, 24px);
+            @include flexi-relative-prop(padding, 4px 13px, 4px 13px, 6px 16px 4px);
+            border-radius: 33px;
+            display: inline-block;
+            font-size: 12px;
+        }
+    }
+
+    &-titleBlock {
+        position: relative;
+        z-index: 2;
+        background: $white;
+        box-shadow: 0px 0px 30px rgba($black, 0.08);
+        border-radius: 0 8px 8px 0;
+
+        @include relative-prop(width,null,783,783);
+        @include relative-prop(padding-right,0,110,110);
+        @include relative-prop(padding-top,40,40,69);
+        @include relative-prop(padding-bottom,0,0,65);
+        @include relative-prop(margin-top,0,0,23);
+        @include relative-prop(margin-bottom,36,40,23);
+
+        @include tablet-only {
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+            @include relative-prop(padding-left, 24, 52, 143);
+            @include relative-prop(padding-right, 24, 52, 143);
+        }
+        @include mobile {
+            width: 100%;
+            box-shadow: none;
+            border-radius: 0;
+            @include relative-prop(padding-left, 24, 52, 143);
+            @include relative-prop(padding-right, 24, 52, 143);
+        }
+
+        &-type {
+            display: block;
+            color: $mid-blue;
+            text-transform: uppercase;
+
+            @include relative-prop(font-size,12,12,16);
+            @include relative-prop(line-height,15.6,15.6,17.6);
+            @include relative-prop(margin-bottom,20,20,20);
+            @include flexi-relative-prop(letter-spacing, -0.02em, -0.02em, 0.02em);
+        }
+
+        &-title {
+            font-family: $font-family-bold;
+            letter-spacing: -0.02em;
+
+            @include relative-prop(font-size,32,32,64);
+            @include relative-prop(line-height,36.8,36.8,70.4);
+            @include relative-prop(margin-bottom,20,20,20);
+        }
+
+        &-datetime {
+            color: $light-gray-dark-tint;
+
+            @include relative-prop(font-size,14,14,16);
+            @include relative-prop(line-height,18.9,18.9,20.8);
+            @include relative-prop(margin-bottom,20,20,20);
+
+            span {
+                display: inline-block;
+                @include relative-prop(margin-right,13,13,13);
+
+                + span {
+                    position: relative;
+                    @include relative-prop(padding-left,12,12,12);
+
+                    &:before {
+                        position: absolute;
+                        background-color: $light-gray-dark-tint;
+                        width: 1px;
+                        top: 0;
+                        left: 0;
+                        content: "";
+
+                        @include relative-prop(height,17,17,17);
+                    }
+                }
+            }
+        }
+
+        &-collection {
+            @include relative-prop(padding-bottom,20,20,20);
+
+            &-title {
+                color: $light-gray-dark-tint;
+                display: block;
+                font-family: $font-family-regular;
+                @include relative-prop(font-size,12,12,12);
+                @include relative-prop(line-height,15.6,15.6,14.4);
+                @include relative-prop(margin-bottom,6,6,20);
+            }
+
+            &-tag {
+                display: inline-block;
+                color: $black;
+                background: $light-blue-background;
+                @include relative-prop(font-size,12,12,12);
+                @include relative-prop(border-radius,12,12,12);
+                @include relative-prop(min-height,24,24,24);
+                @include relative-prop(line-height,14.4,14.4,14.4);
+                @include relative-prop(padding-top,6,6,6);
+                @include relative-prop(padding-bottom,4,4,4);
+                @include relative-prop(padding-left,16,16,16);
+                @include relative-prop(padding-right,16,16,16);
+
+                @include tablet-only {
+                    background: $mid-blue;
+                    color: $white;
+                }
+
+                @include mobile {
+                    background: $mid-blue;
+                    color: $white;
+                }
+            }
+        }
+
+        &-social {
+            display: flex;
+
+            a {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+
+                @include relative-prop(width,36,36,36);
+                @include relative-prop(height,36,36,36);
+                @include relative-prop(margin-right,12,12,12);
+
+                &:hover {
+                    cursor: pointer;
+
+                    img {
+                        -webkit-filter: invert(1);
+                        filter: invert(1);
+                    }
+                    svg {
+                        circle {
+                            fill: $black;
+                        }
+                        path {
+                            fill: $white;
+                        }
+                    }
+                }
+                @include tablet-only {
+                    img {
+                        -webkit-filter: invert(1);
+                        filter: invert(1);
+                    }
+                }
+                @include mobile {
+                    img {
+                        -webkit-filter: invert(1);
+                        filter: invert(1);
+                    }
+                }
+                svg {
+                    width: 100%;
+                    height: 100%;
+
+                    @include tablet-only {
+                        circle {
+                            fill: $black;
+                        }
+                        path {
+                            fill: $white;
+                        }
+                    }
+
+                    @include mobile {
+                        circle {
+                            fill: $black;
+                        }
+                        path {
+                            fill: $white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-visual {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+
+        @include relative-prop(margin-left,0,0,-191);
+        @include relative-prop(width,null,null,1008);
+
+        @include tablet-only {
+            position: relative;
+            width: 100%;
+            @include relative-prop(padding-left, 24, 52, 143);
+            @include relative-prop(padding-right, 24, 52, 143);
+        }
+        @include mobile {
+            position: relative;
+            width: 100%;
+            @include relative-prop(padding-left, 0, 52, 143);
+            @include relative-prop(padding-right, 0, 52, 143);
+        }
+
+        &-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            @include relative-prop(margin-bottom,12,12,0);
+        }
+
+        &-alt {
+            position: absolute;
+            right: 0;
+            color: $light-gray-dark-tint;
+            font-style: italic;
+            
+            @include relative-prop(font-size,12,12,16);
+            @include relative-prop(line-height,15.6,15.6,24);
+            @include relative-prop(bottom,0,0,-45);
+
+            @include tablet-only {
+                position: relative;
+                right: auto;
+            }
+            @include mobile {
+                position: relative;
+                right: auto;
+                @include relative-prop(padding-left, 24, 52, 143);
+                @include relative-prop(padding-right, 24, 52, 143);
+            }
+        }
+    }
+}

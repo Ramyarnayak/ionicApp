@@ -1,0 +1,217 @@
+@import "src/app/styles/common";
+
+.CaptureEmailCard {
+    @include relative-prop(padding-top, 28, 28, 55);
+    @include relative-prop(padding-bottom, 31, 31, 55);
+    @include relative-prop(padding-right, 20, 45, 76);
+    @include relative-prop(padding-left, 20, 45, 80);
+
+    &-successMessageContainer {
+      @include relative-prop(height, 356, 288, 220);
+      @include relative-prop(padding-right, 20, 45, 76);
+      @include relative-prop(padding-left, 20, 45, 80);
+    }
+
+    &-title {
+        @include relative-prop(padding-bottom, 12, 10, 10);
+
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $rich-black;
+
+        &-quiz {
+          @include relative-prop(font-size, 12, 12, 15);
+          @include relative-prop(line-height, 13.2, 13.2, 16.5);
+        }
+
+        &-article {
+          @include relative-prop(font-size, 12, 12, 16);
+          @include relative-prop(line-height, 13, 13, 18);
+        }
+    
+    }
+
+    &-subTitle {
+        @include relative-prop(margin-bottom, 30, 30, 0);
+        @include relative-prop(margin-right, 0, 0, 155);
+        @include relative-prop(width, null, null, 436);
+
+        letter-spacing: -0.02em;
+        flex: 1;
+        color: $black;
+
+        @include mobile {
+            width: 100%;
+        }
+
+        @include tablet-only {
+            width: 100%;
+        }
+
+        &-quiz {
+          @include relative-prop(font-size, 20, 20, 32);
+          @include relative-prop(line-height, 26, 26, 41.6);
+        }
+
+        &-article {
+          @include relative-prop(font-size, 20, 20, 24);
+          @include relative-prop(line-height, 26, 26, 31);
+        }
+    }
+
+    &-sectionTwo {
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile {
+            flex-direction: column;
+        }
+
+        @include tablet-only {
+            flex-direction: column;
+        }
+    }
+
+    &-action {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+
+        @include mobile {
+            flex-direction: column;
+        }
+    }
+
+    &-form {
+        @include relative-prop(margin-right, 0, 15, 15);
+        @include relative-prop(margin-bottom, 16, 0, 0);
+        width: 100%;
+    }
+
+    &-button {
+        @include relative-prop(height, 52, 52, 52);
+        @include relative-prop(padding-top, 0, 0, 0);
+        @include relative-prop(padding-bottom, 0, 0, 0);
+        @include relative-prop(padding-right, 25, 25, 25);
+        @include relative-prop(padding-left, 25, 25, 25);
+
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        outline: none;
+        border-radius: 54px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:disabled {
+          cursor: default;
+        }
+
+        @include mobile {
+          width: 100%;
+        }
+
+        &-quiz {
+          background: $dark-blue;
+          color: $white;
+        }
+
+    }
+
+    &-buttonText {
+        font-family: $font-family-bold;
+        white-space: nowrap;
+
+        &-quiz {
+          @include relative-prop(font-size, 16, 16, 18);
+          @include relative-prop(line-height, 18, 18, 20);
+        }
+
+        &-article {
+          @include relative-prop(font-size, 16, 16, 16);
+          @include relative-prop(line-height, 18, 18, 18);
+        }
+    }
+
+    &-email {
+        @include relative-prop(height, 52, 52, 52);
+        @include relative-prop(padding, 21, 21, 21);
+        @include relative-prop(font-size, 18, 18, 18);
+        @include relative-prop(line-height, 23, 23, 23);
+
+        width: 100%;
+        letter-spacing: -0.02em;
+        text-overflow: ellipsis;
+        border: none;
+        outline: none;
+        box-shadow: none;
+        border-radius: 72px;
+        border: 1px solid $light-gray;
+    
+        &-helpText {
+          color: $danger;
+        }
+      }
+    
+      &-email.ng-invalid.ng-touched {
+        border: 1px solid $danger;
+      }
+    
+      &-email::placeholder {
+        @include relative-prop(font-size, 14, 14, 14);
+        color: $black;
+        opacity: 0.5;
+      }
+    
+      &-checkboxField {
+        @include relative-prop(margin-top, 18, 18, 27);
+
+        display: flex;
+      }
+
+      &-checkboxFieldTopDisplay {
+        @include mobile {
+            display: none;
+        }
+      }
+
+      &-checkboxFieldBottomDisplay {
+
+        display: none;
+
+        @include mobile {
+            display: flex;
+        }
+
+        @include tablet-only {
+            display: none;
+        }
+      }
+    
+      &-checkbox {
+        @include relative-prop(height, 19, 19, 19);
+        @include relative-prop(line-height, 19, 19, 19);
+        @include relative-prop(width, 19, 19, 19);
+
+        cursor: pointer;
+        border: 1px solid #B4B6B8;
+        background-color: transparent;
+        outline: none;
+        border-radius: 2px;
+      }
+
+      &-checkboxImage {
+        width: 100%;
+        height: 100%;
+      }
+    
+      &-checkboxLabel {
+        @include relative-prop(font-size, 10, 14, 10);
+        @include relative-prop(line-height, 14, 19, 13.5);
+        @include relative-prop(padding-left, 7, 7, 7);
+
+        color: $dark-charcoal;
+      }
+}

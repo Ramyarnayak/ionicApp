@@ -1,0 +1,61 @@
+@import "../../styles/common.scss";
+
+.scrolling-wrapper-flexbox {
+  @include flex;
+  @include flex-nowrap;
+  overflow-x: auto;
+}
+
+:host ::ng-deep .horizontal-scroll-element {
+  flex: 0 0 auto;
+}
+
+.scrolling-wrapper-flexbox::after {
+  content: "";
+}
+
+.scrolling-wrapper-flexbox {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+}
+
+.ScrollBar {
+  @include flexi-relative-prop(width, 242px, 242px, 242px);
+  padding-top: 60px;
+
+
+  &-outer {
+    width: 100%;
+    background: $light-gray-border;
+  }
+
+  &-inner {
+    width: 50px;
+    position: relative;
+    border-top: 3px solid $elevate-blue;
+  }
+}
+
+.NextPrevButtons {
+  @include relative-prop(margin-right, 22, 50, 78);
+  float: right;
+  margin-top: -10px;
+
+  &-next {
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  &-previous {
+    @include relative-prop(margin-right, 25, 17, 25);
+
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+}

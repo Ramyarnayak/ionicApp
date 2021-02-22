@@ -1,0 +1,23 @@
+<ng-container *ngIf="(isMobile | async); else card">
+    <a [customLink]="post?.navigation?.link"
+        (click)="navigationClick.emit(post?.title)"
+        appExternalLink>
+        <ng-container *ngTemplateOutlet="card"></ng-container>
+    </a>
+</ng-container>
+
+<ng-template #card>
+    <div class="KCArticleCard">
+        <img class="KCArticleCard-image" [imageId]="post?.thumbnailImage?.id" appImageLoader>
+        <div class="KCArticleCard-textContainer">
+            <div class="KCArticleCard-overline">{{ post?.category?.title }}</div>
+            <h4 class="KCArticleCard-title">{{ post?.title }}</h4>
+            <a [customLink]="post?.navigation?.link"
+                (click)="navigationClick.emit(post?.title)"
+                class="KCArticleCard-link"
+                appExternalLink>
+                {{ post?.navigation?.label }}
+            </a>
+        </div>
+    </div>
+</ng-template>

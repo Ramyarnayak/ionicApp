@@ -1,0 +1,49 @@
+@import "src/app/styles/common";
+
+.CookieBanner {
+  @include mobile {
+    align-items: unset;
+  }
+  @include relative-prop(min-height, 120, 84, 84);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: $header-z-index + 1;
+
+  &-disable {
+    display: none;
+  }
+
+  &-text {
+    @include mobile {
+      margin-top: 16px;
+    }
+    @include relative-prop(font-size, 14, 16, 16);
+    @include relative-prop(line-height, 18.2, 24, 24);
+    color: white;
+    letter-spacing: -0.02em;
+  }
+
+  &-button {
+    @include mobile {
+      margin-top: 16px;
+      min-width: 100px;
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+    @include relative-prop(margin-left, 12, 12, 12);
+    @include relative-prop(font-size, 16, 18, 18);
+    @include relative-prop(line-height, 20.8, 21.83, 21.83);
+    @include relative-prop(height, 38, 52, 52);
+    min-width: 140px;
+    font-family: $font-family-bold;
+    border-radius: 54px;
+    padding-left: 41px;
+    padding-right: 41px;
+  }
+}

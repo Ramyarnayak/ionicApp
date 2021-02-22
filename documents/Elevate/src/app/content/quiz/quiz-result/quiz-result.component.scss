@@ -1,0 +1,9 @@
+@import "src/app/styles/common";
+
+.QuizResult {
+  &-emailCard {
+    @include relative-prop(top, -165, -140, -115);
+    position: relative;
+    margin-bottom: -57px;
+  }
+}

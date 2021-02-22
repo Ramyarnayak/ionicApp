@@ -1,0 +1,29 @@
+<div class="HeaderDLevel1 container" (mouseleave)="onMouseLeaveSubMenu()">
+
+  <img class="HeaderDLevel1-elevateLogo" alt="Elevate Logo"
+  routerLink="/" routerLinkActive="active" src="assets/elevate-logo-blue.png">
+
+  <div class="HeaderDLevel1-menuBar">
+    <div class="HeaderDLevel1-menuItems"  *ngFor="let item of header; let i = index"
+      (mouseleave)="onMouseLeave(i)">
+      <div class="HeaderDLevel1-item"
+        [class]="{'HeaderDLevel1-item-hover': mouseOverSubMenu == true && i == mouseOverIndex}"
+        (mouseenter)="onMouseOver(i)">
+        <a
+          class="HeaderDLevel1-item-a"
+          appExternalLink
+          [customLink]="item?.navigation.link"
+          [appTealiumClickEvent]="getTealiumClickEvent(item?.title)">
+          {{item?.title}}
+        </a>
+      </div>
+    </div>
+    <div>
+      <img class="HeaderDLevel1-close" alt="Close" src="/assets/icons/close.png"
+      (click)="onCloseClick()">
+    </div>
+  </div>
+  <div class="HeaderDLevel1-item-submenu" (mouseenter)="onMouseOverSubMenu()" (mouseleave)="onMouseLeaveSubMenu()">
+    <div #headerDLevel2 ></div>
+  </div>
+</div>

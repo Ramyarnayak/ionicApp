@@ -1,0 +1,344 @@
+@import "../../../styles/common.scss";
+
+.QuizQuestionaire {
+
+  @include relative-prop(padding-top, 32, 61, 58);
+  @include relative-prop(padding-bottom, 112, 92, 92);
+  @include responsive-prop-offset-from-vh(height, $header-desktop-height-num + 8);  //  8px for the progress bar
+  display: flex;
+
+  @include mobile {
+    height: calc(100vh - #{$header-mobile-height} - 8px);   //  8px for the progress bar
+  }
+  @include tablet-only {
+    height: calc(100vh - #{$header-mobile-height} - 8px);   //  8px for the progress bar
+  }
+  background-color: $dark-blue;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  &-left {
+    transition: opacity 500ms linear;
+    z-index: 10;
+    max-height: 100%;
+    display: flex;
+    flex: 1;
+    opacity: 0;
+    flex-direction: column;
+    
+    @include mobile {
+      width: 100%;
+    }
+
+    &-scroll {
+      @include custom-scroll(3px,3px,$elevate-blue,rgba($white,0.15));
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      margin: 0 auto 0 0;
+    }
+
+    &--leaveAnimation {
+      .QuizQuestionaire-question {
+        opacity: 0;
+      }
+      .QuizQuestionaire-tipTop {
+        opacity: 0;
+      }
+      .QuizQuestionaire-options {
+        opacity: 0;
+      }
+    }
+    &--incomeAnimation {
+      opacity: 1;
+    }
+  }
+
+  &-question {
+    transition: opacity 500ms linear;
+    @include mobile {
+      width: auto;
+    }
+    @include relative-prop(width, null, 312, 443);
+    @include relative-prop(font-size, 20, 24, 24);
+    @include relative-prop(line-height, 26, 31.2, 49);
+    @include relative-prop(padding-bottom, 13, 40, 56);
+    @include relative-prop(margin-left, 24, 48, 256);
+    @include relative-prop(padding-right, 15, 15, 15);
+    
+    letter-spacing: -0.02em;
+    font-family: $font-family-medium;
+    z-index: 10;
+  }
+  &-options {
+    transition: opacity 500ms linear;
+    
+    @include bp-down('sm') {
+      width: 100%;
+      max-width: 88%;
+    }
+    @include mobile {
+      width: 324px;
+    }
+    @include relative-prop(width, null, 420, 420);
+    @include relative-prop(margin-left, 24, 48, 256);
+    @include relative-prop(margin-right, 23, 23, 23);
+    z-index: 10;
+
+    @include tablet-only {
+      width: calc(56vw - 48px - 23px - 37px - 33px);
+    }
+    @include mobile {
+      width: 100%;
+      margin: 0;
+      padding: 0 25px;
+    }
+
+    &-item {
+      @include relative-prop(padding-left, 24, 24, 24);
+      @include relative-prop(padding-right, 12, 12, 12);
+      @include relative-prop(height, 40, 41, 52);
+      @include relative-prop(border-radius, 20, 54, 54);
+      @include relative-prop(margin-bottom, 15, 15, 15);
+      @include relative-prop(font-size, 14, 14, 18);
+      @include relative-prop(line-height, 17, 17, 22);
+      @include relative-prop(width, null, 404, 404);
+      font-family: $font-family-bold;
+      background-color: $dark-blue;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      outline: none;
+      cursor: pointer;
+      flex: 1;
+      z-index: 10;
+      border: 1px solid white;
+
+      @include tablet-only {
+        width: calc(56vw - 48px - 23px - 37px - 33px);
+      }
+      @include mobile {
+        width: 100%;
+      }
+
+      &.active {
+        background-color: $elevate-blue;
+        color: black;
+        border: 0;
+      }
+
+      &--tick {
+        display: none;
+        height: 17px;
+        width: 17px;
+        padding-left: 5px;
+
+        &.active--tick {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  &-submitButtons-wrapper {
+    @include relative-prop(height, 112, 92, 92);
+    @include relative-prop(padding-left, 24, 48, 256);
+    @include relative-prop(padding-right, 24, 47, 50);
+    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.32);
+    width: 100%;
+    background-color: $light-blue;
+    position: absolute;
+    bottom: 0;
+    z-index: 11;
+
+    &.tipShown {
+      @include mobile {
+        z-index: -1;
+      }
+    }
+  }
+
+  &-submitButtons {
+    @include mobile {
+      width: 100%;
+      border: 0;
+      justify-content: space-around;
+    }
+    @include relative-prop(width, null, 404, 404);
+    @include relative-prop(padding-bottom, 28, 0, 0);
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    color: black;
+    z-index: 11;
+
+    @include tablet-only {
+      width: calc(56vw - 48px - 23px - 37px - 33px);
+    }
+
+    &-back {
+      @include relative-prop(padding-left, 20, 20, 20);
+      @include relative-prop(padding-right, 20, 20, 20);
+      @include relative-prop(height, 52, 52, 52);
+      @include relative-prop(border-radius, 54, 54, 54);
+      @include relative-prop(font-size, 16, 16, 18);
+      @include relative-prop(line-height, 17, 17, 22);
+      @include flexi-relative-prop(margin-right, 24px, 24px, 16px);
+      font-family: $font-family-bold;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: 0;
+      flex: 1;
+      cursor: pointer;
+      z-index: 11;
+    }
+    &-next {
+      @include relative-prop(padding-left, 20, 20, 20);
+      @include relative-prop(padding-right, 20, 20, 20);
+      @include relative-prop(height, 52, 52, 52);
+      @include relative-prop(border-radius, 54, 54, 54);
+      @include relative-prop(font-size, 16, 16, 18);
+      @include relative-prop(line-height, 17, 17, 22);
+      font-family: $font-family-bold;
+      background-color: $yellow;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      outline: none;
+      border: 0;
+      flex: 1;
+      cursor: pointer;
+      z-index: 11;
+
+      &:disabled {
+        background-color: rgba(239, 239, 239, 0.3);
+        color: black;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &-tipTop {
+    display: none;
+    transition: opacity 500ms linear;
+
+    @include mobile {
+      display: inline-block;
+      margin-bottom: 10px;
+      margin-top: -24px;
+      border-radius: 0;
+      padding: 0 25px;
+      width: 100%;
+    }
+  }
+
+  &-tip {
+    @include flexi-relative-prop(left, null, 56%, 56%);
+    @include relative-prop(top, null, 56, 106);
+
+    position: absolute;
+    z-index: 10;
+
+    @include mobile {
+      // border-radius: 0;
+      // bottom: 104px;
+      // left: 0;
+      // padding: 0 25px;
+      // top: auto;
+      // width: 100%;
+      display: none;
+    }
+  }
+
+  &-mainBalloon {
+    @include relative-prop(width, null, 105, 209);
+    @include relative-prop(right, 0, 155, 347);
+    top: calc(100% - calc(220 / 1600 * 100vw));
+    position: absolute;
+    transition: all 1000ms ease-in-out;
+    z-index: 5;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &-clouds-layer-1 {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include relative-prop(width,450, 400, 800);
+    background: url('/assets/images/quiz-layers/layer1.png') 0 0 repeat-y;
+    background-size: 100% auto;
+    transition: all 1000ms ease-in-out;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &-clouds-layer-2 {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include relative-prop(width,450, 400, 800);
+    background: url('/assets/images/quiz-layers/layer2.png') 0 0 repeat-y;
+    background-size: 80% auto;
+    transition: all 1000ms ease-in-out;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &-clouds-layer-3 {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include relative-prop(width, 450, 400, 800);
+    background: url('/assets/images/quiz-layers/layer3.png') calc(50 / 1600 * 100vw) 0 repeat-y;
+    background-size: 100% auto;
+    transition: all 1000ms ease-in-out;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &-clouds-layer-4 {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    @include relative-prop(width,450, 400, 800);
+    background: url('/assets/images/quiz-layers/layer4.png') 0 0 repeat-y;
+    background-size: 100% auto;
+    transition: all 1000ms ease-in-out;
+
+    @include mobile {
+      display: none;
+    }
+  }
+  &--leaveAnimation {
+    .QuizQuestionaire-tip,
+    .QuizQuestionaire-clouds-layer-4,
+    .QuizQuestionaire-clouds-layer-3,
+    .QuizQuestionaire-clouds-layer-2,
+    .QuizQuestionaire-clouds-layer-1,
+    .QuizQuestionaire-mainBalloon  {
+      transition: all 500ms ease-in-out;
+      opacity: 0;
+    }
+  }
+}

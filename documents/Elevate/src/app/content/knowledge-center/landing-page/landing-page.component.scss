@@ -1,0 +1,296 @@
+@import "src/app/styles/common";
+
+:host ::ng-deep {
+    .KnowledgeCenter-Subpage .container-left {
+        padding: 0;
+
+        @include mobile {
+            margin-right: -24px;
+        }
+    }
+    .KnowledgeCenter-Subpage .ScrollBar {
+
+        @include mobile {
+            padding-top: 36px;
+        }
+    }
+}
+
+.KnowledgeCenter-Subpage {
+
+    &-Hero {
+        @include relative-prop(padding-top,40,33,40);
+        @include relative-prop(padding-bottom,39,39,39);
+
+        &-back {
+            @include relative-prop(padding-bottom,33,40,60);
+
+            &-link {
+                position: relative;
+                display: inline-block;
+                text-decoration: none;
+                vertical-align: middle;
+                color: $black;
+                @include relative-prop(font-size,14,14,20);
+                @include relative-prop(line-height,18.2,18.2,26);
+
+                &:before {
+                    vertical-align: text-bottom;
+                    display: inline-block;
+                    background: url('/assets/icons/back.svg') 0 0 no-repeat;
+                    background-size: 100% 100%;
+                    content: "";
+                    @include relative-prop(width,10.5,10.5,14);
+                    @include relative-prop(height,18,18,24);
+                    @include relative-prop(margin-right,9,9,12);
+                }
+            }
+        }
+
+        &-title {
+            font-family: $font-family-bold;
+            @include relative-prop(font-size,42,42,96);
+            @include relative-prop(line-height,46.2,46.2,105.6);
+            @include relative-prop(margin-bottom,16,16,34);
+        }
+
+        &-text {
+            @include relative-prop(max-width,768,527,527);
+            @include relative-prop(font-size,14,14,20);
+            @include relative-prop(line-height,18.2,18.2,32);
+        }
+    }
+
+    &-Featured {
+        @include relative-prop(padding-bottom,51,80,141);
+
+        &-title {
+            font-family: $font-family-bold;
+            @include relative-prop(font-size,24,24,40);
+            @include relative-prop(line-height,31.2,31.2,52);
+            @include relative-prop(margin-bottom,28,28,20);
+        }
+
+        &-content {
+            border-top: 1px solid $black;
+            position: relative;
+            display: flex;
+            align-items: flex-start;
+            @include relative-prop(padding-top,null,null,33);
+
+            @include tablet-only {
+                border-top: 0;
+            }
+            @include mobile {
+                border-top: 0;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            &-sticky {
+                position: sticky;
+                left: 0;
+                flex: 1 1 auto;
+                @include relative-prop(top,141,141,141);
+                @include relative-prop(margin-right,0,20,30);
+                @include relative-prop(width,null,327,640);
+                @include relative-prop(margin-bottom,40,16,null);
+
+                @include tablet-only {
+                    top: calc(141 / 1600 * 100vw);
+                }
+                @include mobile {
+                    position: relative;
+                    flex: 0 0 100%;
+                    width: 100%;
+                    top: 0;
+                }
+                &-visual {
+                    width: 100%;
+                    @include relative-prop(margin-bottom,40,30,40);
+
+                    &-image {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                }
+
+                &-type {
+                    display: block;
+                    text-transform: uppercase;
+                    color: $black;
+                    opacity: 0.6;
+                    font-family: $font-family-bold;
+                    @include relative-prop(font-size,12,12,16);
+                    @include relative-prop(line-height,13.2,13.2,20.8);
+                    @include relative-prop(margin-bottom,16,16,24);
+                }
+
+                &-title {
+                    font-family: $font-family-bold;
+                    letter-spacing: -0.02em;
+                    @include relative-prop(font-size,24,24,40);
+                    @include relative-prop(line-height,31.2,31.2,52);
+                    @include relative-prop(margin-bottom,16,16,24);
+                }
+
+                &-text {
+                    letter-spacing: -0.01em;
+                    color: $black;
+                    @include relative-prop(font-size,16,16,20);
+                    @include relative-prop(line-height,25.6,25.6,32);
+                    @include relative-prop(margin-bottom,16,16,24);
+                    @include relative-prop(max-width,768,null,527);
+                }
+
+                &-link {
+                    color: $mid-dark-blue;
+                    display: inline-block;
+                    text-decoration: underline;
+                    @include relative-prop(font-size,16,12,12);
+                    @include relative-prop(line-height,16,15.6,15.6);
+                }
+            }
+
+            &-side {
+                flex: 1 0 auto;
+                @include relative-prop(width,null,326,640);
+
+                @include mobile {
+                    flex: 0;
+                    width: 100%;
+                }
+            }
+
+            &-list {
+                display: inline-block;
+                width: 100%;
+                @include relative-prop(font-size,12,12,12);
+                @include relative-prop(line-height,15.6,15.6,15.6);
+
+
+                @include tablet-only {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+                }
+                @include mobile {
+                    display: flex;
+                    flex-wrap: nowrap;
+                    width: auto;
+                    padding-right: 24px;
+                }
+
+                &-item {
+                    display: flex;
+                    margin: 0 0 16px;
+                    @include relative-prop(width,151,null,null);
+
+                    @include tablet-only {
+                        flex: 1 0 auto;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        width: calc(151/769 * 100vw);
+                        margin-right: 0;
+
+                        &:nth-child(even) {
+                            margin-right: 0;
+                        }
+                        &:nth-child(n+5) {
+                            display: none;
+                        }
+                    }
+                    @include mobile {
+                        flex: 1 0 auto;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        margin: 0 16px 0 0;
+                    }
+
+                    &-visual {
+                        flex: 0 0 auto;
+                        @include relative-prop(width,null,null,304);
+                        @include relative-prop(margin-right,0,0,32);
+                        @include relative-prop(margin-bottom,30,30,null);
+
+                        @include tablet-only {
+                            width: 100%;
+                            height: 120px;
+                        }
+                        @include mobile {
+                            width: 100%;
+                            height: 120px;
+                        }
+                        &-image {
+                            width: 100%;
+                            height: calc(200/1600 * 100vw);
+                            object-fit: cover;
+
+                            @include tablet-only {
+                                height: 100%;
+                            }
+                            @include mobile {
+                                height: 100%;
+                            }
+                        }
+                    }
+
+                    &-text {
+                        @include relative-prop(padding-top,6,6,6);
+
+                        &-type {
+                            display: block;
+                            text-transform: uppercase;
+                            color: $black;
+                            opacity: 0.6;
+                            @include relative-prop(font-size,12,12,16);
+                            @include relative-prop(line-height,13.2,17.6,17.6);
+                            @include relative-prop(margin-bottom,12,12,18);
+                        }
+
+                        &-title {
+                            letter-spacing: -0.02em;
+                            @include relative-prop(font-size,20,20,24);
+                            @include relative-prop(line-height,26,26,31.2);
+                            @include relative-prop(margin-bottom,12,16,18);
+                        }
+
+                        &-link {
+                            color: $mid-dark-blue;
+                            display: inline-block;
+                            text-decoration: underline;
+                            @include relative-prop(font-size,12,12,12);
+                            @include relative-prop(line-height,15.6,15.6,15.6);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-disclaimer {
+        @include relative-prop(font-size, 12, 12, 14);
+        @include relative-prop(line-height, 18, 18, 18.9);
+        @include relative-prop(width, null, 441, 784);
+        @include relative-prop(margin-top, 64, 48, 100);
+        @include relative-prop(margin-bottom, 40, 64, 100);
+
+        line-height: 135%;
+
+        @include mobile {
+            width: 100%;
+        }
+    }
+}
+.kc-container {
+    @include tablet-only {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    @include mobile {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

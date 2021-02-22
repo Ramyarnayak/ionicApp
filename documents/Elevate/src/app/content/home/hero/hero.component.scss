@@ -1,0 +1,316 @@
+@import "src/app/styles/common";
+
+:host {
+    background-color: $elevate-blue;
+    display: inline-block;
+    font-family: $font-family-regular;
+    width: 100%;
+}
+
+.HomeHero {
+    @include flexi-relative-prop(min-height, calc(100vh - 81px), null, null);
+    @include flexi-relative-prop(overflow, hidden, null, null);
+    @include responsive-prop-offset-from-vh(min-height, $header-desktop-height-num);
+
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+
+    &--expanded {
+        z-index: $header-z-index;
+        
+        .HomeHero-balloon {
+            margin-left: 67vw;
+            transform: scale(.535);
+        }
+
+        .HomeHero-graphics {
+            bottom: -140px;
+            right: calc(100vw - 330px);
+            top: 400px;
+        }
+
+        .HomeHero-mountains {
+            background-position: top 0 right 0;
+        }
+    }
+
+    &-backButton {
+        @include focus();
+        @include relative-prop(font-size, 16, 16, 20);
+
+        align-items: center;
+        background-color: transparent;
+        border-radius: 2px;
+        display: flex;
+        font-family: $font-family-medium;
+        padding: 0;
+
+        img {
+            @include flexi-relative-prop(max-height, 18px, 18px, auto);
+            @include relative-prop(margin-right, 15, 15, 10);
+        }
+    }
+
+    &-balloon {
+        @include flexi-relative-prop(margin-right, calc(50vw - 210px), 13vw, 9vw);
+        @include flexi-relative-prop(width, 14vw, 14vw, null);
+        @include relative-prop(min-width, 112, 112, null);
+
+        transition: all 800ms ease-out;
+    }
+
+    &-cta {
+        @include relative-prop(font-size, 16, 16, 18);
+        @include relative-prop(line-height, 19, 19, 22);
+        @include relative-prop(padding-bottom, 16, 16, 15);
+        @include relative-prop(padding-top, 16, 16, 15);
+
+        color: $dark-blue;
+        font-family: 'GTWalsheim-Bold', sans-serif;
+        margin-bottom: 20px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    &-description {
+        @include flexi-relative-prop(line-height, 135%, 135%, 130%);
+        @include relative-prop(font-size, 14, 14, 28);
+        @include relative-prop(margin-bottom, 60, 60, 70);
+        @include relative-prop(max-width, 230, 230, 620);
+        @include relative-prop(min-width, 200, 200, null);
+
+        letter-spacing: -.02em;
+    }
+
+    &-graphics {
+        @include relative-prop(top, 37, 0, 0);
+
+        align-items: flex-end;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        right: 0;
+        transition: all 800ms ease-out;
+        width: 100%;
+        z-index: 3;
+    }
+
+    &-mountains {
+        @include flexi-relative-prop(background-position, top 0 right -250px, top 0 right calc(15vw - 240px), top 0 right 0);
+        @include flexi-relative-prop(background-size, auto 270px, contain, contain);
+        @include relative-prop(height, 270, 443, 443);
+
+        background-image: url(/assets/images/mountains.png);
+        background-repeat: no-repeat;
+        transition: all 800ms ease-out;
+        width: 100%;
+    }
+
+    &-text {
+        @include relative-prop(margin-top, 43, 43, 78);
+
+        align-items: flex-start;
+        display: flex;
+        flex-direction: column;
+        z-index: 4;
+    }
+
+    &-title {
+        @include flexi-relative-prop(line-height, 115%, 115%, 100%);
+        @include flexi-relative-prop(max-width, null, null, 64vw);
+        @include relative-prop(font-size, 42, 42, 105);
+        @include relative-prop(margin-bottom, 30, 30, 45);
+
+        font-family: 'GTWalsheim-Medium', sans-serif;
+        letter-spacing: -.02em;
+    }
+
+    &-yourOptions {
+        bottom: 0;
+        display: flex;
+        left: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        z-index: 10;
+    }
+
+    &-yourOptionsDescription,
+    &-yourOptionsHeaderSiteName {
+        width: 100%;
+    }
+
+    &-yourOptionsDescription {
+        font-size: 24px;
+        line-height: normal;
+        margin: 0 auto 40px auto;
+    }
+
+    &-yourOptionsHeaderNavigation,
+    &-yourOptionsList {
+        max-width: 750px;
+        width: 100%;
+    }
+
+    &-yourOptionsHeaderNavigation {
+        @include relative-prop(margin-bottom, 35, 35, null);
+        @include relative-prop(margin-top, 35, 35, null);
+        @include relative-prop(padding, 0, 0, null);
+        @include responsive-prop(height, null, $header-desktop-height-num);
+
+        align-items: center;
+        background-color: $white;
+        display: flex;
+    }
+
+    &-yourOptionsHeaderSiteName {
+        height: 141px;
+        max-width: 325px;
+    }
+
+    &-yourOptionsHeaderSiteName--right {
+        @include flexi-relative-prop(display, inline-block, inline-block, none);
+
+        margin: 0;
+
+        img {
+            max-width: 100px;
+        }
+    }
+
+    &-yourOptionsLeft {
+        @include flexi-relative-prop(display, none, none, flex);
+
+        align-items: center;
+        flex: 1;
+        flex-direction: column;
+    }
+
+    &-yourOptionsList {
+        @include flexi-relative-prop(margin-bottom, 0, 0, auto);
+        @include flexi-relative-prop(max-width, none, none, null);
+        
+        margin-top: 0;
+        overflow-y: auto;
+
+        @include custom-scroll();
+    }
+
+    &-yourOptionsListItem {
+        @include flexi-relative-prop(background-color, transparent, transparent, $lighter-gray);
+        @include relative-prop(margin-bottom, 48, 48, 16);
+        @include relative-prop(max-width, 350, 350, null);
+        @include relative-prop(padding-bottom, 0, 0, 32);
+        @include relative-prop(padding-left, 0, 0, 46);
+        @include relative-prop(padding-right, 0, 0, 46);
+        @include relative-prop(padding-top, 0, 0, 32);
+    }
+
+    &-yourOptionsListItem--light_blue:hover {
+        @include flexi-relative-prop(background-color, $white, $white, $lighter-blue);
+    }
+
+    &-yourOptionsListItem--lime:hover {
+        @include flexi-relative-prop(background-color, $white, $white, $lime);
+    }
+
+    &-yourOptionsListItem--yellow:hover {
+        @include flexi-relative-prop(background-color, $white, $white, $yellow);
+    }
+
+    &-yourOptionsListItemBody {
+        @include flexi-relative-prop(flex-direction, flex-start, flex-start, stretch);
+        @include flexi-relative-prop(flex-direction, column, column, null);
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    &-yourOptionsListItemDescription {
+        @include relative-prop(font-size, 14, 14, 16);
+        @include relative-prop(margin-bottom, 16, 16, null);
+        @include relative-prop(max-width, 263, 263, 340);
+        @include relative-prop(min-height, null, null, 60);
+
+        line-height: 130%;
+    }
+
+    &-yourOptionsListItemButton {
+        font-family: 'GTWalsheim-Bold', sans-serif;
+        font-size: 18px;
+        letter-spacing: -.02em;
+        line-height: 110%;
+        padding: 17px 32px;
+    }
+
+    &-yourOptionsListItemButtonContainer {
+        @include flexi-relative-prop(display, none, none, null);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    &-yourOptionsListItemLink {
+        @include flexi-relative-prop(display, inline-block, inline-block, none);
+        
+        font-family: 'GTWalsheim-Medium', sans-serif;
+        font-size: 15px;
+        text-decoration: underline;
+    }
+
+    &-yourOptionsListItemTitle {
+        @include flexi-relative-prop(font-family, $font-family-bold, $font-family-bold, $font-family-medium);
+        @include relative-prop(margin-bottom, 8, 8, 12);
+        
+        font-size: 24px;
+        letter-spacing: -.02em;
+    }
+
+    &-yourOptionsRight {
+        @include flexi-relative-prop(align-items, unset, unset, center);
+        @include relative-prop(padding-bottom, 31, 31, 0);
+        @include relative-prop(padding-left, 24, 24, 10);
+        @include relative-prop(padding-right, 24, 24, 10);
+        @include relative-prop(padding-top, 34, 34, 0);
+
+        background-color: $white;
+        display: flex;
+        flex: 2;
+        flex-direction: column;
+    }
+
+    &-yourOptionsText {
+        letter-spacing: -.02em;
+        margin-top: 85px;
+        max-width: 305px;
+    }
+
+    &-yourOptionsTitle {
+        font-family: 'GTWalsheim-Bold', sans-serif;
+        font-size: 38px;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    &-yourOptionsTitle--right {
+        @include flexi-relative-prop(display, block, block, none);
+        @include relative-prop(margin-bottom, 31, 31, null);
+        
+        font-size: 20px;
+        font-weight: 500;
+        letter-spacing: -.02em;
+        line-height: 130%;
+        margin: 0;
+    }
+}
+
+button {
+    border: none;
+    border-radius: 54px;
+    cursor: pointer;
+}

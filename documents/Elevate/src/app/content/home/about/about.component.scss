@@ -1,0 +1,110 @@
+@import "src/app/styles/common";
+
+.HomeAbout {
+    @include relative-prop(padding-top, 100, 176, 201);
+
+    &-inner {
+        @include mobile {
+            flex-direction: column;
+        }
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &-info {
+        @include mobile {
+            margin-top: 10px;
+        }
+    }
+
+    &-mediaInfo {
+        @include flexi-relative-prop(padding-right, initial, 52px, 143px);
+        @include mobile {
+            order: -1;
+        }
+    }
+
+    &-title {
+        @include relative-prop(margin-bottom, 30, 35, 40);
+        @include relative-prop(font-size, 32, 48, 64);
+        @include relative-prop(line-height, 35, 52, 70);
+
+        font-family: $font-family-bold;
+        letter-spacing: -0.02em;
+        @include bp-up(lg) {
+            min-width: 327px;
+        }
+    }
+
+    &-description {
+        @include relative-prop(font-size, 16, 20, 24);
+        @include relative-prop(line-height, 21, 26, 31);
+
+        @include bp-up(lg) {
+            min-width: 327px;
+        }
+
+        letter-spacing: -0.02em;
+    }
+
+    &-ourStory {
+        @include relative-prop(margin-bottom, 137, 160, 229);
+        margin-top: 40px;
+        display: flex;
+    }
+
+    &-ourStoryButton {
+        @include relative-prop(font-size, 16, 17, 18);
+        @include relative-prop(line-height, 19, 20, 22);
+
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        background: $mid-dark-blue;
+        border-radius: 54px;
+        text-align: center;
+        color: $white;
+        font-family: $font-family-bold;
+        white-space: nowrap;
+        height: 52px;
+        padding: 0 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-mediaContainer {
+        position: relative;
+        padding-top: 150px;
+    }
+
+    &-mediaImage {
+        @include relative-prop(width, null, 375, 590);
+
+        @include mobile {
+            width: 100%;
+        }
+
+        position: relative;
+        z-index: 2;
+    }
+
+    &-cloudImg {
+        @include mobile {
+            display: none;
+        }
+
+        @include relative-prop(width, 120, 120, 205);
+        @include flexi-relative-prop(left, -30%, -25%, -25%);
+
+        @include desktop-only {
+            top: -7%;
+        }
+
+        position: absolute;
+        z-index: 1;
+        transform: matrix(-1, 0, 0, 1, 0, 0);
+    }
+
+}

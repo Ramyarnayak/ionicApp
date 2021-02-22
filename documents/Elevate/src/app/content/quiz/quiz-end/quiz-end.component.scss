@@ -1,0 +1,156 @@
+@import "../../../styles/common.scss";
+
+.QuizEnd {
+  @include responsive-prop-offset-from-vh(min-height, $header-desktop-height-num);
+  
+  @include mobile {
+    min-height: calc(100vh - #{$header-mobile-height});
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  @include tablet-only {
+    min-height: calc(100vh - #{$header-mobile-height});
+  }
+  display: flex;
+  align-items: center;
+  background-color: $dark-blue;
+  color: white;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+
+  &-animation {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+  }
+  &-loaderSmall {
+    @include relative-prop(width, 67, 67, 114);
+    @include relative-prop(right, 70, 70, 100);
+    @include relative-prop(top, 35, 35, 35);
+    opacity: 0;
+
+    animation: spin-small-animation var(--duration) ease-in-out 1 0s;
+    position: relative;
+  }
+
+  &-loaderBig {
+    opacity: 0;
+    @include relative-prop(width, 108, 108, 184);
+    animation: spin-big-animation var(--duration) ease-in-out 1 0s;
+  }
+
+  &-displayText {
+    @include relative-prop(margin-top, 31, 31, 78);
+    @include relative-prop(margin-bottom, 10, 10, 10);
+    @include relative-prop(height, 110.4, 73.6, 96);
+    position: relative;
+    list-style: none;
+    width: 100%;
+
+    li {
+      @include relative-prop(font-size, 32, 32, 48);
+      @include relative-prop(line-height, 36.8, 36.8, 48);
+      font-family: $font-family-bold;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      text-align: center;
+      letter-spacing: -0.02em;
+      opacity: 0;
+
+      span {
+        display: block;
+      }
+
+      &:not(:last-child) {
+        animation: fade-in-out 2s ease-in-out;
+        animation-delay:  var(--delay);
+      }
+      &:last-child {
+        animation: fade-in-out-last 2s ease-in-out;
+        animation-delay:  var(--delay);
+      }
+    }
+  }
+
+  &-disclaimer {
+    @include mobile {
+      width: 100%;
+    }
+    @include relative-prop(width, null, 600, 700);
+    @include relative-prop(font-size, 12, 12, 14);
+    @include relative-prop(line-height, 15.6, 15.6, 18.9);
+    @include relative-prop(padding-bottom, 10, 10, 25);
+
+    text-align: center;
+    letter-spacing: -0.01em;
+  }
+
+}
+@keyframes spin-small-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    transform: rotate(-700deg);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: rotate(-700deg);
+  }
+}
+@keyframes spin-big-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+    transform: rotate(700deg);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(700deg);
+  }
+}
+@keyframes fade-in-out {
+  from {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fade-in-out-last {
+  from {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

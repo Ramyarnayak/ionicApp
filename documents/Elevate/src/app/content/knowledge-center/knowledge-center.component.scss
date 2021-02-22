@@ -1,0 +1,221 @@
+@import "src/app/styles/common";
+
+:host ::ng-deep {
+    .KnowledgeCenter-Content-disclaimer p {
+        font-size: 14px;
+        line-height: 19px;
+        margin: 0 0 19px;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+.KnowledgeCenter {
+
+    &-Hero {
+        background-image: url('/assets/images/knowledge-center/knowledge-center-hero.png');
+        background-repeat: no-repeat;
+        background-position-x: calc(100vw - (784 / 1600 * 100vw));
+        background-size: calc(563 / 1600 * 100vw) calc(752 / 1600 * 100vw);
+        position: relative;
+        @include relative-prop(padding-top,40,100,100);
+        @include relative-prop(padding-bottom,50,70,70);
+        display: flex;
+        align-items: flex-start;
+
+        @include mobile {
+            flex-direction: column;
+            background-position-x: calc(100vw - 108px);
+            background-size: 137px 183px;
+        }
+
+        &-sticky {
+            position: sticky;
+            left: 0;
+            color: $white;
+            @include relative-prop(margin-right,null,30,null);
+            @include relative-prop(top,161,161,161);
+            @include relative-prop(width,327,527,527);
+            
+            @include mobile {
+                position: relative;
+                top: 0;
+                margin: 0 0 40px;
+                padding-right: 15%;
+            }
+
+            h1 {
+                font-family: $font-family-bold;
+                color: $lighter-blue;
+                margin: 0;
+                @include relative-prop(font-size,42,72,96);
+                @include relative-prop(line-height,46,79,105);
+                @include relative-prop(margin-bottom,16,16,20);
+
+                span {
+                    color: $white;
+                }
+            }
+
+            p {
+                margin: 0;
+                @include relative-prop(font-size,16,20,20);
+                @include relative-prop(line-height,25,32,32);
+            }
+        }
+
+        &-list {
+            @include relative-prop(width,null,402,528);
+            @include relative-prop(margin-left,0,0,144);
+
+            @include mobile {
+                width: 100%;
+                margin: 0;
+            }
+
+            &-item {
+                margin: 0 0 16px;
+                background: $white;
+                border: 1px solid $light-gray;
+                box-sizing: border-box;
+                border-radius: 8px;
+                color: $black;
+                @include relative-prop(padding-top,30,30,30);
+                @include relative-prop(padding-right,24,36,30);
+                @include relative-prop(padding-bottom,28,30,30);
+                @include relative-prop(padding-left,20,36,36);
+                @include relative-prop(font-size,14,16,16);
+                @include relative-prop(line-height,18,24,24);
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+
+                h3 {
+                    margin: 0;
+                    font-family: $font-family-bold;
+                    @include relative-prop(margin-bottom,8,8,8);
+                    @include relative-prop(font-size,24,24,24);
+                    @include relative-prop(line-height,31,31,31);
+                }
+
+                p {
+                    margin: 0;
+                    @include relative-prop(margin-bottom,24,24,24);
+                }
+
+                .button {
+                    display: inline-block;
+                    text-decoration: none;
+                    font-family: $font-family-bold;
+                    @include relative-prop(font-size,16,16,16);
+                    @include relative-prop(line-height,52,52,52);
+                    @include relative-prop(padding-right,32,32,32);
+                    @include relative-prop(padding-left,32,32,32);
+                }
+            }
+        }
+    }
+
+    &-Content {
+        @include relative-prop(padding-top,64,100,100);
+        @include relative-prop(padding-bottom,70,70,70);
+
+        &-title {
+            font-family: $font-family-bold;
+            margin: 0;
+            @include relative-prop(font-size,24,40,40);
+            @include relative-prop(line-height,31,52,52);
+            @include relative-prop(margin-bottom,30,50,50);
+        }
+
+        &-articles {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -16px;
+
+            @include mobile {
+                margin: 0 -12px;
+            }
+
+            &-item {
+                width: 25%;
+                padding: 0 16px;
+                @include relative-prop(margin-bottom,46,44,44);
+                flex: 0 0 auto;
+
+                @include tablet-only {
+                    width: 33.333%;
+                }
+                @include mobile {
+                    padding: 0;
+                    flex: 1 1 151px;
+                    width: 151px;
+                    margin: 0 12px 46px;
+                }
+
+                &-visual {
+                    width: 100%;
+                    @include relative-prop(margin-bottom,30,30,32);
+
+                    &-image {
+                        width: 100%;
+                        @include relative-prop(height,120,192,200);
+                        object-fit: cover;
+                        display: block;
+                    }
+                }
+
+                &-type {
+                    display: block;
+                    opacity: 0.6;
+                    text-transform: uppercase;
+                    @include relative-prop(margin-bottom,14,18,18);
+                    @include relative-prop(font-size,12,16,16);
+                    @include relative-prop(line-height,13.2,17.6,17.6);
+                }
+
+                &-title {
+                    margin: 0;
+                    @include relative-prop(margin-bottom,14,18,18);
+                    @include relative-prop(font-size,20,24,24);
+                    @include relative-prop(line-height,26.2,31.2,31.2);
+                }
+
+                &-link {
+                    display: inline-block;
+                    text-decoration: underline;
+                    @include relative-prop(font-size,12,12,12);
+                    color: $mid-dark-blue;
+                }
+            }
+
+            &-more {
+                display: flex;
+                justify-content: center;
+                
+
+                &-button {
+                    display: inline-block;
+                    @include relative-prop(height,52,52,52);
+                    @include relative-prop(min-width,199,256,256);
+                    @include relative-prop(font-size,18,18,18);
+                    @include relative-prop(line-height,50,50,50);
+                    @include relative-prop(margin-top,26,26,26);
+                    @include relative-prop(margin-bottom,90,127,127);
+                    font-family: $font-family-bold;
+                }
+            }
+        }
+        &-disclaimer {
+            @include flexi-relative-prop(width, null, null, 75%);
+
+            p {
+                font-size: 14px;
+                line-height: 19px;
+                margin: 0 0 19px;
+            }
+        }
+    }
+}

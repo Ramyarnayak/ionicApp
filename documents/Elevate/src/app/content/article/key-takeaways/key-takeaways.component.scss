@@ -1,0 +1,50 @@
+@import "src/app/styles/common";
+
+.KeyTakeaways {
+  background-color: $lighter-gray;
+
+  @include relative-prop(padding-top, 60, 60, 60);
+  @include relative-prop(padding-bottom, 60, 60, 60);
+  @include relative-prop(padding-left, 23.5, 202, 369.5);
+  @include relative-prop(padding-right, 24.5, 203.5, 367.5);
+
+  &-heading {
+    @include relative-prop(font-size, 20, 22, 24);
+    @include relative-prop(line-height, 26, 28.5, 31);
+  }
+
+  &-list {
+    @include relative-prop(padding-top, 40, 40, 40);
+    @include relative-prop(row-gap, 30, 38, 46);
+    display: grid;
+  }
+
+  &-item {
+    @include relative-prop(font-size, 16, 18, 20);
+    @include relative-prop(line-height, 26, 29, 32);
+    letter-spacing: -0.01em;
+    color: $dark-charcoal;
+  }
+
+  &-itemIndex {
+    @include relative-prop(font-size, 14, 15, 16);
+    @include relative-prop(line-height, 18, 19.5, 21);
+    @include relative-prop(margin-right, 12, 16, 20);
+    @include relative-prop(width,24,32,32);
+    @include relative-prop(height,24,32,32);
+    @include relative-prop(padding-top,2,2,2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-family-bold;
+    border: 1px solid $mid-dark-blue;
+    color: $mid-dark-blue;
+    border-radius: 50%;
+    align-items: center;
+  }
+
+  &-itemBody {
+    display: flex;
+    align-items: flex-start;
+  }
+}

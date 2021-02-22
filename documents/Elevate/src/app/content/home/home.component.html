@@ -1,0 +1,21 @@
+<app-hero [homeHero]="(home | async)?.homehero" [yourOptions]="(home | async)?.youroptions"></app-hero>
+<div class="Home">
+  <div class="Home-header" [class]="{'Home-header--visible': !!financialSolutionVisible}">
+    <app-header-d theme="blue"></app-header-d>
+    <app-header-mobile (showNavMobile)="onShowNavMobile($event)" class="light-theme"></app-header-mobile>
+  </div>
+
+  <app-financial-solutions *ngIf="(home | async)?.homepage as homePage" [homesubhero]="(home | async)?.homesubhero" [financialSolutionsId]="homePage.financialSolutions.id" [isScore40Results]="false"></app-financial-solutions>
+
+  <app-money-mentor-cta *ngIf="(home | async)?.score40 as score40" [score40]="score40"></app-money-mentor-cta>
+
+  <app-about *ngIf="(home | async)?.ourstory as ourStory" [ourStory]="ourStory"></app-about>
+
+  <app-credit-bill-of-rights [ourCommitment]="(home | async)?.ourcommitment"></app-credit-bill-of-rights>
+
+  <app-financial-solutions-cta *ngIf="(home | async)?.ourpartners as ourpartners" [ourPartners]="ourpartners"></app-financial-solutions-cta>
+
+  <app-credit-resources *ngIf="(home | async)?.homepage as homePage" [isScore40Results]="false" [knowledgeCenterId]="homePage.knowledgeCenter.id"></app-credit-resources>
+  
+  <app-start-your-climb *ngIf="(home | async)?.improving as improving" [improving]="improving"></app-start-your-climb>
+</div>

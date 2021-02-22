@@ -1,0 +1,54 @@
+@import "src/app/styles/common";
+
+.OurExecutives {
+  @include relative-prop(padding-top, 50, 75, 100);
+  @include relative-prop(padding-bottom, 62, 81, 100);
+
+  &-title {
+    @include relative-prop(font-size, 42, 42, 40);
+    @include relative-prop(line-height, 46.2, 46.2, 52);
+    @include relative-prop(max-width, 327, 443, 559);
+    @include relative-prop(margin-right, 30, 30, 30);
+    letter-spacing: -0.02em;
+    font-family: $font-family-bold;
+  }
+
+  &-description {
+    @include relative-prop(font-size, 14, 20, 20);
+    @include relative-prop(line-height, 18.2, 32, 32);
+    @include relative-prop(padding-top, 20, 25.5, 31);
+    @include relative-prop(max-width, 326, 426.5, 527);
+    letter-spacing: -0.01em;
+  }
+
+  &-list {
+    display: grid;
+    @include flexi-relative-prop(grid-template-columns, repeat(2, 1fr), repeat(3, 1fr), repeat(4, 1fr));
+    @include relative-prop(column-gap, 24, 24, 32);
+    @include relative-prop(row-gap, 60, 62, 64);
+    @include relative-prop(padding-top, 60, 60, 60);
+  }
+
+  &-card {
+    &-image {
+      width: 100%
+    }
+
+    &-name {
+      @include relative-prop(font-size, 18, 18, 18);
+      @include relative-prop(line-height, 23, 20, 20);
+      @include relative-prop(padding-top, 30, 31, 32);
+      @include relative-prop(margin-right, 8, 12, 16);
+      letter-spacing: -0.02em;
+      font-family: $font-family-bold;
+    }
+
+    &-designation {
+      @include relative-prop(font-size, 14, 15, 16);
+      @include relative-prop(line-height, 18, 21, 24);
+      @include relative-prop(padding-top, 8, 12, 16);
+      @include relative-prop(margin-right, 8, 12, 16);
+      letter-spacing: -0.02em;
+    }
+  }
+}

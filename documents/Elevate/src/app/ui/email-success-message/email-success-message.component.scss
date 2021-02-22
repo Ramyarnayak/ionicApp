@@ -1,0 +1,18 @@
+@import "src/app/styles/common";
+
+.EmailSuccessMessage {
+
+  &-header {
+    @include relative-prop(font-size, 20, 23, 26);
+    @include relative-prop(line-height, 26, 32.5, 39);
+  }
+
+  &-description {
+    @include relative-prop(font-size, 14, 14, 16);
+    @include relative-prop(line-height, 19, 21.5, 24);
+    @include relative-prop(padding-top, 8, 8, 8);
+    @include relative-prop(max-width, 224, 224, 288);
+    letter-spacing: -0.02em;
+    text-align: center;
+  }
+}

@@ -1,0 +1,11 @@
+<div *ngIf="(contentBasic | async) as contentBasicResults" class="ContentBasic container">
+    <h1 class="ContentBasic-headline">{{ contentBasicResults.headline }}</h1>
+    <div class="ContentBasic-underline"></div>
+    <div [innerHTML]="contentBasicResults.body | safe: 'html'"
+        (innerHtmlRendered)="onBasicContentBodyTextRender()"
+        class="ContentBasic-body"
+        #bacisContentRef
+        appMutationObserver
+        appTargetBlank>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+<section [class]="'CaptureEmailCard container-margin ' + captureEmailCardContent?.settings?.theme" *ngIf="!hasEmailCaptured else successMessage">
+    <div class="CaptureEmailCard-sectionOne">
+        <div [class]="'CaptureEmailCard-title ' + 'CaptureEmailCard-title-' + emailCapturePurpose" [innerHTML]="captureEmailCardContent?.headline1"></div>
+    </div>
+
+    <div class="CaptureEmailCard-sectionTwo">
+
+        <div [class]="'CaptureEmailCard-subTitle ' + 'CaptureEmailCard-subTitle-' + emailCapturePurpose">{{ captureEmailCardContent?.headline2 }}</div>
+
+        <div class="CaptureEmailCard-action">
+            <div class="CaptureEmailCard-form">
+                <div>
+                    <input [(ngModel)]="userEmail" (blur)="tealiumClickEventInput()"
+                        [pattern]="emailValidatorRegExp" #email="ngModel" autocomplete="email"
+                        class="CaptureEmailCard-email" name="email" placeholder="Email Address" type="email"
+                        required>
+                    <span class="CaptureEmailCard-email-helpText" [hidden]="!(email.touched && email.invalid)">
+                        <small>Please enter a valid email.</small>
+                    </span>
+                </div>
+
+                <div class="CaptureEmailCard-checkboxField CaptureEmailCard-checkboxFieldTopDisplay">
+                    <ng-container [ngTemplateOutlet]="optOutTemplate"></ng-container>
+                </div>
+            </div>
+
+            <div class="CaptureEmailCard-cta">
+                <button [appTealiumClickEvent]="tealiumClickEventSend" [disabled]="email.invalid || loading"
+                    (click)="onSubmit(email.valid)" [class]="'CaptureEmailCard-button ' + 'CaptureEmailCard-button-' + emailCapturePurpose"
+                    [ngClass]="captureEmailCardContent?.ctaSettings?.theme">
+                    <span [class]="'CaptureEmailCard-buttonText ' + 'CaptureEmailCard-buttonText-' + emailCapturePurpose">
+                        {{captureEmailCardContent?.cta}}
+                    </span>
+                </button>
+            </div>
+
+            <div class="CaptureEmailCard-checkboxField CaptureEmailCard-checkboxFieldBottomDisplay">
+                <ng-container [ngTemplateOutlet]="optOutTemplate"></ng-container>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<ng-template #optOutTemplate>
+    <div (click)="toggleOptOutState()">
+        <div class="CaptureEmailCard-checkbox" role="checkbox" tabindex=0>
+            <img class="CaptureEmailCard-checkboxImage" [hidden]="!optOutState"
+                src="assets/icons/awesome-check-icon.svg" alt="check-icon">
+        </div>
+    </div>
+    <div class="CaptureEmailCard-checkboxLabel" [innerHTML]="captureEmailCardContent?.optOutText" appTargetBlank>
+    </div>
+</ng-template>
+
+<ng-template #successMessage>
+    <section [class]="'CaptureEmailCard-successMessageContainer container-margin container-center-vh ' + captureEmailCardContent?.settings?.theme">
+        <app-email-success-message [descriptionText]="emailCapturePurpose === 'article'
+                ? 'We will keep you up to date on articles like this.'
+                : 'Your results will be emailed to you.'"></app-email-success-message>
+    </section>
+</ng-template>

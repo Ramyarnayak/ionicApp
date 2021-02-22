@@ -1,0 +1,112 @@
+@import "../../../styles/common.scss";
+
+.FnSnHero {
+  @include mobile {
+    background-size: 80% 146px;
+  }
+  @include tablet-only {
+    background-size: 63% 50%;
+  }
+  @include relative-prop(padding-top, 29, null, null);
+  @include relative-prop(padding-bottom, 59, 57, 69);
+  background: url('../../../../assets/images/fnsn-page/fnsn-hero.png'), $dark-blue;
+  background-position: right top;
+  background-repeat: no-repeat;
+  background-size: 53% 50%;
+
+  &-title {
+    @include mobile {
+      width: 60%;
+    }
+    @include relative-prop(padding-top, 174, 136, 71);
+    @include relative-prop(font-size, 12, 12, 16);
+    @include relative-prop(line-height, 13.2, 13.2, 17.6);
+    @include relative-prop(width, null, 167, 304);
+    font-family: $font-family-medium;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: $elevate-blue;
+  }
+  &-mainTitle {
+    @include mobile {
+      width: 100%;
+    }
+    @include relative-prop(padding-top, 19, 19, 30);
+    @include relative-prop(font-size, 42, 42, 96);
+    @include relative-prop(line-height, 46.2, 46.2, 105.6);
+    @include relative-prop(width, null, 209, 590);
+    font-family: $font-family-bold;
+    letter-spacing: -0.02em;
+    color: white;
+  }
+  &-description {
+    @include mobile {
+      width: 100%;
+    }
+    @include relative-prop(padding-top, 30, 29, 40);
+    @include relative-prop(font-size, 16, 16, 20);
+    @include relative-prop(line-height, 20.8, 20.8, 26);
+    @include relative-prop(width, null, 327, 526);
+    letter-spacing: -0.02em;
+    color: white;
+  }
+  &-disclosuresLink {
+    @include mobile {
+      width: 60%;
+    }
+    @include relative-prop(padding-top, 14, 14, 19);
+    @include relative-prop(font-size, 12, 12, 12);
+    @include relative-prop(line-height, 15.6, 15.6, 15.6);
+    text-decoration: underline;
+    font-family: $font-family-medium;
+    color: $elevate-blue;
+    cursor: pointer;
+  }
+
+  &-buttonsList {
+    @include relative-prop(padding-top, 35, 62, 103);
+    @include relative-prop(font-size, 16, 16, 16);
+    @include relative-prop(line-height, 20.8, 20.8, 20.8);
+    display: flex;
+    flex-wrap: wrap;
+
+    &-button {
+      @include mobile {
+        width: 100%;
+      }
+      @include relative-prop(height, 40, 40, 40);
+      @include relative-prop(width, null, 214, 328);
+      @include relative-prop(margin-right, null, 16, 16);
+      font-family: $font-family-bold;
+      border-radius: 36px;
+      outline: none;
+      border: 0;
+      cursor: pointer;
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+
+    &-borrowing {
+      background-color: $yellow;
+
+      &:hover {
+        background-color: $hover-yellow;
+      }
+    }
+    &-moneyManagement {
+      background-color: $lighter-blue;
+
+      &:hover {
+        background-color: $hover-blue;
+      }
+    }
+    &-banking {
+      background-color: $green;
+
+      &:hover {
+        background-color: $hover-green;
+      }
+    }
+  }
+}

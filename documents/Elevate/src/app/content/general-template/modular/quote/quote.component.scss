@@ -1,0 +1,17 @@
+@import "src/app/styles/common";
+
+.Quote {
+  text-align: center;
+
+  @include relative-prop(padding-top, 120, 120, 140);
+  @include relative-prop(padding-bottom, 120, 143, 140);
+  @include relative-prop(padding-left, 24, 144, 445);
+  @include relative-prop(padding-right, 24, 144, 445);
+
+  &-text {
+    letter-spacing: -0.02em;
+
+    @include relative-prop(font-size, 18, 18, 24);
+    @include relative-prop(line-height, 23.4, 23.4, 31.2);
+  }
+}

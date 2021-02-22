@@ -1,0 +1,16 @@
+<app-loader></app-loader>
+<app-header-mobile-nav></app-header-mobile-nav>
+<div class="App" id="App">
+  <div class="App-header" [class]="{'App-header--static': !!onHomePage, 'App-header--hide': !!hideHeaderNFooter}">
+    <app-header-d theme="blue"></app-header-d>
+    <app-header-mobile [ngClass]="{ 'light-theme': !(isHomepageRoute | async) }" (showNavMobile)="onShowNavMobile($event)"></app-header-mobile>
+  </div>
+
+  <router-outlet (activate)="onActivate($event)"></router-outlet>
+
+  <app-cookie-banner></app-cookie-banner>
+
+  <div class="App-footer" [class]="{'App-footer--hide': !!hideHeaderNFooter}">
+    <app-footer></app-footer>
+  </div>
+</div>
